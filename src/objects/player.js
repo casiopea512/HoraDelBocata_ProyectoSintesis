@@ -4,7 +4,8 @@ export default class Player {
         this.cursors = cursors;
         this.sprite = scene.physics.add.sprite(x, y, 'assetMovimiento', 12)
             .setOrigin(0.5, 0.5)
-            .setScale(4);
+            .setScale(4)
+            .refreshBody();
         this.sprite.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
         this.sprite.setCollideWorldBounds(true);
 
@@ -81,6 +82,11 @@ export default class Player {
             } else {
                 console.log("No hay objeto para interactuar.");
             }
+        }
+
+        // Detectar el uso del mapa
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.showMap)) {
+            console.log("mapa")
         }
     }
 }
