@@ -1,8 +1,9 @@
 export default class NPC {
-    constructor(scene, x, y, texture, name, dialog) {
+    constructor(scene, x, y, textureKey, name, dialog) {
         this.scene = scene;
-        this.sprite = scene.physics.add.staticSprite(x, y, texture)
+        this.sprite = scene.physics.add.staticSprite(x, y, textureKey)
             .setScale(4)
+            .refreshBody()
             .setOrigin(0.5, 0.5);
         this.sprite.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
         this.name = name;
