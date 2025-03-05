@@ -47,9 +47,9 @@ export default class TravelingMap extends BaseScene{
 
     createLocations(){
         this.locations = [
-            new Location(this, 400, 300, 'TreeHouse', 'Casa del árbol'),
-            new Location(this, 500, 300, 'Lake', 'Lago de la casa del árbol'),
-            new Location(this, 600, 300, 'Cube', 'Cubo de prismo')
+            new Location(this, 650, 250, 'TreeHouse', 'Casa del árbol'),
+            new Location(this, 750, 250, 'Lake', 'Lago de la casa del árbol'),
+            new Location(this, 1300, 650, 'Cube', 'Cubo de prismo')
         ];
     }
 
