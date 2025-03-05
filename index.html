@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora del Bocata</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+    <style>
+        body{
+            background-color: black;
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 42px;
+            text-shadow: 4px 4px 0px #847440; 
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            color: #a28e4f;
+        }
+        #container{
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        img{
+            margin-top: 50px;
+            height: 900px;
+            width: 900px;
+
+        }
+        #contenidos{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 900px;
+            border-radius: 15px;
+            margin-top: 150px;
+        }
+        h1{
+            margin-bottom: 10px;
+        }
+
+
+        a{
+            margin-top: 90px;
+            height: 50px;
+            width: auto;
+            text-decoration: none;
+            text-shadow: 1px 1px 0px #847440; 
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 26px; 
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            color: #a28e4f;
+            background-color: transparent;
+            border: none;
+        }
+
+        a:hover{
+            cursor: pointer;
+            color:#847440;
+        }
+
+        a:hover::before, a:hover::after{
+            display: inline;
+            content: "-";
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="/assets/images/mainMenuProvisional.png">
+        <div id="contenidos">
+            <h1>HORA DEL</h1>
+            <h1>BOCATA</h1>
+            <a href="game.html">Jugar ahora</a>
+        </div>
+    </div>
+    
+</body>
+</html>
