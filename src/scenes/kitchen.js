@@ -72,5 +72,6 @@ export default class Kitchen extends BaseScene {
         });
         this.physics.add.collider(this.player.sprite, this.layers.suelo);
         this.physics.add.collider(this.player.sprite, this.layers.objetos);
+        this.layers.objetos.setCollisionBetween(9,11)
     }
 }
