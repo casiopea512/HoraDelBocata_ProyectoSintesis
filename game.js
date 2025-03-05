@@ -1,4 +1,4 @@
-import Kitchen from './src/scenes/kitchen.js';
+import scenes from './src/scenes/scenes.js';
 
 const config = {
     type: Phaser.CANVAS,
@@ -11,7 +11,7 @@ const config = {
             debug: false
         }
     },
-    scene: [Kitchen], // Se carga la escena principal
+    scene: scenes,
     scale: {
         mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH,
