@@ -15,10 +15,10 @@ export default class Kitchen extends BaseScene {
         this.load.image('Hills', "/assets/images/tiles/Hills.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/mapa1.json');
 
-        this.load.image('finFront', '/assets/images/characters/finFront.png');
-        this.load.image('bmoFront', '/assets/images/characters/BMOFront.png');
+        this.load.image('FinFront', '/assets/images/characters/finFront.png');
+        this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
 
-        this.load.spritesheet('assetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
+        this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
 
     create() {
@@ -57,8 +57,8 @@ export default class Kitchen extends BaseScene {
 
     createNPCs() {
         this.npcs = [
-            new NPC(this, 400, 300, 'finFront', 'Fin', "¡Hola, soy Fin!"),
-            new NPC(this, 500, 300, 'bmoFront', 'BMO', "BMO dice: ¡Hola, amigo!")
+            new NPC(this, 400, 300, 'FinFront', 'Fin el humano', "¡Hola, soy Fin!"),
+            new NPC(this, 500, 300, 'BmoFront', 'BMO la maquin', "¡Hola, soy Bmo!")
         ];
     }
 
