@@ -15,6 +15,8 @@ export default class TravelingMap extends BaseScene{
         this.load.image('TreeHouse', '/assets/images/objects/treeHouse.png');
         this.load.image('Lake', '/assets/images/objects/lake.png');
         this.load.image('Cube', '/assets/images/objects/cube.png');
+        this.load.image('MountainTp_toPrismo', '/assets/images/objects/mountainTP.png');
+        this.load.image('MountainTp_toOo', '/assets/images/objects/mountainTP.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
@@ -49,12 +51,14 @@ export default class TravelingMap extends BaseScene{
         this.locations = [
             new Location(this, 650, 250, 'TreeHouse', 'Casa del árbol'),
             new Location(this, 750, 250, 'Lake', 'Lago de la casa del árbol'),
-            new Location(this, 1300, 650, 'Cube', 'Cubo de prismo')
+            new Location(this, 1300, 650, 'Cube', 'Cubo de prismo'),
+            new Location(this, 1300, 100, 'MountainTp_toPrismo', 'Montaña tp a prismo'),
+            new Location(this, 1120, 650, 'MountainTp_toOo', 'Montaña de tp a Oo')
         ];
     }
 
     createPlayer() {
-        this.player = new Player(this, 100, 450, this.cursors);
+        this.player = new Player(this, 1200, 100, this.cursors);
     }
 
     createCollisions(){

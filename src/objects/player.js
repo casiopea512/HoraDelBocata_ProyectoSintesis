@@ -119,6 +119,11 @@ export default class Player {
             else if(touchingLocation){
                 console.log("Interacción con la localización: ", touchingLocation.name);
                 touchingLocation.interact();
+
+                if(touchingLocation.key === 'MountainTp_toPrismo'){
+                    console.log("tepeando a jake");
+                    this.sprite.setPosition(1120, 650);
+                }
             }
 
             else {
