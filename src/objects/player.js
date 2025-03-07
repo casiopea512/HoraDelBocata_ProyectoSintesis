@@ -1,3 +1,5 @@
+import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
+
 export default class Player {
     constructor(scene, x, y, cursors) {
         this.scene = scene;
@@ -112,13 +114,11 @@ export default class Player {
         // pulsar tecla 'e'
         if (Phaser.Input.Keyboard.JustDown(this.cursors.interact)) {
             if (touchingObject) {
-                console.log("Interacción con NPC:", touchingObject.name);
                 touchingObject.interact();
             } 
             
             else if(touchingLocation){
-                console.log("Interacción con la localización: ", touchingLocation.name);
-                touchingLocation.interact();
+                touchingLocation.interact(this, touchingLocation);
             }
 
             else {
@@ -127,9 +127,24 @@ export default class Player {
         }
 
         // Detectar el uso del mapa
-        if (Phaser.Input.Keyboard.JustDown(this.cursors.showMap) && this.scene.scene.key !== "TravelingMapScene") {
-            console.log("mapa");
-            this.scene.scene.switch("TravelingMapScene");
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.showMap)) {
+
+            if(this.scene.scene.key != "TravelingMapScene"){
+                // Guardar la escena anterior globalmente en game.config
+                this.scene.game.config.previousScene = this.scene.scene.key;
+                console.log("Esta es la escena anterior",this.scene.game.config.previousScene)
+                this.scene.scene.switch("TravelingMapScene");
+                console.log("cambiando mapa");
+            }
+
+            else{
+                if(this.scene.game.config.previousScene){
+                    console.log("Dentro")
+                    this.scene.scene.switch(this.scene.game.config.previousScene);
+                    console.log("volviendo al mapa anterior");
+                }
+            }
+           
         }
     }
 }
