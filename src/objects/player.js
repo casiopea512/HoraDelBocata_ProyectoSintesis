@@ -1,3 +1,5 @@
+import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
+
 export default class Player {
     constructor(scene, x, y, cursors) {
         this.scene = scene;
@@ -112,18 +114,11 @@ export default class Player {
         // pulsar tecla 'e'
         if (Phaser.Input.Keyboard.JustDown(this.cursors.interact)) {
             if (touchingObject) {
-                console.log("Interacción con NPC:", touchingObject.name);
                 touchingObject.interact();
             } 
             
             else if(touchingLocation){
-                console.log("Interacción con la localización: ", touchingLocation.name);
-                touchingLocation.interact();
-
-                if(touchingLocation.key === 'MountainTp_toPrismo'){
-                    console.log("tepeando a jake");
-                    this.sprite.setPosition(1120, 650);
-                }
+                touchingLocation.interact(this, touchingLocation);
             }
 
             else {

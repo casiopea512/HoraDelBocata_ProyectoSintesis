@@ -1,3 +1,5 @@
+import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
+
 export default class Location{
     constructor (scene,x, y, textureKey, name){
         this.scene = scene;
@@ -10,7 +12,14 @@ export default class Location{
         this.key = textureKey;
     }
 
-    interact() {
+    interact(player, touchingLocation) {
         console.log(`Location ${this.name}`);
+
+        const locationData = positionsScenesTravelingMap[touchingLocation.key];
+
+        if(locationData && locationData.targetPosition){
+            console.log("tepeando a jake a: ", locationData.targetPosition);
+            player.sprite.setPosition(locationData.targetPosition.x, locationData.targetPosition.y);
+        }
     }
 }
