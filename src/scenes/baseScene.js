@@ -3,6 +3,13 @@ export default class BaseScene extends Phaser.Scene{
         super(sceneKey);
     }
 
+    // este método se ejecuta solo al inicializar una escena
+    init() { 
+        if (!this.game.config.previousScene) {
+            this.game.config.previousScene = null;
+        }
+    }
+
     createControls() {
         this.cursors = this.input.keyboard.addKeys({
             'left': Phaser.Input.Keyboard.KeyCodes.A,
