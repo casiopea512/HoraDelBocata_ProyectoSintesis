@@ -57,8 +57,8 @@ export default class Kitchen extends BaseScene {
 
     createNPCs() {
         this.npcs = [
-            new NPC(this, 400, 300, 'FinFront', 'Fin el humano', "¡Hola, soy Fin!"),
-            new NPC(this, 500, 300, 'BmoFront', 'BMO la maquin', "¡Hola, soy Bmo!")
+            new NPC(this, 400, 300, 'FinFront', 'Finn', "¡Hola, soy Finn!"),
+            new NPC(this, 500, 300, 'BmoFront', 'BMO', "¡Hola, soy Bmo!")
         ];
     }
 
@@ -72,5 +72,6 @@ export default class Kitchen extends BaseScene {
         });
         this.physics.add.collider(this.player.sprite, this.layers.suelo);
         this.physics.add.collider(this.player.sprite, this.layers.objetos);
+        this.layers.objetos.setCollisionBetween(9,11)
     }
 }
