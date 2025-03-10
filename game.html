@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="phaser.min.js"></script>
     <script type="module" src="./game.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Hora del bocata</title>
     <style>
         body {
@@ -16,6 +17,24 @@
             background-color: #000;
         }
 
+        #dialog-modal{
+            margin-top: 300px;
+            width: 700px;
+            color:white;
+            background-color: #000000bc;
+            position: absolute;
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 18px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            padding: 10px;
+        }
+
+        #dialog-E{
+            display: flex;
+            justify-content: end;
+        }
+      
         #inventory-modal{
             display: none; 
             position: fixed; 

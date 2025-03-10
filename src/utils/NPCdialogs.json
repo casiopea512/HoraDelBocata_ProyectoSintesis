@@ -1,0 +1,25 @@
+{
+  "npcs": {
+    "Finn": {
+      "greetings": "Ey, qué pasa tron?",
+      "dialogues": {
+        "give_object": "Que si tengo pan? Toma.",
+        "object_given": "Tron, no tengo más pan."
+      }
+    },
+    "BMO": {
+      "greetings": "Hola Finn!",
+      "dialogues": {
+        "give_object": "Mayonesa? Sí, aquí tienes.",
+        "object_given": "Jake, ya te he dado mayonesa antes."
+      }
+    },
+    "Marceline": {
+      "greetings": "Qué dices colegui?",
+      "dialogues": {
+        "give_object": "Tomates? Estás de suerte.",
+        "object_given": "Jake, no voy a darte más tomates."
+      }
+    }
+  }
+}

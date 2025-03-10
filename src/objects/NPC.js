@@ -12,5 +12,23 @@ export default class NPC {
 
     interact() {
         console.log(`NPC ${this.name}: "${this.dialog}"`);
+        let dialogModalElement = document.getElementById("dialog-modal");
+        let dialoginterlocutorNameElement = document.getElementById("dialog-interlocutorName");
+        let dialogTextElement = document.getElementById("dialog-text");
+
+
+        if (dialogModalElement.style.display== "block"){
+            this.scene.enableControls();
+            dialoginterlocutorNameElement.textContent = "";
+            dialogTextElement.textContent = "";
+            dialogModalElement.style.display= "none";
+        }
+        else if (dialogModalElement.style.display== "none"){
+            this.scene.resetControls();
+            this.scene.disableControls();
+            dialoginterlocutorNameElement.textContent = this.name;
+            dialogTextElement.textContent = this.dialog;
+            dialogModalElement.style.display= "block"
+        }
     }
 }
