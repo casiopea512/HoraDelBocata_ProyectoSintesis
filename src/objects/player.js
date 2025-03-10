@@ -1,4 +1,4 @@
-import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
+import { renderInventory } from "../utils/inventoryUI.js";
 
 export default class Player {
     constructor(scene, x, y, cursors) {
@@ -11,44 +11,16 @@ export default class Player {
         this.sprite.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
         this.sprite.setCollideWorldBounds(true);
 
-        this.createAnimations();
+        this.init();
     }
 
-    // createAnimations() {
-    //     this.scene.anims.create({
-    //         key: 'up',
-    //         frames: [{ key: 'AssetMovimiento', frame: 7 }, { key: 'AssetMovimiento', frame: 2 }],
-    //         frameRate: 4,
-    //         repeat: -1
-    //     });
+    init(){
+        this.createAnimations();
 
-    //     this.scene.anims.create({
-    //         key: 'left',
-    //         frames: [{ key: 'AssetMovimiento', frame: 11 }, { key: 'AssetMovimiento', frame: 10 }],
-    //         frameRate: 4,
-    //         repeat: -1
-    //     });
-
-    //     this.scene.anims.create({
-    //         key: 'motionless',
-    //         frames: [{ key: 'AssetMovimiento', frame: 12 }],
-    //         frameRate: 20
-    //     });
-
-    //     this.scene.anims.create({
-    //         key: 'right',
-    //         frames: [{ key: 'AssetMovimiento', frame: 13 }, { key: 'AssetMovimiento', frame: 14 }],
-    //         frameRate: 4,
-    //         repeat: -1
-    //     });
-
-    //     this.scene.anims.create({
-    //         key: 'down',
-    //         frames: [{ key: 'AssetMovimiento', frame: 17 }, { key: 'AssetMovimiento', frame: 22 }],
-    //         frameRate: 4,
-    //         repeat: -1
-    //     });
-    // }
+        if (!this.scene.game.config.inventory) {
+            this.scene.game.config.inventory = {};
+        }
+    }
     
     createAnimations() {
         const animations = [
@@ -69,6 +41,13 @@ export default class Player {
                 });
             }
         });
+
+        // this.scene.anims.create({
+        //     key: 'up',
+        //     frames: [{ key: 'AssetMovimiento', frame: 7 }, { key: 'AssetMovimiento', frame: 2 }],
+        //     frameRate: 4,
+        //     repeat: -1
+        // });
     }
 
     update() {
@@ -145,6 +124,11 @@ export default class Player {
                 }
             }
            
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.lookInventory)) {
+            console.log("estás mirando tu inventario");
+            renderInventory(this.scene.game.config.inventory);
         }
     }
 }

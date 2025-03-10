@@ -17,7 +17,8 @@ export default class BaseScene extends Phaser.Scene{
             'up': Phaser.Input.Keyboard.KeyCodes.W,
             'down': Phaser.Input.Keyboard.KeyCodes.S,
             'interact': Phaser.Input.Keyboard.KeyCodes.E,
-            'showMap' : Phaser.Input.Keyboard.KeyCodes.M
+            'showMap' : Phaser.Input.Keyboard.KeyCodes.M,
+            'lookInventory' : Phaser.Input.Keyboard.KeyCodes.I, 
         });
     }
 

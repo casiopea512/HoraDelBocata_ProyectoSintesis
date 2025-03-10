@@ -34,13 +34,25 @@
             display: flex;
             justify-content: end;
         }
+      
+        #inventory-modal{
+            display: none; 
+            position: fixed; 
+            top: 20%; left: 30%; 
+            width: 40%; 
+            background: rgba(118, 133, 99, 0.8); 
+            padding: 20px; 
+            border-radius: 10px; 
+            color: white;
+        }
+
     </style>
 </head>
 <body>
-    <div id="dialog-modal" style="display: none;">
-        <h1 id="dialog-interlocutorName"></h1>
-        <p id="dialog-text"></p>
-        <p id="dialog-E">E</p>
+    <div id="inventory-modal">
+        <h2>Inventario</h2>
+        <div id="inventory-list"></div>
+        <button onclick="document.getElementById('inventory-modal').style.display='none'">Cerrar</button>
     </div>
 </body>
 </html>
