@@ -22,9 +22,9 @@ export default class BaseScene extends Phaser.Scene{
         });
     }
 
-    disableControls() {
+    disableControls(controlException) {
         for (let key in this.cursors) {
-            if (key !== "interact") {
+            if (key !== controlException) {
                 this.cursors[key].enabled = false;
             }
         }
@@ -36,9 +36,9 @@ export default class BaseScene extends Phaser.Scene{
         }
     }
 
-    resetControls(){ //hace que todas las teclas cuenten como NO presionadas
+    resetControls(controlException){ //hace que todas las teclas cuenten como NO presionadas
         for (let key in this.cursors) {
-            if (key !== "interact") {
+            if (key !== controlException) {
                 this.cursors[key].reset(); 
             }
         }
