@@ -27,7 +27,7 @@ export const inventoryItems = {
 
   RosemaryThyme: {
     name: "Romero y tomillo",
-    imgPath: "/assets/images/objects/bread.png",
+    imgPath: "/assets/images/objects/rosemaryThyme.png",
   },
 
   Pickles: {

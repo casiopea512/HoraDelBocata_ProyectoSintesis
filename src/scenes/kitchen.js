@@ -3,6 +3,8 @@ import BaseScene from "./baseScene.js";
 import NPC from "../objects/NPC.js";
 import Player from "../objects/player.js";
 
+import { npcData } from "../utils/NPCData.js";
+
 export default class Kitchen extends BaseScene {
     constructor() {
         super("KitchenScene");
@@ -10,7 +12,7 @@ export default class Kitchen extends BaseScene {
 
     preload() {
 
-        this.load.json("npcDialogs", "/src/utils/NPCdialogs.json");
+        this.load.json("npcDialogs", "/src/utils/dialogs.json");
 
         this.load.image('Grass', "/assets/images/tiles/Grass.png");
         this.load.image('Water', "/assets/images/tiles/Water.png");
@@ -18,7 +20,7 @@ export default class Kitchen extends BaseScene {
         this.load.image('Hills', "/assets/images/tiles/Hills.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/mapa1.json');
 
-        this.load.image('FinFront', '/assets/images/characters/finFront.png');
+        this.load.image('FinnFront', '/assets/images/characters/finFront.png');
         this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
@@ -59,12 +61,16 @@ export default class Kitchen extends BaseScene {
     }
 
     createNPCs() {
-
         const npcDialogs = this.cache.json.get("npcDialogs");
-        this.npcs = [
-            new NPC(this, 400, 300, 'FinFront', 'Finn', npcDialogs.npcs.Finn),
-            new NPC(this, 500, 300, 'BmoFront', 'BMO', npcDialogs.npcs.BMO)
-        ];
+        this.npcs = [];
+
+        for (let key in npcData){
+            if(npcData[key].scene === this.scene.key){
+                let data = npcData[key];
+            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key]));
+            }
+        }
+        console.log("NPC's creados: ",this.npcs)
     }
 
     createPlayer() {
