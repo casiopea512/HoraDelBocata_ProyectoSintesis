@@ -1,3 +1,5 @@
+import { addToInventory } from "../utils/inventoryUI.js";
+
 export default class NPC {
     constructor(scene, x, y, textureKey, name, dialog) {
         this.scene = scene;
@@ -29,6 +31,8 @@ export default class NPC {
             dialoginterlocutorNameElement.textContent = this.name;
             dialogTextElement.textContent = this.dialog;
             dialogModalElement.style.display= "block"
+
+            // addToInventory(inventory,object)
         }
     }
 }

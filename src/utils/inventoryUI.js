@@ -1,6 +1,6 @@
 import { inventoryItems } from "./inventoryItems.js";
  
-export function renderInventory(inventory) {
+function renderInventory(inventory) {
     const inventoryContainer = document.getElementById("inventory-modal");
     
     toggleInventory(inventoryContainer,inventory);
@@ -17,13 +17,9 @@ function toggleInventory(inventoryContainer,inventory) {
 }
 
 function loadInventory(inventory) {
-
-    // hardcodeado
-    inventory["Bread"] = inventoryItems["Bread"];
-
     const inventoryList = document.getElementById("inventory-list");
 
-    inventoryList.innerHTML = "";
+    // inventory["Bread"] = inventoryItems["Bread"];
 
     for (const key in inventory) {
         const item = inventory[key];
@@ -33,4 +29,14 @@ function loadInventory(inventory) {
         itemElement.innerHTML = `<img src="${item.imgPath}" alt="${item.name}"><p>${item.name}</p>`;
         inventoryList.appendChild(itemElement);
     }
+
+    console.log(inventory)
 }
+
+function addToInventory(inventory,object){
+    if (!inventory[object]) {
+        inventory[object] = inventoryItems[object];
+    }
+}
+
+export {renderInventory, addToInventory};
