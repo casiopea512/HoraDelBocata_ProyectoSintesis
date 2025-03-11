@@ -9,6 +9,9 @@ export default class Kitchen extends BaseScene {
     }
 
     preload() {
+
+        this.load.json("npcDialogs", "/src/utils/NPCdialogs.json");
+
         this.load.image('Grass', "/assets/images/tiles/Grass.png");
         this.load.image('Water', "/assets/images/tiles/Water.png");
         this.load.image('TreesPlants', "/assets/images/objects/Basic_Grass_Biom_things.png");
@@ -56,9 +59,11 @@ export default class Kitchen extends BaseScene {
     }
 
     createNPCs() {
+
+        const npcDialogs = this.cache.json.get("npcDialogs");
         this.npcs = [
-            new NPC(this, 400, 300, 'FinFront', 'Finn', "¡Hola, soy Finn!"),
-            new NPC(this, 500, 300, 'BmoFront', 'BMO', "¡Hola, soy Bmo!")
+            new NPC(this, 400, 300, 'FinFront', 'Finn', npcDialogs.npcs.Finn),
+            new NPC(this, 500, 300, 'BmoFront', 'BMO', npcDialogs.npcs.BMO)
         ];
     }
 
