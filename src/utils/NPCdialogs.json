@@ -3,12 +3,12 @@
     "Finn": {
       "greetings": "Ey, qué pasa tron?",
       "dialogues": {
-        "give_object": "Que si tengo pan? Toma.",
-        "object_given": "Tron, no tengo más pan."
+        "give_object": "Cómo? Que necesitas lágrimas para tu bocata? Vale tío, piensa en papi, recuerda los casettes.",
+        "object_given": "Jake, no quiero hacerte llorar otra vez."
       }
     },
     "BMO": {
-      "greetings": "Hola Finn!",
+      "greetings": "Qué pasa colega?",
       "dialogues": {
         "give_object": "Mayonesa? Sí, aquí tienes.",
         "object_given": "Jake, ya te he dado mayonesa antes."
@@ -17,8 +17,36 @@
     "Marceline": {
       "greetings": "Qué dices colegui?",
       "dialogues": {
-        "give_object": "Tomates? Estás de suerte.",
+        "give_object": "Tomates? Estás de suerte, estaba a punto de comerme el rojo de este, te lo puedes quedar.",
         "object_given": "Jake, no voy a darte más tomates."
+      }
+    },
+    "Trompi": {
+      "greetings": "Oh, hola Jake!",
+      "dialogues": {
+        "give_object": "Que estás buscando pan? Puedes llevarte este, recién horneado!",
+        "object_given": "Me temo que no tengo más panecillos que darte."
+      }
+    },
+    "Jamon": {
+      "greetings": "Hola Jake.",
+      "dialogues": {
+        "give_object": "Bacon? Vaya, esto es incómodo. Sí tengo, pero no se lo digas a nadie. Cógelo y vete, vale?",
+        "object_given": "Recuerda. Shhhhh. Nuestro secreto."
+      }
+    },
+    "Chicle": {
+      "greetings": "Hola Jake!",
+      "dialogues": {
+        "give_object": "Cebolla dulce y orgánica? Estás de suerte, estamos cultivando ahora en el laboratorio, puedes llevarte esta.",
+        "object_given": "No puedo atenderte ahora, debo seguir con mis investigaciones."
+      }
+    },
+    "Prismo": {
+      "greetings": "Qué pasa tío?",
+      "dialogues": {
+        "give_object": "Pepinillos? Los mejores encurtidos de todo el espacio astral, para ti.",
+        "object_given": "Jake, ya te he dado pepinillos."
       }
     }
   }

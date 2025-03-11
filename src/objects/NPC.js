@@ -13,26 +13,35 @@ export default class NPC {
     }
 
     interact() {
-        console.log(`NPC ${this.name}: "${this.dialog}"`);
         let dialogModalElement = document.getElementById("dialog-modal");
         let dialoginterlocutorNameElement = document.getElementById("dialog-interlocutorName");
         let dialogTextElement = document.getElementById("dialog-text");
+        let dialogTextIndex = dialogTextElement.getAttribute("data-textIndex");
 
 
-        if (dialogModalElement.style.display== "block"){
-            this.scene.enableControls();
-            dialoginterlocutorNameElement.textContent = "";
-            dialogTextElement.textContent = "";
-            dialogModalElement.style.display= "none";
-        }
-        else if (dialogModalElement.style.display== "none"){
+        if (dialogModalElement.style.display== "none"){ //empezar diálogo
             this.scene.resetControls();
             this.scene.disableControls();
             dialoginterlocutorNameElement.textContent = this.name;
-            dialogTextElement.textContent = this.dialog;
+            dialogTextElement.textContent = this.dialog.greetings;
+            dialogTextElement.setAttribute("data-textIndex","0");
             dialogModalElement.style.display= "block"
 
             // addToInventory(inventory,object)
         }
+        else if (dialogModalElement.style.display== "block" && dialogTextIndex=="0"){ //segundo diálogo
+            dialoginterlocutorNameElement.textContent = this.name;
+            dialogTextElement.textContent = this.dialog.dialogues.give_object;
+            dialogTextElement.setAttribute("data-textIndex","1");
+            dialogModalElement.style.display= "block"
+        }
+        else if (dialogModalElement.style.display== "block" && dialogTextIndex=="1"){ //cerrar diálogo
+            this.scene.enableControls();
+            dialoginterlocutorNameElement.textContent = "";
+            dialogTextElement.textContent = "";
+            dialogTextElement.setAttribute("data-textIndex","");
+            dialogModalElement.style.display= "none";
+        }
+        
     }
 }
