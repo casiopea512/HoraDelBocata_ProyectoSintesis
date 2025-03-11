@@ -48,6 +48,25 @@
             padding: 20px; 
             border-radius: 10px; 
             color: white;
+
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #inventory-list {
+            display: grid;
+            grid-template-columns: repeat(5, 50px);
+            grid-template-rows: repeat(3, 50px);
+            gap: 5px;
+        }
+        .inventory-cell {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
     </style>
@@ -55,7 +74,23 @@
 <body>
     <div id="inventory-modal">
         <h2>Inventario</h2>
-        <div id="inventory-list"></div>
+        <div id="inventory-list">
+            <div class="inventory-cell"><img id="Bread" src="/assets/images/objects/bread_no.png" alt="Bread"></div>
+            <div class="inventory-cell"><img id="Tomatoe" src="/assets/images/objects/tomatoe_no.png" alt="Tomatoe"></div>
+            <div class="inventory-cell"><img id="Onion" src="/assets/images/objects/onion_no.png" alt="Onion"></div>
+            <div class="inventory-cell"><img id="Mayonnaise" src="/assets/images/objects/mayonnaise_no.png" alt="Mayonnaise"></div>
+            <div class="inventory-cell"><img id="Steak" src="/assets/images/objects/steak_no.png" alt="Steak"></div>
+            <div class="inventory-cell"><img id="RosemaryThyme" src="/assets/images/objects/bread.png" alt="RosemaryThyme"></div>
+            <div class="inventory-cell"><img id="Pickles" src="/assets/images/objects/bread.png" alt="Pickles"></div>
+            <div class="inventory-cell"><img id="Egg" src="/assets/images/objects/bread.png" alt="Egg"></div>
+            <div class="inventory-cell"><img id="Bird" src="/assets/images/objects/bread.png" alt="Bird"></div>
+            <div class="inventory-cell"><img id="Cucumber" src="/assets/images/objects/bread.png" alt="Cucumber"></div>
+            <div class="inventory-cell"><img id="Tears" src="/assets/images/objects/tears_no.png" alt="Tears"></div>
+            <div class="inventory-cell"><img id="Bacon" src="/assets/images/objects/bacon_no.png" alt="Bacon"></div>
+            <div class="inventory-cell"><img id="LobsterSoul" src="/assets/images/objects/bread.png" alt="LobsterSoul"></div>
+            <div class="inventory-cell"></div>
+            <div class="inventory-cell"></div>
+        </div>
         <button onclick="document.getElementById('inventory-modal').style.display='none'">Cerrar</button>
     </div>
 
