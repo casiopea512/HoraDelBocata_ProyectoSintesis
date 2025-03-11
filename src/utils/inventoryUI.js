@@ -1,17 +1,20 @@
 import { inventoryItems } from "./inventoryItems.js";
  
-function renderInventory(inventory) {
+function renderInventory(scene,inventory) {
     const inventoryContainer = document.getElementById("inventory-modal");
     
-    toggleInventory(inventoryContainer,inventory);
+    toggleInventory(scene,inventoryContainer,inventory);
 
 }
 
-function toggleInventory(inventoryContainer,inventory) {
+function toggleInventory(scene,inventoryContainer,inventory) {
     if (inventoryContainer.style.display === "none" || !inventoryContainer.style.display) {
         inventoryContainer.style.display = "block";
+        scene.resetControls("lookInventory");
+        scene.disableControls("lookInventory");
         loadInventory(inventory);
     } else {
+        scene.enableControls();
         inventoryContainer.style.display = "none";
     }
 }

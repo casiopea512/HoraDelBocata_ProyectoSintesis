@@ -128,7 +128,7 @@ export default class Player {
 
         if (Phaser.Input.Keyboard.JustDown(this.cursors.lookInventory)) {
             console.log("estás mirando tu inventario");
-            renderInventory(this.scene.game.config.inventory);
+            renderInventory(this.scene, this.scene.game.config.inventory);
         }
     }
 }

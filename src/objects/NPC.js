@@ -20,8 +20,8 @@ export default class NPC {
 
 
         if (dialogModalElement.style.display== "none"){ //empezar diálogo
-            this.scene.resetControls();
-            this.scene.disableControls();
+            this.scene.resetControls("interact");
+            this.scene.disableControls("interact");
             dialoginterlocutorNameElement.textContent = this.name;
             dialogTextElement.textContent = this.dialog.greetings;
             dialogTextElement.setAttribute("data-textIndex","0");
