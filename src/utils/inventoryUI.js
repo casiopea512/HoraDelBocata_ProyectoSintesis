@@ -18,16 +18,29 @@ function toggleInventory(inventoryContainer,inventory) {
 
 function loadInventory(inventory) {
     const inventoryList = document.getElementById("inventory-list");
+    inventoryList.innerHTML = "";
 
-    // inventory["Bread"] = inventoryItems["Bread"];
+    for (const keyInventoryItems in inventoryItems){
 
-    for (const key in inventory) {
-        const item = inventory[key];
+        let item = inventoryItems[keyInventoryItems];
 
         let itemElement = document.createElement("div");
-        itemElement.classList.add("inventory-item");
-        itemElement.innerHTML = `<img src="${item.imgPath}" alt="${item.name}"><p>${item.name}</p>`;
+        itemElement.classList.add("inventory-cell");
+        itemElement.innerHTML = `<img class="lockedItem" src="${item.imgPath}" alt="${item.name}" id="${item.name}"/>`;
         inventoryList.appendChild(itemElement);
+
+        
+        for (const keyInventory in inventory){
+            if ( keyInventory === keyInventoryItems ){
+                console.log("Tengo este item: ",keyInventoryItems);
+
+                const lockedItem = document.getElementById(inventory[keyInventory].name);
+                if (lockedItem.classList.contains("lockedItem")) {
+                    lockedItem.classList.remove("lockedItem");
+                }
+
+            }
+        }
     }
 
     console.log(inventory)
