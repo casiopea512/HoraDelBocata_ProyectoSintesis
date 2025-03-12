@@ -69,7 +69,7 @@
         {
          "columns":11,
          "firstgid":1,
-         "image":"SproutLands/Tilesets/Grass.png",
+         "image":"/assets/images/tiles/Grass.png",
          "imageheight":112,
          "imagewidth":176,
          "margin":0,
@@ -82,7 +82,7 @@
         {
          "columns":4,
          "firstgid":78,
-         "image":"SproutLands/Tilesets/Water.png",
+         "image":"/assets/images/tiles/Water.png",
          "imageheight":16,
          "imagewidth":64,
          "margin":0,
@@ -95,7 +95,7 @@
         {
          "columns":9,
          "firstgid":82,
-         "image":"SproutLands/Objects/Basic_Grass_Biom_things.png",
+         "image":"/assets/images/objects/Basic_Grass_Biom_things.png",
          "imageheight":80,
          "imagewidth":144,
          "margin":0,
@@ -976,7 +976,7 @@
         {
          "columns":11,
          "firstgid":127,
-         "image":"SproutLands/Tilesets/Hills.png",
+         "image":"/assets/images/tiles/Hills.png",
          "imageheight":112,
          "imagewidth":176,
          "margin":0,
