@@ -3,7 +3,7 @@ export const npcData = {
     Finn: {
         name: "Finn",
         textureKey: "FinnFront",
-        scene: "KitchenScene",
+        scene: "TestMapScene",
         x: 400,
         y: 300,
     },
@@ -11,7 +11,7 @@ export const npcData = {
     BMO:{
         name: "Bmo",
         textureKey: "BmoFront",
-        scene: "KitchenScene",
+        scene: "TestMapScene",
         x: 500,
         y: 300,
     },
