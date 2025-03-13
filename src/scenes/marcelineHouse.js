@@ -5,20 +5,19 @@ import Player from "../objects/player.js";
 
 import { npcData } from "../utils/NPCData.js";
 
-export default class Kitchen extends BaseScene {
+export default class MarcelineHouse extends BaseScene {
     constructor() {
-        super("KitchenScene");
+        super("MarcelineHouseScene");
     }
 
     preload() {
 
         this.load.json("npcDialogs", "/src/utils/dialogs.json");
 
-        this.load.image('Grass', "/assets/images/tiles/Grass.png");
-        this.load.image('Water', "/assets/images/tiles/Water.png");
-        this.load.image('TreesPlants', "/assets/images/objects/Basic_Grass_Biom_things.png");
-        this.load.image('Hills', "/assets/images/tiles/Hills.png");
-        this.load.tilemapTiledJSON('mapa', 'assets/maps/mapa1.json');
+        this.load.image('Doors', "/assets/images/tiles/Doors.png");
+        this.load.image('Basic_Furniture', "/assets/images/objects/Basic_Furniture.png");
+        this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
+        this.load.tilemapTiledJSON('mapa', 'assets/maps/marcelineHouse.json');
 
         this.load.image('FinnFront', '/assets/images/characters/finFront.png');
         this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
@@ -41,19 +40,18 @@ export default class Kitchen extends BaseScene {
     createMap() {
         const map = this.make.tilemap({ key: "mapa" });
 
-        const tilesetGrass = map.addTilesetImage('Grass', 'Grass');
-        const tilesetHills = map.addTilesetImage('Hills', 'Hills');
-        const tilesetWater = map.addTilesetImage('Water', 'Water');
-        const tilesetObjects = map.addTilesetImage('TreesPlants', 'TreesPlants');
+        const tilesetDoors = map.addTilesetImage('Doors', 'Doors');
+        const tilesetFurniture = map.addTilesetImage('Basic_Furniture', 'Basic_Furniture');
+        const tilesetHouse = map.addTilesetImage('Wooden_House_Walls_Tilset', 'Wooden_House_Walls_Tilset');
 
         this.layers = {
-            suelo: map.createLayer("Suelo", [tilesetGrass, tilesetHills], 0, 0).setScale(6),
-            water: map.createLayer("Water", tilesetWater, 0, 0).setScale(6),
-            objetos: map.createLayer("Objetos", tilesetObjects, 0, 0).setScale(6)
+            suelo: map.createLayer("Suelo", tilesetHouse, 0, 0).setScale(6),
+            paredes: map.createLayer("Paredes", [tilesetHouse, tilesetDoors], 0, 0).setScale(6),
+            objetos: map.createLayer("Objetos", tilesetFurniture, 0, 0).setScale(6)
         };
 
-        this.layers.water.setDepth(-1);
-        this.layers.suelo.setDepth(0);
+        this.layers.suelo.setDepth(-1);
+        this.layers.paredes.setDepth(0);
         this.layers.objetos.setDepth(1);
 
         this.layers.suelo.setCollisionByProperty({ colision: true });
