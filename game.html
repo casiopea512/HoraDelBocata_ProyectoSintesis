@@ -3,31 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="phaser.min.js"></script>
-    <script type="module" src="./game.js"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Hora del bocata</title>
     <style>
         body {
+            display: flex;
+           
+            justify-content: center;
+            align-items: center;
+
             margin: 0;
+            height: 100vh;
+
+            background-color: #b7a6a6;
+        }
+
+        #game{
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #000;
+            position: relative;
+
+            height: 700px;
+            width: 1300px;
         }
 
         #dialog-modal{
-            margin-top: 300px;
+            position: absolute;
+
             width: 700px;
+            margin-top: 300px;
+            padding: 10px;
+
             color:white;
             background-color: #000000bc;
-            position: absolute;
+            
             font-family: 'Press Start 2P', cursive; 
             font-size: 18px;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
-            padding: 10px;
         }
 
         #dialog-text{
@@ -39,49 +54,95 @@
             justify-content: end;
         }
       
-        #inventory-modal{
+        #inventory-modal {
             display: none; 
-            position: fixed; 
-            top: 20%; left: 30%; 
-            width: 40%; 
-            background: rgba(118, 133, 99, 0.8); 
-            padding: 20px; 
-            border-radius: 10px; 
-            color: white;
-
+            position: fixed;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 20px; 
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 30%; 
+            min-width: 400px;
+
+            border-radius: 15px; 
+            color: white;
+            background: rgba(103, 103, 103, 0.85); 
+            border: 2px solid white;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        #close-inventory {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            
+            transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        #close-inventory:hover {
+            transform: scale(1.2);
         }
 
         #inventory-list {
             display: grid;
-            grid-template-columns: repeat(5, 50px);
-            grid-template-rows: repeat(3, 50px);
-            gap: 5px;
+            grid-template-columns: repeat(5, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 10px;
+            justify-content: center;
+            padding: 15px;
         }
 
         .inventory-cell {
-            width: 50px;
-            height: 50px;
-            border: 1px solid black;
             display: flex;
             align-items: center;
             justify-content: center;
+            
+            width: 80px;
+            height: 80px;
+            
+            border: 2px solid white;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .lockedItem{
-            filter: grayscale(100%);
+        .inventory-cell img {
+            width: 55%;
+            height: auto;
+            object-fit: contain;
         }
+
+        .lockedItem {
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+
 
     </style>
 </head>
 <body>
+    
+    <div id="game">
+        <script src="phaser.min.js"></script>
+        <script type="module" src="./game.js"></script> 
+    </div>
+
     <div id="inventory-modal">
+        <button id="close-inventory" onclick="document.getElementById('inventory-modal').style.display='none'">X</button>
         <h2>Inventario</h2>
         <div id="inventory-list">
         </div>
-        <button onclick="document.getElementById('inventory-modal').style.display='none'">Cerrar</button>
     </div>
 
     <div id="dialog-modal" style="display: none;">
