@@ -2,8 +2,6 @@ import scenes from './src/scenes/scenes.js';
 
 const config = {
     type: Phaser.CANVAS,
-    width: 1600,
-    height: 1200,
     physics: {
         default: 'arcade',
         arcade: {
@@ -13,10 +11,14 @@ const config = {
     },
     scene: scenes,
     scale: {
-        mode: Phaser.Scale.RESIZE,
+        parent: "game",
+        width: 1450,
+        height: 780,
+        mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
         pixelArt: true,
     },
+    transparent: true,
     renderer: {
         antialias: false
     }
