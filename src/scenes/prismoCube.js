@@ -17,8 +17,7 @@ export default class PrismoCube extends BaseScene {
         this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/prismoCube.json');
 
-        this.load.image('FinnFront', '/assets/images/characters/finFront.png');
-        this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
+        this.load.image('PrismoFront', '/assets/images/characters/prismo.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
@@ -65,7 +64,7 @@ export default class PrismoCube extends BaseScene {
     }
 
     createPlayer() {
-        this.player = new Player(this, 100, 450, this.cursors);
+        this.player = new Player(this, 900, 300, this.cursors);
     }
 
     createCollisions() {
