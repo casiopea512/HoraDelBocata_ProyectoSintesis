@@ -19,8 +19,7 @@ export default class MarcelineHouse extends BaseScene {
         this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/marcelineHouse.json');
 
-        this.load.image('FinnFront', '/assets/images/characters/finFront.png');
-        this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
+        this.load.image('MarcelineFront', '/assets/images/characters/marceline.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
@@ -72,7 +71,7 @@ export default class MarcelineHouse extends BaseScene {
     }
 
     createPlayer() {
-        this.player = new Player(this, 100, 450, this.cursors);
+        this.player = new Player(this, 700, 100, this.cursors);
     }
 
     createCollisions() {

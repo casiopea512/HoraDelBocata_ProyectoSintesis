@@ -72,7 +72,7 @@ export default class TreeHouse extends BaseScene {
     }
 
     createPlayer() {
-        this.player = new Player(this, 100, 450, this.cursors);
+        this.player = new Player(this, 700, 700, this.cursors);
     }
 
     createCollisions() {

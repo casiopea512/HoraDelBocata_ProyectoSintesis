@@ -7,6 +7,6 @@ import TreeHouse from "./treeHouse.js";
 import PrismoCube from "./prismoCube.js";
 import TrompiHouse from "./trompiHouse.js";
 
-const scenes = [TestMap, TravelingMapScene, Lake, BubblegumLab, MarcelineHouse, PrismoCube, TreeHouse, TrompiHouse];
+const scenes = [TreeHouse, TestMap, TravelingMapScene, Lake, BubblegumLab, MarcelineHouse, PrismoCube, TrompiHouse];
 
 export default scenes;

@@ -19,9 +19,6 @@ export default class Lake extends BaseScene {
         this.load.image('Hills', "/assets/images/tiles/Hills.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/lake.json');
 
-        this.load.image('FinnFront', '/assets/images/characters/finFront.png');
-        this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
-
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
 
@@ -72,7 +69,7 @@ export default class Lake extends BaseScene {
     }
 
     createPlayer() {
-        this.player = new Player(this, 100, 450, this.cursors);
+        this.player = new Player(this, 100, 100, this.cursors);
     }
 
     createCollisions() {

@@ -1,1 +1,0 @@
-Aquí van las funciones rutilizables y los últiles
