@@ -49,10 +49,27 @@ function loadInventory(inventory) {
     console.log(inventory)
 }
 
-function addToInventory(inventory,object){
+function addObjectToInventory(inventory,object){
     if (!inventory[object]) {
         inventory[object] = inventoryItems[object];
     }
 }
 
-export {renderInventory, addToInventory};
+function searchObjectInInventory(inventory,object){
+    if (inventory[object]){
+        return true
+    } else {
+        return false
+    }
+}
+
+function displayInventoryNotification(ingredient){
+    document.getElementById("inventory-notification-text").textContent = "Has conseguido "+ inventoryItems[ingredient].name;
+    document.getElementById("inventory-notification").style.display = "block";
+
+    let timer = setTimeout(function (event) {
+        document.getElementById("inventory-notification").style.display = "none"
+    }, 2000);
+}
+
+export {renderInventory, addObjectToInventory, searchObjectInInventory, displayInventoryNotification};
