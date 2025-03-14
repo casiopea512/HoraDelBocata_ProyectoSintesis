@@ -18,8 +18,8 @@ export default class TrompiHouse extends BaseScene {
         this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/trompiHouse.json');
 
-        this.load.image('FinnFront', '/assets/images/characters/finFront.png');
-        this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
+        this.load.image('TrompiFront', '/assets/images/characters/trompi.png');
+        this.load.image('JamonFront', '/assets/images/characters/jamon.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
@@ -70,7 +70,7 @@ export default class TrompiHouse extends BaseScene {
     }
 
     createPlayer() {
-        this.player = new Player(this, 100, 450, this.cursors);
+        this.player = new Player(this, 800, 300, this.cursors);
     }
 
     createCollisions() {
