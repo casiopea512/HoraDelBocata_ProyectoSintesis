@@ -1,6 +1,7 @@
 export const positionsScenesTravelingMap = {
 
   TreeHouse: {
+    sceneKey: "TreeHouseScene",
     x: 650,
     y: 250,
     name: "Casa del árbol",
@@ -8,6 +9,7 @@ export const positionsScenesTravelingMap = {
   },
 
   Lake: {
+    sceneKey: "LakeScene",
     x: 750, 
     y: 250,
     name: "Lago de la casa del árbol",
@@ -15,13 +17,15 @@ export const positionsScenesTravelingMap = {
   },
 
   BubblegumLab: {
+    sceneKey: "BubblegumLabScene",
     x: 400, 
     y: 250,
-    name: "El reyno de chiche",
+    name: "Chuchelandia",
     imgPath: "/assets/images/objects/candyKingdom.png",
   },
 
   TrompiHouse: {
+    sceneKey: "TrompiHouseScene",
     x: 250, 
     y: 450,
     name: "La casa de trompi y jamon",
@@ -29,6 +33,7 @@ export const positionsScenesTravelingMap = {
   },
 
   MarcelineHouse: {
+    sceneKey: "MarcelineHouseScene",
     x: 500, 
     y: 600,
     name: "La casa de Marcy",
@@ -36,6 +41,7 @@ export const positionsScenesTravelingMap = {
   },
 
   Cube: {
+    sceneKey: "PrismoCubeScene",
     x: 1400,
     y: 650,
     name: "Cubo de prismo",

@@ -58,7 +58,7 @@ export default class TravelingMap extends BaseScene{
     }
 
     createPlayer() {
-        this.player = new Player(this, 1200, 100, this.cursors);
+        this.player = new Player(this, 750, 350, this.cursors);
     }
 
     createCollisions(){
