@@ -14,6 +14,27 @@ export const positionsScenesTravelingMap = {
     imgPath: "/assets/images/objects/lake.png",
   },
 
+  BubblegumLab: {
+    x: 400, 
+    y: 250,
+    name: "El reyno de chiche",
+    imgPath: "/assets/images/objects/candyKingdom.png",
+  },
+
+  TrompiHouse: {
+    x: 250, 
+    y: 450,
+    name: "La casa de trompi y jamon",
+    imgPath: "/assets/images/objects/trompiHouse.png",
+  },
+
+  MarcelineHouse: {
+    x: 500, 
+    y: 600,
+    name: "La casa de Marcy",
+    imgPath: "/assets/images/objects/marcelineHouse.png",
+  },
+
   Cube: {
     x: 1400,
     y: 650,
