@@ -1,23 +1,56 @@
 export const positionsScenesTravelingMap = {
 
   TreeHouse: {
+    sceneKey: "TreeHouseScene",
     x: 650,
     y: 250,
+    spawnPosition :{x: 650, y: 345},
     name: "Casa del árbol",
     imgPath: "/assets/images/objects/treeHouse.png",
   },
 
   Lake: {
+    sceneKey: "LakeScene",
     x: 750, 
     y: 250,
+    spawnPosition :{x: 750, y: 345},
     name: "Lago de la casa del árbol",
     imgPath: "/assets/images/objects/lake.png",
   },
 
+  BubblegumLab: {
+    sceneKey: "BubblegumLabScene",
+    x: 400, 
+    y: 250,
+    spawnPosition :{x: 400, y: 345},
+    name: "Chuchelandia",
+    imgPath: "/assets/images/objects/candyKingdom.png",
+  },
+
+  TrompiHouse: {
+    sceneKey: "TrompiHouseScene",
+    x: 250, 
+    y: 450,
+    spawnPosition :{x: 345, y: 450},
+    name: "La casa de trompi y jamon",
+    imgPath: "/assets/images/objects/trompiHouse.png",
+  },
+
+  MarcelineHouse: {
+    sceneKey: "MarcelineHouseScene",
+    x: 500, 
+    y: 600,
+    spawnPosition :{x: 595, y: 600},
+    name: "La casa de Marcy",
+    imgPath: "/assets/images/objects/marcelineHouse.png",
+  },
+
   Cube: {
+    sceneKey: "PrismoCubeScene",
     x: 1400,
     y: 650,
     name: "Cubo de prismo",
+    spawnPosition :{x: 1305, y: 650},
     imgPath: "/assets/images/objects/cube.png",
   },
 

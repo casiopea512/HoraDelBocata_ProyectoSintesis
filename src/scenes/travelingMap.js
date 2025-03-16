@@ -58,7 +58,15 @@ export default class TravelingMap extends BaseScene{
     }
 
     createPlayer() {
-        this.player = new Player(this, 1200, 100, this.cursors);
+        const postionToSpawn = Object.values(positionsScenesTravelingMap).find(scene => scene.sceneKey === this.game.config.previousScene).spawnPosition;
+        
+        let x = 750, y = 450;
+        if(postionToSpawn){
+            x = postionToSpawn.x;
+            y = postionToSpawn.y;
+        }
+
+        this.player = new Player(this, x, y, this.cursors);
     }
 
     createCollisions(){

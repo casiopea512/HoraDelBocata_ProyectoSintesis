@@ -53,20 +53,25 @@ export default class Player {
     update() {
         let touchingObject = null;
         let touchingLocation = null;
-        
+
+        const velocityPlayerNegative = -140;
+        const velocityPlayerPositive = 140;
+        const plusVelocity = 1.5
+        const checkIfIsTravelingMapScene = () => this.scene.scene.key === "TravelingMapScene";
+
         this.sprite.setVelocity(0);
 
         if (this.cursors.left.isDown) {
-            this.sprite.setVelocityX(-140);
+            this.sprite.setVelocityX(checkIfIsTravelingMapScene() ? velocityPlayerNegative* plusVelocity : velocityPlayerNegative);
             this.sprite.anims.play('left', true);
         } else if (this.cursors.right.isDown) {
-            this.sprite.setVelocityX(140);
+            this.sprite.setVelocityX(checkIfIsTravelingMapScene() ? velocityPlayerPositive* plusVelocity : velocityPlayerPositive);
             this.sprite.anims.play('right', true);
         } else if (this.cursors.up.isDown) {
-            this.sprite.setVelocityY(-140);
+            this.sprite.setVelocityY(checkIfIsTravelingMapScene() ? velocityPlayerNegative* plusVelocity : velocityPlayerNegative);
             this.sprite.anims.play('up', true);
         } else if (this.cursors.down.isDown) {
-            this.sprite.setVelocityY(140);
+            this.sprite.setVelocityY(checkIfIsTravelingMapScene() ? velocityPlayerPositive* plusVelocity : velocityPlayerPositive);
             this.sprite.anims.play('down', true);
         } else {
             this.sprite.anims.play('motionless', true);

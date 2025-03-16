@@ -13,13 +13,17 @@ export default class Location{
     }
 
     interact(player, touchingLocation) {
-        console.log(`Location ${this.name}`);
 
         const locationData = positionsScenesTravelingMap[touchingLocation.key];
 
         if(locationData && locationData.targetPosition){
-            console.log("tepeando a jake a: ", locationData.targetPosition);
             player.sprite.setPosition(locationData.targetPosition.x, locationData.targetPosition.y);
+        }
+
+        else if (locationData && locationData.sceneKey) {
+            this.scene.scene.stop();
+            this.scene.cache.tilemap.remove('mapa');
+            this.scene.scene.start(locationData.sceneKey);
         }
     }
 }
