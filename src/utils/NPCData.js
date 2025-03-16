@@ -6,6 +6,7 @@ export const npcData = {
         scene: "TreeHouseScene",
         x: 500,
         y: 500,
+        ingredient: "Tears",
     },
 
     BMO:{
@@ -14,6 +15,7 @@ export const npcData = {
         scene: "TreeHouseScene",
         x: 900,
         y: 600,
+        ingredient: "Mayonnaise",
     },
 
     Marceline:{
@@ -22,6 +24,7 @@ export const npcData = {
         scene: "MarcelineHouseScene",
         x: 500,
         y: 300,
+        ingredient: "Tomatoe",
     },
 
     Trompi:{
@@ -30,6 +33,7 @@ export const npcData = {
         scene: "TrompiHouseScene",
         x: 600,
         y: 200,
+        ingredient: "Bread",
     },
 
     Jamon:{
@@ -38,6 +42,7 @@ export const npcData = {
         scene: "TrompiHouseScene",
         x: 300,
         y: 200,
+        ingredient: "Bacon",
     },
 
     Chicle:{
@@ -46,6 +51,7 @@ export const npcData = {
         scene: "BubblegumLabScene",
         x: 500,
         y: 400,
+        ingredient: "Onion",
     },
 
     Prismo:{
@@ -54,5 +60,6 @@ export const npcData = {
         scene: "PrismoCube",
         x: 500,
         y: 300,
+        ingredient: "Pickles",
     },
 }

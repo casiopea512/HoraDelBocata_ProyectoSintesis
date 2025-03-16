@@ -53,7 +53,7 @@ export default class TravelingMap extends BaseScene{
 
         for (let key in positionsScenesTravelingMap) {
             let data = positionsScenesTravelingMap[key];
-            this.locations.push(new Location(this, data.x, data.y, key, data.name));
+            this.locations.push(new Location(this, data.x, data.y, key, data.name, data.ingredient));
         }
     }
 

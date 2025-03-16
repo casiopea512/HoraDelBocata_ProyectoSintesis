@@ -57,7 +57,7 @@ export default class PrismoCube extends BaseScene {
         for (let key in npcData){
             if(npcData[key].scene === this.scene.key){
                 let data = npcData[key];
-            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key]));
+            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient));
             }
         }
         console.log("NPC's creados: ",this.npcs)
