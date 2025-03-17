@@ -18,6 +18,8 @@ body {
 
     height: 700px;
     width: 1300px;
+
+    z-index: -1;
 }
 
 

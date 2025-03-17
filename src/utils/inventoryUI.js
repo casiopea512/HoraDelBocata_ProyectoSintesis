@@ -2,6 +2,17 @@ import { inventoryItems } from "./inventoryItems.js";
  
 function renderInventory(scene,inventory) {
     const inventoryContainer = document.getElementById("inventory-modal");
+
+    // añadir el evento de cerrar el modal y de habilitar las teclas al botón 'cerrar inventario'
+    const buttonCloseInventory = document.getElementById('close-inventory');
+    if (buttonCloseInventory && buttonCloseInventory.dataset.eventAdded !== "true") {
+        buttonCloseInventory.addEventListener("click", function () {
+            scene.enableControls();
+            document.getElementById("inventory-modal").style.display = 'none';
+        });
+
+        buttonCloseInventory.dataset.eventAdded = "true";
+    }
     
     toggleInventory(scene,inventoryContainer,inventory);
 
