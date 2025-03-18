@@ -19,6 +19,8 @@ export default class Lake extends BaseScene {
         this.load.image('Hills', "/assets/images/tiles/Hills.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/lake.json');
 
+        this.load.image('LobsterWatter', '/assets/images/objects/lobsterWatter.png');
+
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
 

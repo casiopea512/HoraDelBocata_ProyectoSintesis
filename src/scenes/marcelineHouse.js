@@ -20,6 +20,7 @@ export default class MarcelineHouse extends BaseScene {
         this.load.tilemapTiledJSON('mapa', 'assets/maps/marcelineHouse.json');
 
         this.load.image('MarcelineFront', '/assets/images/characters/marceline.png');
+        this.load.image('FridgeMarceline', '/assets/images/objects/fridge.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
@@ -52,9 +53,6 @@ export default class MarcelineHouse extends BaseScene {
         this.layers.suelo.setDepth(-1);
         this.layers.paredes.setDepth(0);
         this.layers.objetos.setDepth(1);
-
-        this.layers.suelo.setCollisionByProperty({ colision: true });
-        this.layers.objetos.setCollisionByProperty({ colision: true });
     }
 
     createNPCs() {
@@ -71,15 +69,20 @@ export default class MarcelineHouse extends BaseScene {
     }
 
     createPlayer() {
-        this.player = new Player(this, 700, 100, this.cursors);
+        this.player = new Player(this, 700, 150, this.cursors);
     }
 
     createCollisions() {
         this.npcs.forEach(npc => {
             this.physics.add.collider(this.player.sprite, npc.sprite);
         });
-        this.physics.add.collider(this.player.sprite, this.layers.suelo);
-        this.physics.add.collider(this.player.sprite, this.layers.objetos);
-        this.layers.objetos.setCollisionBetween(9,11)
+
+        // añadir la colisión a las capas
+        Object.values(this.layers).forEach(layer => {
+            this.physics.add.collider(this.player.sprite, layer);
+            if(layer.layer.name !== 'Suelo'){
+                layer.setCollisionByExclusion([-1]);
+            }
+        });
     }
 }
