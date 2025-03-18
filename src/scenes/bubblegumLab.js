@@ -20,6 +20,7 @@ export default class BubblegumLab extends BaseScene {
         this.load.tilemapTiledJSON('mapa', 'assets/maps/bubblegumLab.json');
 
         this.load.image('ChicleFront', '/assets/images/characters/chicle.png');
+        this.load.image('CucumberPot', '/assets/images/objects/cucumberPot.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }

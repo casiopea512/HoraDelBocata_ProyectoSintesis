@@ -18,6 +18,15 @@ export const npcData = {
         ingredient: "Mayonnaise",
     },
 
+    Lobster:{
+        name: "Langosta",
+        textureKey: "LobsterWatter",
+        scene: "LakeScene",
+        x: 700,
+        y: 730,
+        ingredient: "LobsterSoul",
+    },
+
     Marceline:{
         name: "Marceline",
         textureKey: "MarcelineFront",
@@ -25,6 +34,15 @@ export const npcData = {
         x: 500,
         y: 300,
         ingredient: "Tomatoe",
+    },
+
+    Fridge:{
+        name: "Nevera de Marceline",
+        textureKey: "FridgeMarceline",
+        scene: "MarcelineHouseScene",
+        x: 150,
+        y: 150,
+        ingredient: "Steak",
     },
 
     Trompi:{
@@ -52,6 +70,15 @@ export const npcData = {
         x: 500,
         y: 400,
         ingredient: "Onion",
+    },
+
+    CucumberPot:{
+        name: "Maceta de pepinos",
+        textureKey: "CucumberPot",
+        scene: "BubblegumLabScene",
+        x: 400,
+        y: 150,
+        ingredient: "Cucumber",
     },
 
     Prismo:{

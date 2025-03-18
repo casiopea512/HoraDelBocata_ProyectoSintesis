@@ -20,6 +20,7 @@ export default class MarcelineHouse extends BaseScene {
         this.load.tilemapTiledJSON('mapa', 'assets/maps/marcelineHouse.json');
 
         this.load.image('MarcelineFront', '/assets/images/characters/marceline.png');
+        this.load.image('FridgeMarceline', '/assets/images/objects/fridge.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
