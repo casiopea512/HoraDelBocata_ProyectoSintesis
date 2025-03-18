@@ -18,6 +18,24 @@ export const npcData = {
         ingredient: "Mayonnaise",
     },
 
+    Nest:{
+        name: "Nido",
+        textureKey: "Nest",
+        scene: "TreeHouseScene",
+        x: 810,
+        y: 65,
+        ingredient: "Egg",
+    },
+
+    Bird:{
+        name: "Pájaro de la ventana",
+        textureKey: "Bird",
+        scene: "TreeHouseScene",
+        x: 710,
+        y: 65,
+        ingredient: "Bird",
+    },
+
     Lobster:{
         name: "Langosta",
         textureKey: "LobsterWatter",
