@@ -50,7 +50,7 @@ export const npcData = {
         textureKey: "TrompiFront",
         scene: "TrompiHouseScene",
         x: 600,
-        y: 200,
+        y: 250,
         ingredient: "Bread",
     },
 
