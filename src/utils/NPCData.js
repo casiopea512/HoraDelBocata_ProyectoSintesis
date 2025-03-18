@@ -23,7 +23,7 @@ export const npcData = {
         textureKey: "MarcelineFront",
         scene: "MarcelineHouseScene",
         x: 500,
-        y: 300,
+        y: 250,
         ingredient: "Tomatoe",
     },
 

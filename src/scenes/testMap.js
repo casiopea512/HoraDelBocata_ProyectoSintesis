@@ -20,7 +20,7 @@ export default class TestMap extends BaseScene {
         this.load.image('Hills', "/assets/images/tiles/Hills.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/mapa1.json');
 
-        this.load.image('FinnFront', '/assets/images/characters/finFront.png');
+        this.load.image('FinnFront', '/assets/images/characters/finnFront.png');
         this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
