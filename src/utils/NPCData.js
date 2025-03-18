@@ -27,6 +27,15 @@ export const npcData = {
         ingredient: "LobsterSoul",
     },
 
+    RosemaryThymePot:{
+        name: "Romero y tomillo",
+        textureKey: "RosemaryThymePot",
+        scene: "LakeScene",
+        x: 450,
+        y: 300,
+        ingredient: "RosemaryThyme",
+    },
+
     Marceline:{
         name: "Marceline",
         textureKey: "MarcelineFront",
