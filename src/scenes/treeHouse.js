@@ -19,7 +19,7 @@ export default class TreeHouse extends BaseScene {
         this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/treeHouse.json');
 
-        this.load.image('FinnFront', '/assets/images/characters/finFront.png');
+        this.load.image('FinnFront', '/assets/images/characters/finnFront.png');
         this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });

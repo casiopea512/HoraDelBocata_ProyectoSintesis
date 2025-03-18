@@ -11,7 +11,7 @@ export const inventoryItems = {
   },
 
   Onion: {
-    name: "Cebolla dulce y orǵanica en rodajas",
+    name: "Cebolla dulce y orgánica en rodajas",
     imgPath: "/assets/images/objects/onion.png",
   },
 
