@@ -71,6 +71,13 @@ export default class PrismoCube extends BaseScene {
         this.npcs.forEach(npc => {
             this.physics.add.collider(this.player.sprite, npc.sprite);
         });
-        this.physics.add.collider(this.player.sprite, this.layers.suelo);
+        
+        // añadir la colisión a las capas
+        Object.values(this.layers).forEach(layer => {
+            this.physics.add.collider(this.player.sprite, layer);
+            if(layer.layer.name !== 'Suelo'){
+                layer.setCollisionByExclusion([-1]);
+            }
+        });
     }
 }
