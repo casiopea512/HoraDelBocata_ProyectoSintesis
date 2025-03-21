@@ -7,10 +7,14 @@ import { displayInventoryNotification } from "../utils/inventoryUI.js";
 let displayNotification = false;
 
 export default class NPC {
-    constructor(scene, x, y, textureKey, name, dialog, ingredient) {
+    constructor(scene, x, y, textureKey, name, dialog, ingredient, size) {
         this.scene = scene;
+
+        const sizeMap = { small: 3, medium: 4, big: 5 };
+        this.size = sizeMap[size] ?? sizeMap['medium'];
+
         this.sprite = scene.physics.add.staticSprite(x, y, textureKey)
-            .setScale(4)
+            .setScale(this.size)
             .refreshBody()
             .setOrigin(0.5, 0.5);
         this.sprite.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
