@@ -6,6 +6,7 @@ export const npcData = {
         scene: "TreeHouseScene",
         x: 500,
         y: 500,
+        size : 'medium',
         ingredient: "Tears",
     },
 
@@ -15,7 +16,28 @@ export const npcData = {
         scene: "TreeHouseScene",
         x: 900,
         y: 600,
+        size : 'medium',
         ingredient: "Mayonnaise",
+    },
+
+    Nest:{
+        name: "Nido",
+        textureKey: "Nest",
+        scene: "TreeHouseScene",
+        x: 810,
+        y: 65,
+        size : 'small',
+        ingredient: "Egg",
+    },
+
+    Bird:{
+        name: "Pájaro de la ventana",
+        textureKey: "Bird",
+        scene: "TreeHouseScene",
+        x: 710,
+        y: 65,
+        size : 'small',
+        ingredient: "Bird",
     },
 
     Lobster:{
@@ -24,7 +46,18 @@ export const npcData = {
         scene: "LakeScene",
         x: 700,
         y: 730,
+        size : 'big',
         ingredient: "LobsterSoul",
+    },
+
+    RosemaryThymePot:{
+        name: "Romero y tomillo",
+        textureKey: "RosemaryThymePot",
+        scene: "LakeScene",
+        x: 450,
+        y: 300,
+        size : 'medium',
+        ingredient: "RosemaryThyme",
     },
 
     Marceline:{
@@ -33,6 +66,7 @@ export const npcData = {
         scene: "MarcelineHouseScene",
         x: 500,
         y: 250,
+        size : 'medium',
         ingredient: "Tomatoe",
     },
 
@@ -42,6 +76,7 @@ export const npcData = {
         scene: "MarcelineHouseScene",
         x: 150,
         y: 150,
+        size : 'big',
         ingredient: "Steak",
     },
 
@@ -51,6 +86,7 @@ export const npcData = {
         scene: "TrompiHouseScene",
         x: 600,
         y: 250,
+        size : 'medium',
         ingredient: "Bread",
     },
 
@@ -60,6 +96,7 @@ export const npcData = {
         scene: "TrompiHouseScene",
         x: 300,
         y: 200,
+        size : 'medium',
         ingredient: "Bacon",
     },
 
@@ -69,6 +106,7 @@ export const npcData = {
         scene: "BubblegumLabScene",
         x: 500,
         y: 400,
+        size : 'medium',
         ingredient: "Onion",
     },
 
@@ -78,6 +116,7 @@ export const npcData = {
         scene: "BubblegumLabScene",
         x: 400,
         y: 150,
+        size : 'big',
         ingredient: "Cucumber",
     },
 
@@ -87,6 +126,7 @@ export const npcData = {
         scene: "PrismoCube",
         x: 500,
         y: 300,
+        size : 'medium',
         ingredient: "Pickles",
     },
 }

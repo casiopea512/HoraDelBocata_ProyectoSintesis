@@ -21,6 +21,8 @@ export default class TreeHouse extends BaseScene {
 
         this.load.image('FinnFront', '/assets/images/characters/finnFront.png');
         this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
+        this.load.image('Nest', '/assets/images/objects/nestWithEggs.png');
+        this.load.image('Bird', '/assets/images/objects/bird.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
@@ -62,7 +64,7 @@ export default class TreeHouse extends BaseScene {
         for (let key in npcData){
             if(npcData[key].scene === this.scene.key){
                 let data = npcData[key];
-            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient));
+            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size));
             }
         }
         console.log("NPC's creados: ",this.npcs)

@@ -20,6 +20,7 @@ export default class Lake extends BaseScene {
         this.load.tilemapTiledJSON('mapa', 'assets/maps/lake.json');
 
         this.load.image('LobsterWatter', '/assets/images/objects/lobsterWatter.png');
+        this.load.image('RosemaryThymePot', '/assets/images/objects/rosemaryThymePot.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }
@@ -64,7 +65,7 @@ export default class Lake extends BaseScene {
         for (let key in npcData){
             if(npcData[key].scene === this.scene.key){
                 let data = npcData[key];
-            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient));
+            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size));
             }
         }
         console.log("NPC's creados: ",this.npcs)
