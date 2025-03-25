@@ -23,6 +23,7 @@ export default class TreeHouse extends BaseScene {
         this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
         this.load.image('Nest', '/assets/images/objects/nestWithEggs.png');
         this.load.image('Bird', '/assets/images/objects/bird.png');
+        this.load.image('Stove', '/assets/images/objects/stove.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
     }

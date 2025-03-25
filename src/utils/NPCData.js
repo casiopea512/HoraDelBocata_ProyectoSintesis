@@ -20,12 +20,22 @@ export const npcData = {
         ingredient: "Mayonnaise",
     },
 
+    Stove:{
+        name: "Stove",
+        textureKey: "Stove",
+        scene: "TreeHouseScene",
+        x: 470,
+        y: 145,
+        size : 'big',
+        ingredient: "Sandwich",
+    },
+
     Nest:{
         name: "Nido",
         textureKey: "Nest",
         scene: "TreeHouseScene",
         x: 810,
-        y: 65,
+        y: 75,
         size : 'small',
         ingredient: "Egg",
     },
