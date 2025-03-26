@@ -14,9 +14,7 @@ export default class TreeHouse extends BaseScene {
 
         this.load.json("npcDialogs", "/src/utils/dialogs.json");
 
-        this.load.image('Doors', "/assets/images/tiles/Doors.png");
-        this.load.image('Basic_Furniture', "/assets/images/objects/Basic_Furniture.png");
-        this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
+        this.load.image('TreeHouse_Tiles', "/assets/images/tiles/TreeHouse_Tiles.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/treeHouse.json');
 
         this.load.image('FinnFront', '/assets/images/characters/finnFront.png');
@@ -43,14 +41,12 @@ export default class TreeHouse extends BaseScene {
     createMap() {
         const map = this.make.tilemap({ key: "mapa" });
 
-        const tilesetDoors = map.addTilesetImage('Doors', 'Doors');
-        const tilesetFurniture = map.addTilesetImage('Basic_Furniture', 'Basic_Furniture');
-        const tilesetHouse = map.addTilesetImage('Wooden_House_Walls_Tilset', 'Wooden_House_Walls_Tilset');
+        const TreeHouse_Tiles = map.addTilesetImage('TreeHouse_Tiles', 'TreeHouse_Tiles');
 
         this.layers = {
-            suelo: map.createLayer("Suelo", tilesetHouse, 0, 0).setScale(6),
-            paredes: map.createLayer("Paredes", [tilesetHouse, tilesetDoors], 0, 0).setScale(6),
-            objetos: map.createLayer("Objetos", tilesetFurniture, 0, 0).setScale(6)
+            suelo: map.createLayer("Suelo", TreeHouse_Tiles, 0, 0).setScale(6),
+            paredes: map.createLayer("Paredes", TreeHouse_Tiles, 0, 0).setScale(6),
+            objetos: map.createLayer("Objetos", TreeHouse_Tiles, 0, 0).setScale(6)
         };
 
         this.layers.suelo.setDepth(-1);
