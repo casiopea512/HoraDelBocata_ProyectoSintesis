@@ -72,6 +72,8 @@ body {
     border: 2px solid white;
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
     text-align: center;
+
+    image-rendering: pixelated;
 }
 
 #close-inventory {
@@ -160,7 +162,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 50%; 
+    width: 60%; 
     min-width: 400px;
 
     border-radius: 15px; 
@@ -169,6 +171,8 @@ body {
     border: 2px solid white;
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
     text-align: center;
+
+    image-rendering: pixelated;
 }
 
 
@@ -196,6 +200,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
 }
 
 #cooking-list {
@@ -224,4 +229,19 @@ body {
     width: 55%;
     height: auto;
     object-fit: contain;
+}
+
+#cook-button{
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+#cook-button img{
+    width: 80px;
+    height: 80px;
+    height: auto;
+    object-fit: contain; 
 }
