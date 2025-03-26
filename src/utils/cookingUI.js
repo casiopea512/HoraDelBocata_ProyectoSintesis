@@ -1,15 +1,15 @@
 import { inventoryItems } from "./inventoryItems.js";
  
+const cookingInventoryModal = document.getElementById("cooking-modal")
 
+//PRINTAR COOKING MODAL
 export function openCookingInventory(inventory, scene) {
-    scene.resetControls("interact");
-    scene.disableControls("interact");
-    console.log("Abriendo COOKING INVENTORY")
     const cookingInventoryList = document.getElementById("cooking-list");
     cookingInventoryList.innerHTML = "";
     let allIngredientsCompleted = false;
     let ingredientsCount = 0;
 
+    //recorremos todos los items y los vamos printando en su celda dentro del cooking modal
     for (const keyInventoryItems in inventoryItems){
         let item = inventoryItems[keyInventoryItems];
         let itemElement = document.createElement("div");
@@ -18,24 +18,20 @@ export function openCookingInventory(inventory, scene) {
         cookingInventoryList.appendChild(itemElement);
         
         for (const keyInventory in inventory){
-            if ( keyInventory === keyInventoryItems ){
-                const nombreItem = inventory[keyInventory].name+"_inventory"
-                const lockedItem = document.getElementById(nombreItem);
-                ingredientsCount +=1;
+            if ( keyInventory === keyInventoryItems ){ //de los items que ya hemos conseguido
+                const lockedItem = document.getElementById(inventory[keyInventory].name+"_inventory");
+                ingredientsCount +=1; //sumamos a la cuenta
                 if (lockedItem.classList.contains("lockedItem")) {
-                    lockedItem.classList.remove("lockedItem");
+                    lockedItem.classList.remove("lockedItem"); //le quitamos el filtro gris
                 }
             }
         }
-
-        let cookingInventory = document.getElementById("cooking-modal")
-        cookingInventory.style.display = "block";
     }
 
     //IMPORTANTE !!!!!!!!!!!!!
     //MARK: CAMBIAR NUM
-    //Ahora la condición es 2 ingredientes para testear, más tarde hay que cambiarlo
-    if (ingredientsCount >= 2){
+    //Ahora la condición es 1 ingredientes para testear, más tarde hay que cambiarlo
+    if (ingredientsCount >= 1){
         allIngredientsCompleted = true;
     }
 
@@ -43,22 +39,55 @@ export function openCookingInventory(inventory, scene) {
     //BOTON "X" CERRAR
     let closeCookingButton = document.getElementById("close-cooking");
     closeCookingButton.addEventListener("click", function () {
-        document.getElementById("cooking-modal").style.display = 'none';
+        cookingInventoryModal.style.display = 'none';
         scene.enableControls();
     });
 
     //BOTON COCINAR
     let cookButton = document.getElementById("cook-button");
     if (allIngredientsCompleted == false){
-        cookButton.disabled= true;
+        cookButton.classList.add("lockedItem");
+        cookButton.disabled = true;
     }
     else if (allIngredientsCompleted == true){
-        cookButton.disabled= false;
+        if (cookButton.classList.contains("lockedItem")) {
+            cookButton.classList.remove("lockedItem");
+            cookButton.disabled = false;
+        }
         cookButton.addEventListener("click", function (){
-            console.log("INTRODUCIR AQUI FUNCION DE BOCATA COCINAR")
+            cookSandwich(inventory) //cocinamos
+            cookButton.disabled = true; //hacemos disabled el boton de cocinar
+            cookButton.classList.add("lockedItem"); //ponemos el boton en gris
+            document.querySelectorAll("#cooking-list .cooking-cell img").forEach(img => { //ponemos todo el inventario en gris
+                img.classList.add("lockedItem");
+            });
+            console.log("COCINANDO SANDWICH")
+            console.log(inventory)
         });
     }
-  
+}
 
+
+//ABIR-CERRAR COOKING MODAL
+export function toggleCookingInventory(inventory,scene) {
+    if (cookingInventoryModal.style.display === "none" || !cookingInventoryModal.style.display) {
+        cookingInventoryModal.style.display = "block";
+        scene.resetControls("interact");
+        scene.disableControls("interact");
+        openCookingInventory(inventory,scene);
+    } else {
+        scene.enableControls();
+        cookingInventoryModal.style.display = "none";
+    }
+}
+
+
+
+//FUNCION DE COCINAR EL BOCATA
+export function cookSandwich(inventory){
+    Object.keys(inventory).forEach(key => { //vaciamos inventario
+        delete inventory[key];
+    });
+    inventory["Sandwich"] = { name: "Bocata", imgPath: "/assets/images/objects/sandwich.png" };
 }
 

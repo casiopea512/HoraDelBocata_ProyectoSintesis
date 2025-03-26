@@ -1,7 +1,7 @@
 import { addObjectToInventory } from "../utils/inventoryUI.js";
 import { searchObjectInInventory } from "../utils/inventoryUI.js";
 import { displayInventoryNotification } from "../utils/inventoryUI.js";
-import { openCookingInventory } from "../utils/cookingUI.js";
+import { toggleCookingInventory } from "../utils/cookingUI.js";
 
 
 
@@ -27,7 +27,7 @@ export default class NPC {
     interact() {
         //Interaccion COOKING
         if (this.name=="Stove"){
-            openCookingInventory(this.scene.game.config.inventory, this.scene)
+            toggleCookingInventory(this.scene.game.config.inventory, this.scene)
         }
 
         //Interaccion DIALOGO
