@@ -15,7 +15,7 @@ export default class PrismoCube extends BaseScene {
         this.load.json("npcDialogs", "/src/utils/dialogs.json");
 
         this.load.image('PrismoCube_Tiles', "/assets/images/tiles/PrismoCube_Tiles.png");
-        this.load.tilemapTiledJSON('mapa', 'assets/maps/prismoCube2.json');
+        this.load.tilemapTiledJSON('mapa', 'assets/maps/prismoCube.json');
 
         this.load.image('PrismoFront', '/assets/images/characters/prismo.png');
 
