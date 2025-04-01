@@ -14,8 +14,7 @@ export default class TrompiHouse extends BaseScene {
 
         this.load.json("npcDialogs", "/src/utils/dialogs.json");
 
-        this.load.image('Basic_Furniture', "/assets/images/objects/Basic_Furniture.png");
-        this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
+        this.load.image('TrompiHouse_Tiles', "/assets/images/tiles/TrompiHouse_Tiles.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/trompiHouse.json');
 
         this.load.image('TrompiFront', '/assets/images/characters/trompi.png');
@@ -39,13 +38,12 @@ export default class TrompiHouse extends BaseScene {
     createMap() {
         const map = this.make.tilemap({ key: "mapa" });
 
-        const tilesetFurniture = map.addTilesetImage('Basic_Furniture', 'Basic_Furniture');
-        const tilesetHouse = map.addTilesetImage('Wooden_House_Walls_Tilset', 'Wooden_House_Walls_Tilset');
+        const tilesetTrompiHouse = map.addTilesetImage('TrompiHouse_Tiles', 'TrompiHouse_Tiles');
 
         this.layers = {
-            suelo: map.createLayer("Suelo", tilesetHouse, 0, 0).setScale(6),
-            paredes: map.createLayer("Paredes", tilesetHouse, 0, 0).setScale(6),
-            objetos: map.createLayer("Objetos", tilesetFurniture, 0, 0).setScale(6)
+            suelo: map.createLayer("Suelo", tilesetTrompiHouse, 0, 0).setScale(6),
+            paredes: map.createLayer("Paredes", tilesetTrompiHouse, 0, 0).setScale(6),
+            objetos: map.createLayer("Objetos", tilesetTrompiHouse, 0, 0).setScale(6)
         };
 
         this.layers.suelo.setDepth(-1);

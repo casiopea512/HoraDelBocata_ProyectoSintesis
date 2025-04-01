@@ -14,9 +14,7 @@ export default class BubblegumLab extends BaseScene {
 
         this.load.json("npcDialogs", "/src/utils/dialogs.json");
 
-        this.load.image('Doors', "/assets/images/tiles/Doors.png");
-        this.load.image('Basic_Furniture', "/assets/images/objects/Basic_Furniture.png");
-        this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
+        this.load.image('BubblegumLab_Tiles', "/assets/images/tiles/BubblegumLab_Tiles.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/bubblegumLab.json');
 
         this.load.image('ChicleFront', '/assets/images/characters/chicle.png');
@@ -40,14 +38,12 @@ export default class BubblegumLab extends BaseScene {
     createMap() {
         const map = this.make.tilemap({ key: "mapa" });
 
-        const tilesetDoors = map.addTilesetImage('Doors', 'Doors');
-        const tilesetFurniture = map.addTilesetImage('Basic_Furniture', 'Basic_Furniture');
-        const tilesetHouse = map.addTilesetImage('Wooden_House_Walls_Tilset', 'Wooden_House_Walls_Tilset');
+        const tilesetBubblegum = map.addTilesetImage('BubblegumLab_Tiles', 'BubblegumLab_Tiles');
 
         this.layers = {
-            suelo: map.createLayer("Suelo", tilesetHouse, 0, 0).setScale(6),
-            paredes: map.createLayer("Paredes", [tilesetHouse, tilesetDoors], 0, 0).setScale(6),
-            objetos: map.createLayer("Objetos", tilesetFurniture, 0, 0).setScale(6)
+            suelo: map.createLayer("Suelo", tilesetBubblegum, 0, 0).setScale(6),
+            paredes: map.createLayer("Paredes", tilesetBubblegum, 0, 0).setScale(6),
+            objetos: map.createLayer("Objetos", tilesetBubblegum, 0, 0).setScale(6)
         };
 
         this.layers.suelo.setDepth(-1);
