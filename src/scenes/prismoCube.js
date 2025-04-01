@@ -14,8 +14,8 @@ export default class PrismoCube extends BaseScene {
 
         this.load.json("npcDialogs", "/src/utils/dialogs.json");
 
-        this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
-        this.load.tilemapTiledJSON('mapa', 'assets/maps/prismoCube.json');
+        this.load.image('PrismoCube_Tiles', "/assets/images/tiles/PrismoCube_Tiles.png");
+        this.load.tilemapTiledJSON('mapa', 'assets/maps/prismoCube2.json');
 
         this.load.image('PrismoFront', '/assets/images/characters/prismo.png');
 
@@ -37,11 +37,11 @@ export default class PrismoCube extends BaseScene {
     createMap() {
         const map = this.make.tilemap({ key: "mapa" });
 
-        const tilesetHouse = map.addTilesetImage('Wooden_House_Walls_Tilset', 'Wooden_House_Walls_Tilset');
+        const tilesetPrismo = map.addTilesetImage('PrismoCube_Tiles', 'PrismoCube_Tiles');
 
         this.layers = {
-            suelo: map.createLayer("Suelo", tilesetHouse, 0, 0).setScale(6),
-            paredes: map.createLayer("Paredes", tilesetHouse, 0, 0).setScale(6),
+            suelo: map.createLayer("Suelo", tilesetPrismo, 0, 0).setScale(6),
+            paredes: map.createLayer("Paredes", tilesetPrismo, 0, 0).setScale(6),
         };
 
         this.layers.suelo.setDepth(-1);
