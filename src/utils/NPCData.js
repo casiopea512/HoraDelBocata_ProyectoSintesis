@@ -133,10 +133,10 @@ export const npcData = {
     Prismo:{
         name: "Prismo",
         textureKey: "PrismoFront",
-        scene: "PrismoCube",
-        x: 500,
-        y: 300,
-        size : 'medium',
+        scene: "PrismoCubeScene",
+        x: 300,
+        y: 337,
+        size : 'xxbig',
         ingredient: "Pickles",
     },
 }
