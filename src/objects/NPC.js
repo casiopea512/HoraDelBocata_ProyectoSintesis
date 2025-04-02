@@ -11,7 +11,7 @@ export default class NPC {
     constructor(scene, x, y, textureKey, name, dialog, ingredient, size) {
         this.scene = scene;
 
-        const sizeMap = { small: 3, medium: 4, big: 5 };
+        const sizeMap = { small: 3, medium: 4, big: 5, xbig: 6, xxbig: 7 };
         this.size = sizeMap[size] ?? sizeMap['medium'];
 
         this.sprite = scene.physics.add.staticSprite(x, y, textureKey)
