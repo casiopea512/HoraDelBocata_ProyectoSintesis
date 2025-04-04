@@ -50,6 +50,8 @@ body {
     justify-content: end;
 }
 
+
+/*MARK: INVENTARIO */
 #inventory-modal {
     display: none; 
     position: fixed;
@@ -70,10 +72,10 @@ body {
     border: 2px solid white;
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
     text-align: center;
+
+    image-rendering: pixelated;
 }
 
-
-/*MARK: INVENTARIO */
 #close-inventory {
     position: absolute;
     top: 10px;
@@ -144,4 +146,102 @@ body {
     text-align: center;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+}
+
+
+
+/*MARK: COCINAR */
+#cooking-modal{
+    display: none; 
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; 
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 60%; 
+    min-width: 400px;
+
+    border-radius: 15px; 
+    color: white;
+    background: rgba(103, 103, 103, 0.85); 
+    border: 2px solid white;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+    text-align: center;
+
+    image-rendering: pixelated;
+}
+
+
+#close-cooking {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#close-cooking:hover {
+    transform: scale(1.2);
+}
+
+
+#cooking-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#cooking-list {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 10px;
+    justify-content: center;
+    padding: 15px;
+}
+
+.cooking-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 80px;
+    height: 80px;
+    
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cooking-cell img {
+    width: 55%;
+    height: auto;
+    object-fit: contain;
+}
+
+#cook-button{
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+#cook-button img{
+    width: 80px;
+    height: 80px;
+    height: auto;
+    object-fit: contain; 
 }
