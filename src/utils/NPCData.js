@@ -38,6 +38,7 @@ export const npcData = {
         y: 75,
         size : 'small',
         ingredient: "Egg",
+        imgToChange: true,
     },
 
     Bird:{

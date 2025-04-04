@@ -20,6 +20,7 @@ export default class TreeHouse extends BaseScene {
         this.load.image('FinnFront', '/assets/images/characters/finnFront.png');
         this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
         this.load.image('Nest', '/assets/images/objects/nestWithEggs.png');
+        this.load.image('NestWithoutEggs', '/assets/images/objects/nestWithoutEggs.png');
         this.load.image('Bird', '/assets/images/objects/bird.png');
         this.load.image('Stove', '/assets/images/objects/stove.png');
 
@@ -57,18 +58,24 @@ export default class TreeHouse extends BaseScene {
     createNPCs() {
         const npcDialogs = this.cache.json.get("npcDialogs");
         this.npcs = [];
+        this.dynamicAssets = [];
 
         for (let key in npcData){
             if(npcData[key].scene === this.scene.key){
                 let data = npcData[key];
-            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size));
+                this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size));
+
+                if(npcData[key].imgToChange){
+                    this.dynamicAssets.push(data.textureKey);
+                }
             }
         }
-        console.log("NPC's creados: ",this.npcs)
+
+        console.log("NPC's creados: ",this.npcs, " y estos assets dinámicos ",this.dynamicAssets);
     }
 
     createPlayer() {
-        this.player = new Player(this, 700, 700, this.cursors);
+        this.player = new Player(this, 810, 130, this.cursors);
     }
 
     createCollisions() {

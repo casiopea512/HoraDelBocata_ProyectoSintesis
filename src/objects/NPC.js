@@ -1,8 +1,6 @@
-import { addObjectToInventory } from "../utils/inventoryUI.js";
-import { searchObjectInInventory } from "../utils/inventoryUI.js";
-import { displayInventoryNotification } from "../utils/inventoryUI.js";
+import { addObjectToInventory, searchObjectInInventory, displayInventoryNotification } from "../utils/inventoryUI.js";
 import { toggleCookingInventory } from "../utils/cookingUI.js";
-
+import { inventoryItems } from "../utils/inventoryItems.js";
 
 
 let displayNotification = false;
@@ -52,6 +50,26 @@ export default class NPC {
                 if(searchObjectInInventory(this.scene.game.config.inventory, this.ingredient) == false){
                     dialogTextElement.textContent = this.dialog.dialogues.give_object;
                     addObjectToInventory(this.scene.game.config.inventory, this.ingredient)
+
+                    // comprobar si el objeto tiene un asset a cambiar
+                    if(inventoryItems[this.ingredient].imgToChange){
+                        console.log("cambiando asset")
+
+                        const imgKey = inventoryItems[this.ingredient].imgToChange;
+                        const nameNPCRef = inventoryItems[this.ingredient].nameNPCRef;
+                        
+                        console.log(`Se va a cambiar la imagen de esta referencia ${nameNPCRef} a esta imagen ${imgKey}`)
+
+                        const targetNPC = this.scene.npcs.find(npc => npc.name === nameNPCRef);
+
+                        if (targetNPC) {
+                            console.log(`Cambiando textura del NPC "${nameNPCRef}" a "${imgKey}"`);
+                            targetNPC.sprite.setTexture(imgKey);
+                        } else {
+                            console.warn(`No se encontró un NPC con el nombre "${nameNPCRef}"`);
+                        }
+                    }
+
                     displayNotification = true;
                 }
                 else {

@@ -14,6 +14,13 @@
         "object_given": "Jake, ya te he dado mayonesa antes."
       }
     },
+    "Nest": {
+      "greetings": "A ver si este pájaro ha puesto huevos",
+      "dialogues": {
+        "give_object": "Estoy de suerte, estos huevos pa mi",
+        "object_given": "Ay si ya los he cogido."
+      }
+    },
     "Marceline": {
       "greetings": "Qué dices colegui?",
       "dialogues": {
