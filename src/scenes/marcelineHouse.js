@@ -14,9 +14,7 @@ export default class MarcelineHouse extends BaseScene {
 
         this.load.json("npcDialogs", "/src/utils/dialogs.json");
 
-        this.load.image('Doors', "/assets/images/tiles/Doors.png");
-        this.load.image('Basic_Furniture', "/assets/images/objects/Basic_Furniture.png");
-        this.load.image('Wooden_House_Walls_Tilset', "/assets/images/tiles/Wooden_House_Walls_Tilset.png");
+        this.load.image('MarcelineHouse_Tiles', "/assets/images/tiles/MarcelineHouse_Tiles.png");
         this.load.tilemapTiledJSON('mapa', 'assets/maps/marcelineHouse.json');
 
         this.load.image('MarcelineFront', '/assets/images/characters/marceline.png');
@@ -40,14 +38,12 @@ export default class MarcelineHouse extends BaseScene {
     createMap() {
         const map = this.make.tilemap({ key: "mapa" });
 
-        const tilesetDoors = map.addTilesetImage('Doors', 'Doors');
-        const tilesetFurniture = map.addTilesetImage('Basic_Furniture', 'Basic_Furniture');
-        const tilesetHouse = map.addTilesetImage('Wooden_House_Walls_Tilset', 'Wooden_House_Walls_Tilset');
+        const MarcelineHouse_Tiles = map.addTilesetImage('MarcelineHouse_Tiles', 'MarcelineHouse_Tiles');
 
         this.layers = {
-            suelo: map.createLayer("Suelo", tilesetHouse, 0, 0).setScale(6),
-            paredes: map.createLayer("Paredes", [tilesetHouse, tilesetDoors], 0, 0).setScale(6),
-            objetos: map.createLayer("Objetos", tilesetFurniture, 0, 0).setScale(6)
+            suelo: map.createLayer("Suelo", MarcelineHouse_Tiles, 0, 0).setScale(6),
+            paredes: map.createLayer("Paredes", MarcelineHouse_Tiles, 0, 0).setScale(6),
+            objetos: map.createLayer("Objetos", MarcelineHouse_Tiles, 0, 0).setScale(6)
         };
 
         this.layers.suelo.setDepth(-1);
