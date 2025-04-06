@@ -1,10 +1,5 @@
 import BaseScene from "./baseScene.js";
 
-import NPC from "../objects/NPC.js";
-import Player from "../objects/player.js";
-
-import { npcData } from "../utils/NPCData.js";
-
 export default class MarcelineHouse extends BaseScene {
     constructor() {
         super("MarcelineHouseScene");
@@ -27,7 +22,7 @@ export default class MarcelineHouse extends BaseScene {
         this.createMap();
         this.createControls();
         this.createNPCs();
-        this.createPlayer();
+        this.createPlayer(700,150);
         this.createCollisions();
     }
 
@@ -49,23 +44,6 @@ export default class MarcelineHouse extends BaseScene {
         this.layers.suelo.setDepth(-1);
         this.layers.paredes.setDepth(0);
         this.layers.objetos.setDepth(1);
-    }
-
-    createNPCs() {
-        const npcDialogs = this.cache.json.get("npcDialogs");
-        this.npcs = [];
-
-        for (let key in npcData){
-            if(npcData[key].scene === this.scene.key){
-                let data = npcData[key];
-            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size));
-            }
-        }
-        console.log("NPC's creados: ",this.npcs)
-    }
-
-    createPlayer() {
-        this.player = new Player(this, 700, 150, this.cursors);
     }
 
     createCollisions() {
