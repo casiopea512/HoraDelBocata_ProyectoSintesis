@@ -38,8 +38,6 @@ export const inventoryItems = {
   Egg: {
     name: "Huevo en rodaja",
     imgPath: "/assets/images/objects/egg.png",
-    imgToChange: "NestWithoutEggs",
-    nameNPCRef: "Nido",
   },
 
   Bird: {

@@ -6,7 +6,7 @@ import { inventoryItems } from "../utils/inventoryItems.js";
 let displayNotification = false;
 
 export default class NPC {
-    constructor(scene, x, y, textureKey, name, dialog, ingredient, size) {
+    constructor(scene, x, y, textureKey, name, dialog, ingredient, size, imgToChange=false) {
         this.scene = scene;
 
         const sizeMap = { small: 3, medium: 4, big: 5, xbig: 6, xxbig: 7 };
@@ -17,6 +17,8 @@ export default class NPC {
             .refreshBody()
             .setOrigin(0.5, 0.5);
         this.sprite.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
+        this.textureKey = textureKey;
+        this.imgToChange = imgToChange;
         this.name = name;
         this.dialog = dialog;
         this.ingredient = ingredient;
@@ -50,21 +52,21 @@ export default class NPC {
                 if(searchObjectInInventory(this.scene.game.config.inventory, this.ingredient) == false){
                     dialogTextElement.textContent = this.dialog.dialogues.give_object;
                     addObjectToInventory(this.scene.game.config.inventory, this.ingredient)
+                    
 
                     // comprobar si el objeto tiene un asset a cambiar
-                    if(inventoryItems[this.ingredient].imgToChange){
+                    if(this.imgToChange){
                         console.log("cambiando asset")
 
-                        const imgKey = inventoryItems[this.ingredient].imgToChange;
-                        const nameNPCRef = inventoryItems[this.ingredient].nameNPCRef;
+                        const imgKey = this.imgToChange;
+                        const nameNPCRef = this.textureKey;
                         
                         console.log(`Se va a cambiar la imagen de esta referencia ${nameNPCRef} a esta imagen ${imgKey}`)
 
-                        const targetNPC = this.scene.npcs.find(npc => npc.name === nameNPCRef);
-
-                        if (targetNPC) {
+                        if (this) {
                             console.log(`Cambiando textura del NPC "${nameNPCRef}" a "${imgKey}"`);
-                            targetNPC.sprite.setTexture(imgKey);
+                            this.sprite.setTexture(imgKey);
+                            this.sprite.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
                         } else {
                             console.warn(`No se encontró un NPC con el nombre "${nameNPCRef}"`);
                         }

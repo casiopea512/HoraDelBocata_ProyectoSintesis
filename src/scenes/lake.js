@@ -20,6 +20,7 @@ export default class Lake extends BaseScene {
         this.load.tilemapTiledJSON('mapa', 'assets/maps/lake.json');
 
         this.load.image('LobsterWatter', '/assets/images/objects/lobsterWatter.png');
+        this.load.image('LobsterWithoutLobster', '/assets/images/objects/lobsterWithoutLobster.png');
         this.load.image('RosemaryThymePot', '/assets/images/objects/rosemaryThymePot.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
@@ -61,14 +62,20 @@ export default class Lake extends BaseScene {
     createNPCs() {
         const npcDialogs = this.cache.json.get("npcDialogs");
         this.npcs = [];
+        this.dynamicAssets = [];
 
         for (let key in npcData){
             if(npcData[key].scene === this.scene.key){
                 let data = npcData[key];
-            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size));
+                this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size, data.imgToChange ? data.imgToChange : undefined));
+
+                if(npcData[key].imgToChange){
+                    this.dynamicAssets.push(data.textureKey);
+                }
             }
         }
-        console.log("NPC's creados: ",this.npcs)
+    
+        console.log("NPC's creados: ",this.npcs, " y estos assets dinámicos ",this.dynamicAssets);
     }
 
     createPlayer() {

@@ -38,7 +38,7 @@ export const npcData = {
         y: 75,
         size : 'small',
         ingredient: "Egg",
-        imgToChange: true,
+        imgToChange: "NestWithoutEggs",
     },
 
     Bird:{
@@ -46,9 +46,10 @@ export const npcData = {
         textureKey: "Bird",
         scene: "TreeHouseScene",
         x: 710,
-        y: 65,
+        y: 72,
         size : 'small',
         ingredient: "Bird",
+        imgToChange: "BirdWithoutBird",
     },
 
     Lobster:{
@@ -59,6 +60,7 @@ export const npcData = {
         y: 730,
         size : 'big',
         ingredient: "LobsterSoul",
+        imgToChange: "LobsterWithoutLobster",
     },
 
     RosemaryThymePot:{
@@ -129,6 +131,7 @@ export const npcData = {
         y: 150,
         size : 'big',
         ingredient: "Cucumber",
+        imgToChange: "CucumberPotWithoutCucumber",
     },
 
     Prismo:{
