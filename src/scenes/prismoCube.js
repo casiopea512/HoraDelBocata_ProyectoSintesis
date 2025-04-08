@@ -1,10 +1,5 @@
 import BaseScene from "./baseScene.js";
 
-import NPC from "../objects/NPC.js";
-import Player from "../objects/player.js";
-
-import { npcData } from "../utils/NPCData.js";
-
 export default class PrismoCube extends BaseScene {
     constructor() {
         super("PrismoCubeScene");
@@ -26,7 +21,7 @@ export default class PrismoCube extends BaseScene {
         this.createMap();
         this.createControls();
         this.createNPCs();
-        this.createPlayer();
+        this.createPlayer(900,300);
         this.createCollisions();
     }
 
@@ -48,23 +43,6 @@ export default class PrismoCube extends BaseScene {
         this.layers.paredes.setDepth(0);
 
         this.layers.suelo.setCollisionByProperty({ colision: true });
-    }
-
-    createNPCs() {
-        const npcDialogs = this.cache.json.get("npcDialogs");
-        this.npcs = [];
-
-        for (let key in npcData){
-            if(npcData[key].scene === this.scene.key){
-                let data = npcData[key];
-            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size));
-            }
-        }
-        console.log("NPC's creados: ",this.npcs)
-    }
-
-    createPlayer() {
-        this.player = new Player(this, 900, 300, this.cursors);
     }
 
     createCollisions() {

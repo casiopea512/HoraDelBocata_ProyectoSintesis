@@ -1,10 +1,5 @@
 import BaseScene from "./baseScene.js";
 
-import NPC from "../objects/NPC.js";
-import Player from "../objects/player.js";
-
-import { npcData } from "../utils/NPCData.js";
-
 export default class TreeHouse extends BaseScene {
     constructor() {
         super("TreeHouseScene");
@@ -20,7 +15,9 @@ export default class TreeHouse extends BaseScene {
         this.load.image('FinnFront', '/assets/images/characters/finnFront.png');
         this.load.image('BmoFront', '/assets/images/characters/BMOFront.png');
         this.load.image('Nest', '/assets/images/objects/nestWithEggs.png');
+        this.load.image('NestWithoutEggs', '/assets/images/objects/nestWithoutEggs.png');
         this.load.image('Bird', '/assets/images/objects/bird.png');
+        this.load.image('BirdWithoutBird', '/assets/images/objects/birdWithoutBird.png');
         this.load.image('Stove', '/assets/images/objects/stove.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
@@ -30,7 +27,7 @@ export default class TreeHouse extends BaseScene {
         this.createMap();
         this.createControls();
         this.createNPCs();
-        this.createPlayer();
+        this.createPlayer(810,130);
         this.createCollisions();
     }
 
@@ -52,23 +49,6 @@ export default class TreeHouse extends BaseScene {
         this.layers.suelo.setDepth(-1);
         this.layers.paredes.setDepth(0);
         this.layers.objetos.setDepth(0);
-    }
-
-    createNPCs() {
-        const npcDialogs = this.cache.json.get("npcDialogs");
-        this.npcs = [];
-
-        for (let key in npcData){
-            if(npcData[key].scene === this.scene.key){
-                let data = npcData[key];
-            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size));
-            }
-        }
-        console.log("NPC's creados: ",this.npcs)
-    }
-
-    createPlayer() {
-        this.player = new Player(this, 700, 700, this.cursors);
     }
 
     createCollisions() {

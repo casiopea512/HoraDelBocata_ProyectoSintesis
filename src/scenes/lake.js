@@ -1,10 +1,5 @@
 import BaseScene from "./baseScene.js";
 
-import NPC from "../objects/NPC.js";
-import Player from "../objects/player.js";
-
-import { npcData } from "../utils/NPCData.js";
-
 export default class Lake extends BaseScene {
     constructor() {
         super("LakeScene");
@@ -20,6 +15,7 @@ export default class Lake extends BaseScene {
         this.load.tilemapTiledJSON('mapa', 'assets/maps/lake.json');
 
         this.load.image('LobsterWatter', '/assets/images/objects/lobsterWatter.png');
+        this.load.image('LobsterWithoutLobster', '/assets/images/objects/lobsterWithoutLobster.png');
         this.load.image('RosemaryThymePot', '/assets/images/objects/rosemaryThymePot.png');
 
         this.load.spritesheet('AssetMovimiento', '/assets/images/characters/assetMovimiento.png', { frameWidth: 17, frameHeight: 17 });
@@ -29,7 +25,7 @@ export default class Lake extends BaseScene {
         this.createMap();
         this.createControls();
         this.createNPCs();
-        this.createPlayer();
+        this.createPlayer(100,100);
         this.createCollisions();
     }
 
@@ -56,23 +52,6 @@ export default class Lake extends BaseScene {
 
         this.layers.suelo.setCollisionByProperty({ colision: true });
         this.layers.objetos.setCollisionByProperty({ colision: true });
-    }
-
-    createNPCs() {
-        const npcDialogs = this.cache.json.get("npcDialogs");
-        this.npcs = [];
-
-        for (let key in npcData){
-            if(npcData[key].scene === this.scene.key){
-                let data = npcData[key];
-            this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size));
-            }
-        }
-        console.log("NPC's creados: ",this.npcs)
-    }
-
-    createPlayer() {
-        this.player = new Player(this, 100, 100, this.cursors);
     }
 
     createCollisions() {
