@@ -11,9 +11,9 @@ export const positionsScenesTravelingMap = {
 
   Lake: {
     sceneKey: "LakeScene",
-    x: 750, 
+    x: 800, 
     y: 250,
-    spawnPosition :{x: 750, y: 345},
+    spawnPosition :{x: 800, y: 345},
     name: "Lago de la casa del árbol",
     imgPath: "/assets/images/objects/lake.png",
   },
