@@ -24,10 +24,12 @@ export default class Lake extends BaseScene {
 
     create() {
         this.createMap();
+        this.scale.resize(1344, 962);
         this.createControls();
         this.createNPCs();
         this.createPlayer(100,100);
         this.createCollisions();
+        this.desiredSize = { width: 1344, height: 962 }; 
     }
 
     update() {

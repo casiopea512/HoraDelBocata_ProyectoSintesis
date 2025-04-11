@@ -19,10 +19,12 @@ export default class PrismoCube extends BaseScene {
 
     create() {
         this.createMap();
+        this.scale.resize(1060, 770);
         this.createControls();
         this.createNPCs();
         this.createPlayer(900,300);
         this.createCollisions();
+        this.desiredSize = { width: 1060, height: 770 }; 
     }
 
     update() {
