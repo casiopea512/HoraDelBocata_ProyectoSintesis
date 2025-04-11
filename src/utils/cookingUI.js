@@ -1,5 +1,6 @@
 import { inventoryItems } from "./inventoryItems.js";
- 
+import { stopTimer } from "./gameTimer.js";
+
 const cookingInventoryModal = document.getElementById("cooking-modal")
 
 //PRINTAR COOKING MODAL
@@ -63,6 +64,31 @@ export function openCookingInventory(inventory, scene) {
             });
             console.log("COCINANDO SANDWICH")
             console.log(inventory)
+
+            scene.disableControls();
+            document.getElementById("close-cooking").style.display = "none";
+
+            const finalTime = stopTimer();
+            console.log("Tiempo final:", finalTime);
+
+            // Enviar el tiempo al backend
+            fetch('/api/apis.php?action=saveTime', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ time: finalTime })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Respuesta del backend:", data);
+            })
+            .catch(error => {
+                console.error("Error al enviar el tiempo:", error);
+            });
+
+            setTimeout(() => {
+                window.location.href = "/gameOver.html";
+            }, 3000);
+            
         });
     }
 }
