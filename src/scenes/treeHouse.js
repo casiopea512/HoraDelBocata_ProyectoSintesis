@@ -25,10 +25,13 @@ export default class TreeHouse extends BaseScene {
 
     create() {
         this.createMap();
+        this.scale.resize(1150, 866);
         this.createControls();
         this.createNPCs();
         this.createPlayer(810,130);
         this.createCollisions();
+        this.desiredSize = { width: 1150, height: 866 }; 
+
     }
 
     update() {

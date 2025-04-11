@@ -6,7 +6,6 @@ export default class BubblegumLab extends BaseScene {
     }
 
     preload() {
-
         this.load.json("npcDialogs", "/src/utils/dialogs.json");
 
         this.load.image('BubblegumLab_Tiles', "/assets/images/tiles/BubblegumLab_Tiles.png");
@@ -21,10 +20,12 @@ export default class BubblegumLab extends BaseScene {
 
     create() {
         this.createMap();
+        this.scale.resize(960, 772);
         this.createControls();
         this.createNPCs();
         this.createPlayer(700,150);
         this.createCollisions();
+        this.desiredSize = { width: 960, height: 772 }; 
     }
 
     update() {

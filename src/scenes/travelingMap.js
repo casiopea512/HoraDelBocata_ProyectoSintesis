@@ -24,10 +24,12 @@ export default class TravelingMap extends BaseScene{
 
     create() {
         this.createMap();
+        this.scale.resize(1440, 770);
         this.createControls();
         this.createLocations();
         this.createPlayer();
         this.createCollisions();
+        this.desiredSize = { width: 1440, height: 770 }; 
     }
 
     update() {

@@ -20,10 +20,12 @@ export default class TrompiHouse extends BaseScene {
 
     create() {
         this.createMap();
+        this.scale.resize(960, 674);
         this.createControls();
         this.createNPCs();
         this.createPlayer(800,300);
         this.createCollisions();
+        this.desiredSize = { width: 960, height: 674 }; 
     }
 
     update() {
