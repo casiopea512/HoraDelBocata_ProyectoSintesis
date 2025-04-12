@@ -36,10 +36,55 @@ export function openCookingInventory(inventory, scene) {
         allIngredientsCompleted = true;
     }
 
+    // CONFIGURAR NAVEGACION CON FLECHAS DENTRO DEL CONTAINER DE COCINA
+    const cookingContainer = document.getElementById("cooking-container");
+
+    // Obtener los items internos de "cooking-list"
+    const cookingList = document.getElementById("cooking-list");
+    const cookingListItems = Array.from(cookingList.children);
+
+    // Obtener los demás elementos directos del contenedor que no sean "cooking-list"
+    const otherNavElements = Array.from(cookingContainer.children).filter(child => child.id !== "cooking-list");
+
+    // Crear una lista única en el orden deseado: primero los items de cooking-list, luego los demás
+    const navElements = [...cookingListItems, ...otherNavElements];
+    console.log(navElements);
+
+    let currentIndex = 0;
+    
+    function updateSelection(){
+        navElements.forEach((element, index) => {
+            if (index === currentIndex) {
+                element.classList.add("selected");
+            } else {
+                element.classList.remove("selected");
+            }
+        });
+    }
+    updateSelection();
+    
+    function handleKeyNavigation(event) {
+        if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+            event.preventDefault();
+        }
+        if (event.key === "ArrowRight") {
+            if (currentIndex < navElements.length - 1) {
+                currentIndex++;
+                updateSelection();
+            }
+        } else if (event.key === "ArrowLeft") {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSelection();
+            }
+        }
+    }
+    document.addEventListener("keydown", handleKeyNavigation);
 
     //BOTON "X" CERRAR
     let closeCookingButton = document.getElementById("close-cooking");
     closeCookingButton.addEventListener("click", function () {
+        document.removeEventListener("keydown", handleKeyNavigation);
         cookingInventoryModal.style.display = 'none';
         scene.enableControls();
     });
