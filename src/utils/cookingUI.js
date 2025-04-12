@@ -68,20 +68,27 @@ export function openCookingInventory(inventory, scene) {
         if (["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"].includes(event.key)) {
             event.preventDefault();
         }
+        const numColumns = 5; // Número de columnas en la grid de cooking-list
         if (event.key === "ArrowRight") {
-            if (currentIndex < navElements.length - 1) {
+            // Si estamos en la grid y en la última columna
+            if (currentIndex < cookingListItems.length && (currentIndex % numColumns) === numColumns - 1) {
+                if (navElements.length > cookingListItems.length) { // Solo si existen elementos extra
+                    currentIndex = cookingListItems.length; // salto al primer elemento extra (span)
+                }
+            } else if (currentIndex < navElements.length - 1) {
                 currentIndex++;
-                updateSelection();
             }
+            updateSelection();
+
         } else if (event.key === "ArrowLeft") {
             if (currentIndex > 0) {
                 currentIndex--;
                 updateSelection();
             }
+
         } else if (event.key === "ArrowDown") {
             // Solo para los elementos de la grid de cookingList
             if (currentIndex < cookingListItems.length) {
-                const numColumns = 5;
                 let currentRow = Math.floor(currentIndex / numColumns);
                 let currentCol = currentIndex % numColumns;
                 let totalRows = Math.ceil(cookingListItems.length / numColumns);
@@ -90,16 +97,16 @@ export function openCookingInventory(inventory, scene) {
                     newRow = 0;
                 }
                 let candidateIndex = newRow * numColumns + currentCol;
-                // Si la fila destino no tiene esa columna, usa el primer elemento de la fila
+                // Si la fila destino no tiene ese número de columna, usa el primer elemento de esa fila
                 if (candidateIndex >= cookingListItems.length) {
                     candidateIndex = newRow * numColumns;
                 }
                 currentIndex = candidateIndex;
                 updateSelection();
             }
+
         } else if (event.key === "ArrowUp") {
             if (currentIndex < cookingListItems.length) {
-                const numColumns = 5;
                 let currentRow = Math.floor(currentIndex / numColumns);
                 let currentCol = currentIndex % numColumns;
                 let totalRows = Math.ceil(cookingListItems.length / numColumns);
