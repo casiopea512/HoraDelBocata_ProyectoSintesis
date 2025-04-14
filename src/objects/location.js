@@ -4,7 +4,7 @@ export default class Location{
     constructor (scene,x, y, textureKey, name){
         this.scene = scene;
         this.sprite = scene.physics.add.staticSprite(x, y, textureKey)
-            .setScale(4)
+            .setScale(4.25)
             .refreshBody()
             .setOrigin(0.5, 0.5);
         this.sprite.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);

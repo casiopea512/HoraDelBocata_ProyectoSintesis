@@ -11,8 +11,8 @@ export default class TravelingMap extends BaseScene{
     }
 
     preload(){
-        this.load.image('Floor_tp', "/assets/images/tiles/Hills.png");
-        this.load.tilemapTiledJSON('Mapa_tm', 'assets/maps/prov_generalMap.json');
+        this.load.image('MainMap_Tiles', "/assets/images/tiles/MainMap_Tiles.png");
+        this.load.tilemapTiledJSON('Mapa_tm', 'assets/maps/mainMap.json');
 
         for (let location in positionsScenesTravelingMap) {
             const data = positionsScenesTravelingMap[location];
@@ -24,10 +24,12 @@ export default class TravelingMap extends BaseScene{
 
     create() {
         this.createMap();
+        this.scale.resize(1440, 770);
         this.createControls();
         this.createLocations();
         this.createPlayer();
         this.createCollisions();
+        this.desiredSize = { width: 1440, height: 770 }; 
     }
 
     update() {
@@ -37,10 +39,10 @@ export default class TravelingMap extends BaseScene{
     createMap(){
         const map = this.make.tilemap({ key: "Mapa_tm" });
 
-        const tilesetHills = map.addTilesetImage('suelo', 'Floor_tp');
+        const tilesetMainMap = map.addTilesetImage('MainMap_Tiles', 'MainMap_Tiles');
 
         this.layers = {
-            suelo: map.createLayer("suelo",tilesetHills, 0, 0).setScale(6)
+            suelo: map.createLayer("Suelo",tilesetMainMap, 0, 0).setScale(6)
         }
 
         this.layers.suelo.setDepth(0);

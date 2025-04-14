@@ -111,25 +111,63 @@ export default class Player {
         }
 
         // Detectar el uso del mapa
+
+        //ANTIGUO
+        // if (Phaser.Input.Keyboard.JustDown(this.cursors.showMap)) {
+
+        //     if(this.scene.scene.key != "TravelingMapScene"){
+        //         // Guardar la escena anterior globalmente en game.config
+        //         this.scene.game.config.previousScene = this.scene.scene.key;
+        //         console.log("Esta es la escena anterior",this.scene.game.config.previousScene)
+        //         this.scene.scene.switch("TravelingMapScene");
+        //         console.log("cambiando mapa");
+        //     }
+
+        //     else{
+        //         if(this.scene.game.config.previousScene){
+        //             console.log("Dentro")
+        //             this.scene.scene.switch(this.scene.game.config.previousScene);
+        //             console.log("volviendo al mapa anterior");
+        //         }
+        //     }
+           
+        // }
+
+        //NUEVO
         if (Phaser.Input.Keyboard.JustDown(this.cursors.showMap)) {
 
-            if(this.scene.scene.key != "TravelingMapScene"){
-                // Guardar la escena anterior globalmente en game.config
-                this.scene.game.config.previousScene = this.scene.scene.key;
-                console.log("Esta es la escena anterior",this.scene.game.config.previousScene)
-                this.scene.scene.switch("TravelingMapScene");
+            const sceneManager = this.scene.scene;
+            const currentKey = sceneManager.key;
+        
+            if (currentKey !== "TravelingMapScene") {
+                this.scene.game.config.previousScene = currentKey;
+                console.log("Esta es la escena anterior", this.scene.game.config.previousScene);
+                sceneManager.switch("TravelingMapScene");
                 console.log("cambiando mapa");
-            }
-
-            else{
-                if(this.scene.game.config.previousScene){
-                    console.log("Dentro")
-                    this.scene.scene.switch(this.scene.game.config.previousScene);
+            } else {
+                const previousKey = this.scene.game.config.previousScene;
+        
+                if (previousKey) {
+                    console.log("Dentro");
+                    sceneManager.switch(previousKey);
                     console.log("volviendo al mapa anterior");
                 }
             }
-           
-        }
+        
+            //siempre hacer resize de la escena de destino si tiene desiredSize
+            const nextKey = currentKey !== "TravelingMapScene"
+                ? "TravelingMapScene"
+                : this.scene.game.config.previousScene;
+        
+            const nextScene = sceneManager.get(nextKey);
+            if (nextScene?.desiredSize) {
+                this.scene.scale.resize(
+                    nextScene.desiredSize.width,
+                    nextScene.desiredSize.height
+                );
+            }
+        }      
+
 
         if (Phaser.Input.Keyboard.JustDown(this.cursors.lookInventory)) {
             console.log("estás mirando tu inventario");

@@ -20,10 +20,12 @@ export default class MarcelineHouse extends BaseScene {
 
     create() {
         this.createMap();
+        this.scale.resize(960, 578);
         this.createControls();
         this.createNPCs();
         this.createPlayer(700,150);
         this.createCollisions();
+        this.desiredSize = { width: 960, height: 578 }; 
     }
 
     update() {
