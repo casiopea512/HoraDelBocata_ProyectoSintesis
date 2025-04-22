@@ -30,6 +30,23 @@ if ($action === 'saveTime') {
         echo json_encode(['success' => false, 'message' => 'Tiempo no establecido']);
     }
     exit;
+} elseif ($action === 'saveRanking') {
+    $input = json_decode(file_get_contents('php://input'), true);
+    if (!isset($input['username']) || !isset($input['time'])) {
+        echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
+        exit;
+    }
+    $username = $input['username'];
+    $time = $input['time'];
+
+    
+    $rankingLine = $username . " - " . $time . "\n";
+    if (file_put_contents('ranking.txt', $rankingLine, FILE_APPEND) !== false) {
+        echo json_encode(['success' => true, 'message' => 'Ranking guardado']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Error al guardar el ranking']);
+    }
+    exit;
 } else {
     echo json_encode(['success' => false, 'message' => 'Acción no válida']);
     exit;
