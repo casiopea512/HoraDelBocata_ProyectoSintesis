@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Convertir la colección HTML de enlaces en un array
   const focusables = Array.from(document.getElementsByTagName("a"));
-
+console.log(focusables);
   const page = parseInt(document.body.getAttribute("data-page"), 10);
   const from = document.body.getAttribute("data-from");
 
   let currentFocus;
 
   // Lógica de inicialización de enfoque
-  if (isNaN(page) || page === 1 || focusables.length < 3) {
+  if( focusables.length === 1) {
+    currentFocus = 0;
+  } else if (isNaN(page) || page === 1 || focusables.length < 3) {
     currentFocus = 1;
   } else if (from === "next") {
     currentFocus = 2;
@@ -17,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     currentFocus = 1;
   }
+
   updateSelected();
+  
 
   document.addEventListener("keydown", (event) => {
     const keys = ["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", "Enter"];
