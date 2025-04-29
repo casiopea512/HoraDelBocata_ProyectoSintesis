@@ -12,7 +12,26 @@ if ($page < 1) {
 $rankingFile = __DIR__ . '/api/ranking.txt';
 $rankingData = [];
 if (file_exists($rankingFile)) {
-  $rankingData = file($rankingFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  $lines = file($rankingFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+  foreach ($lines as $line) {
+    $parts = explode(' - ', $line);
+    if (count($parts) === 2) {
+      $username = trim($parts[0]);
+      $time = trim($parts[1]);
+      $seconds = strtotime("1970-01-01 $time UTC"); // Convierte el tiempo en segundos
+      $rankingData[] = [
+        'username' => $username,
+        'time' => $time,
+        'seconds' => $seconds
+      ];
+    }
+  }
+
+  // Ordenar ascendentemente por tiempo (en segundos)
+  usort($rankingData, function ($a, $b) {
+    return $a['seconds'] - $b['seconds'];
+  });
 }
 
 // Calcular paginación
@@ -36,10 +55,11 @@ $rankingPage = array_slice($rankingData, $startIndex, $itemsPerPage);
   <title>Ranking | Hora del Bocata</title>
 </head>
 
-  <?php
-  $from = isset($_GET['from']) ? $_GET['from'] : '';
-  ?>
-  <body data-page="<?php echo $page; ?>" data-from="<?php echo htmlspecialchars($from); ?>">
+<?php
+$from = isset($_GET['from']) ? $_GET['from'] : '';
+?>
+
+<body data-page="<?php echo $page; ?>" data-from="<?php echo htmlspecialchars($from); ?>">
 
   <header>
     <a href="index.html">&#11013;</a>
@@ -57,9 +77,8 @@ $rankingPage = array_slice($rankingData, $startIndex, $itemsPerPage);
       </thead>
       <tbody>
         <?php foreach ($rankingPage as $index => $entry):
-          $parts = explode(' - ', $entry);
-          $username = isset($parts[0]) ? $parts[0] : 'Desconocido';
-          $time = isset($parts[1]) ? $parts[1] : '00:00:00';
+          $username = $entry['username'];
+          $time = $entry['time'];
         ?>
           <tr>
             <td><?php echo $startIndex + $index + 1; ?></td>
