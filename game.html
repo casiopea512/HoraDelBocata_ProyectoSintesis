@@ -9,6 +9,8 @@
     <link href="game.css" rel="stylesheet">
 </head>
 <body>
+
+    <button id="open-help">?</button>
     
     <div id="inventory-modal">
         <button id="close-inventory">X</button>
@@ -21,6 +23,32 @@
         <h1 id="dialog-interlocutorName"></h1>
         <p id="dialog-text" data-textIndex=""></p>
         <p id="dialog-E">E</p>
+    </div>
+
+    <div id="help-modal" style="display: none;">
+        <button id="close-help">X</button>
+        <h2>Ayuda</h2>
+        <div id="help-wasd">
+            <img src="/assets/images/help_wasd.png" alt="WASD Controls">
+            <p>Caminar</p>
+        </div>
+        <div id="help-e">
+            <img src="/assets/images/help_e.png" alt="E Controls">
+            <p>Interactuar</p>
+        </div>
+        <div id="help-m">
+            <img src="/assets/images/help_m.png" alt="M Controls">
+            <p>Abrir/Cerrar Mapa</p>
+        </div>
+        <div id="help-i">
+            <img src="/assets/images/help_i.png" alt="I Controls">
+            <p>Abrir/Cerrar Inventario</p>
+        </div>
+        <div id="help-h">
+            <img src="/assets/images/help_h.png" alt="H Controls">
+            <p>Abrir/Cerrar Ayuda</p>
+        </div>
+
     </div>
 
     <div id="inventory-notification" style="display: none;">

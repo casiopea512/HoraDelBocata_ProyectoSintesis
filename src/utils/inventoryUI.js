@@ -1,3 +1,4 @@
+import { toggleShowHelpButton } from "./helpUI.js";
 import { inventoryItems } from "./inventoryItems.js";
  
 function renderInventory(scene,inventory) {
@@ -21,12 +22,14 @@ function renderInventory(scene,inventory) {
 function toggleInventory(scene,inventoryContainer,inventory) {
     if (inventoryContainer.style.display === "none" || !inventoryContainer.style.display) {
         inventoryContainer.style.display = "block";
+        toggleShowHelpButton();
         scene.resetControls("lookInventory");
         scene.disableControls("lookInventory");
         loadInventory(inventory);
     } else {
         scene.enableControls();
         inventoryContainer.style.display = "none";
+        toggleShowHelpButton();
     }
 }
 

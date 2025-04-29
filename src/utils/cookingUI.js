@@ -1,3 +1,4 @@
+import { toggleShowHelpButton } from "./helpUI.js";
 import { inventoryItems } from "./inventoryItems.js";
  
 const cookingInventoryModal = document.getElementById("cooking-modal")
@@ -38,10 +39,15 @@ export function openCookingInventory(inventory, scene) {
 
     //BOTON "X" CERRAR
     let closeCookingButton = document.getElementById("close-cooking");
-    closeCookingButton.addEventListener("click", function () {
+
+    const handleCloseCooking = function () {
         cookingInventoryModal.style.display = 'none';
         scene.enableControls();
-    });
+        toggleShowHelpButton();
+
+        closeCookingButton.removeEventListener("click", handleCloseCooking);
+    };
+    closeCookingButton.addEventListener("click", handleCloseCooking);
 
     //BOTON COCINAR
     let cookButton = document.getElementById("cook-button");
@@ -75,9 +81,12 @@ export function toggleCookingInventory(inventory,scene) {
         scene.resetControls("interact");
         scene.disableControls("interact");
         openCookingInventory(inventory,scene);
+        toggleShowHelpButton();
     } else {
+        let closeCookingButton = document.getElementById("close-cooking");
         scene.enableControls();
         cookingInventoryModal.style.display = "none";
+        toggleShowHelpButton();
     }
 }
 

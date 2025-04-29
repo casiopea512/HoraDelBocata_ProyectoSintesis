@@ -1,6 +1,7 @@
 import { addObjectToInventory, searchObjectInInventory, displayInventoryNotification } from "../utils/inventoryUI.js";
 import { toggleCookingInventory } from "../utils/cookingUI.js";
 import { inventoryItems } from "../utils/inventoryItems.js";
+import { toggleShowHelpButton } from "../utils/helpUI.js";
 
 
 let displayNotification = false;
@@ -39,6 +40,7 @@ export default class NPC {
             let dialogTextIndex = dialogTextElement.getAttribute("data-textIndex");
 
             if (dialogModalElement.style.display== "none"){ //empezar diálogo
+                toggleShowHelpButton();
                 this.scene.resetControls("interact");
                 this.scene.disableControls("interact");
                 dialoginterlocutorNameElement.textContent = this.name;
@@ -94,6 +96,7 @@ export default class NPC {
                     displayNotification = false
                     displayInventoryNotification(this.ingredient);
                 }
+                toggleShowHelpButton();
             }
 
         }
