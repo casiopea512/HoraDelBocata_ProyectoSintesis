@@ -203,10 +203,6 @@ body {
     justify-content: space-around;
 }
 
-#cooking-container .selected {
-    outline: 3px solid #FFD700;
-}
-
 #cooking-list {
     display: grid;
     grid-template-columns: repeat(5, 80px);
@@ -248,4 +244,8 @@ body {
     height: 80px;
     height: auto;
     object-fit: contain; 
+}
+
+.selected {
+    outline: 3px solid #FFD700;
 }

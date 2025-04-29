@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             if(data.success) {
-                window.location.href = '/ranking.html';
+                window.location.href = '/ranking.php';
             } else {
                 alert("Error al guardar el ranking: " + data.message);
             }

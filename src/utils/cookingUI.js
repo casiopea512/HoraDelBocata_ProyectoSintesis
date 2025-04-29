@@ -3,6 +3,9 @@ import { stopTimer } from "./gameTimer.js";
 
 const cookingInventoryModal = document.getElementById("cooking-modal")
 
+// declaración de la variable handleKeyNavigation
+let handleKeyNavigation;
+
 //PRINTAR COOKING MODAL
 export function openCookingInventory(inventory, scene) {
     const cookingInventoryList = document.getElementById("cooking-list");
@@ -44,8 +47,8 @@ export function openCookingInventory(inventory, scene) {
     const cookingListItems = Array.from(cookingList.children);
 
     // Obtener los demás elementos directos del contenedor que no sean "cooking-list"
-    const otherNavElements = Array.from(cookingContainer.children).filter(child => child.id !== "cooking-list");
-
+    const otherNavElements = Array.from(cookingContainer.children).filter(child => child.id == "cook-button");
+    console.log(otherNavElements);
     // Crear una lista única en el orden deseado: primero los items de cooking-list, luego los demás
     const navElements = [...cookingListItems, ...otherNavElements];
     console.log(navElements);
@@ -63,9 +66,9 @@ export function openCookingInventory(inventory, scene) {
     }
     updateSelection();
     
-    function handleKeyNavigation(event) {
+    handleKeyNavigation = function(event) {
         // Prevenir el comportamiento por defecto para todas las flechas
-        if (["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"].includes(event.key)) {
+        if (["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown","Enter"].includes(event.key)) {
             event.preventDefault();
         }
         const numColumns = 5; // Número de columnas en la grid de cooking-list
@@ -121,6 +124,12 @@ export function openCookingInventory(inventory, scene) {
                 currentIndex = candidateIndex;
                 updateSelection();
             }
+        } else if (event.key === "Enter") {
+            console.log("Enter key pressed");
+            const selectedElement = navElements[currentIndex];
+            if (selectedElement) {
+                selectedElement.click();
+            }
         }
     }
     document.addEventListener("keydown", handleKeyNavigation);
@@ -135,19 +144,21 @@ export function openCookingInventory(inventory, scene) {
 
     //BOTON COCINAR
     let cookButton = document.getElementById("cook-button");
+    let cookButtonImg = cookButton.querySelector("img");
+
     if (allIngredientsCompleted == false){
-        cookButton.classList.add("lockedItem");
+        cookButtonImg.classList.add("lockedItem");
         cookButton.disabled = true;
     }
     else if (allIngredientsCompleted == true){
-        if (cookButton.classList.contains("lockedItem")) {
-            cookButton.classList.remove("lockedItem");
+        if (cookButtonImg.classList.contains("lockedItem")) {
+            cookButtonImg.classList.remove("lockedItem");
             cookButton.disabled = false;
         }
         cookButton.addEventListener("click", function (){
             cookSandwich(inventory) //cocinamos
             cookButton.disabled = true; //hacemos disabled el boton de cocinar
-            cookButton.classList.add("lockedItem"); //ponemos el boton en gris
+            cookButtonImg.classList.add("lockedItem"); //ponemos el boton en gris
             document.querySelectorAll("#cooking-list .cooking-cell img").forEach(img => { //ponemos todo el inventario en gris
                 img.classList.add("lockedItem");
             });
@@ -191,6 +202,7 @@ export function toggleCookingInventory(inventory,scene) {
         scene.disableControls("interact");
         openCookingInventory(inventory,scene);
     } else {
+        document.removeEventListener("keydown", handleKeyNavigation);
         scene.enableControls();
         cookingInventoryModal.style.display = "none";
     }
