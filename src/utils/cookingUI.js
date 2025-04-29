@@ -186,7 +186,7 @@ export function openCookingInventory(inventory, scene) {
             });
 
             setTimeout(() => {
-                window.location.href = "/gameOver.html";
+                window.location.href = "/gameOver.php";
             }, 3000);
             
         });
