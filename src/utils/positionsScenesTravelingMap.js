@@ -6,7 +6,7 @@ export const positionsScenesTravelingMap = {
     y: 250,
     spawnPosition :{x: 650, y: 350},
     name: "Casa del árbol",
-    imgPath: "/assets/images/objects/treeHouse.png",
+    imgPath: "/assets/images/maplocations/treeHouse.png",
   },
 
   Lake: {
@@ -15,7 +15,7 @@ export const positionsScenesTravelingMap = {
     y: 250,
     spawnPosition :{x: 750, y: 350},
     name: "Lago de la casa del árbol",
-    imgPath: "/assets/images/objects/lake.png",
+    imgPath: "/assets/images/maplocations/lake.png",
   },
 
   BubblegumLab: {
@@ -24,7 +24,7 @@ export const positionsScenesTravelingMap = {
     y: 100,
     spawnPosition :{x: 200, y: 200},
     name: "Chuchelandia",
-    imgPath: "/assets/images/objects/candyKingdom.png",
+    imgPath: "/assets/images/maplocations/candyKingdom.png",
   },
 
   TrompiHouse: {
@@ -33,7 +33,7 @@ export const positionsScenesTravelingMap = {
     y: 470,
     spawnPosition :{x: 220, y: 490},
     name: "La casa de trompi y jamon",
-    imgPath: "/assets/images/objects/trompiHouse.png",
+    imgPath: "/assets/images/maplocations/trompiHouse.png",
   },
 
   MarcelineHouse: {
@@ -42,7 +42,7 @@ export const positionsScenesTravelingMap = {
     y: 700,
     spawnPosition :{x: 650, y: 710},
     name: "La casa de Marcy",
-    imgPath: "/assets/images/objects/marcelineHouse.png",
+    imgPath: "/assets/images/maplocations/marcelineHouse.png",
   },
 
   Cube: {
@@ -51,22 +51,22 @@ export const positionsScenesTravelingMap = {
     y: 650,
     name: "Cubo de prismo",
     spawnPosition :{x: 1280, y: 660},
-    imgPath: "/assets/images/objects/cube.png",
+    imgPath: "/assets/images/maplocations/cube.png",
   },
 
-  MountainTp_toPrismo: {
+  Portal_toPrismo: {
     x: 1350,
     y: 70,
-    name: "Montaña tp a prismo",
-    imgPath: "/assets/images/objects/mountainTP.png",
+    name: "Portal a prismo",
+    imgPath: "/assets/images/maplocations/portalRight.png",
     targetPosition: { x: 1160, y: 660 },
   },
-  MountainTp_toOo: {
+  Portal_toOo: {
     x: 1060,
     y: 660,
-    name: "Montaña tp a Oo",
-    imgPath: "/assets/images/objects/mountainTP.png",
-    targetPosition: { x: 1350, y: 160 },
+    name: "Portal a Oo",
+    imgPath: "/assets/images/maplocations/portalLeft.png",
+    targetPosition: { x: 1250, y: 70 },
   },
 
 };

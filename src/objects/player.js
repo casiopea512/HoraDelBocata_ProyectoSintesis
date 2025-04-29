@@ -1,3 +1,4 @@
+import { renderHelp, toggleShowHelpButton } from "../utils/helpUI.js";
 import { renderInventory } from "../utils/inventoryUI.js";
 
 export default class Player {
@@ -20,6 +21,10 @@ export default class Player {
         if (!this.scene.game.config.inventory) {
             this.scene.game.config.inventory = {};
         }
+
+        document.getElementById('open-help').addEventListener('click', () => {
+            renderHelp(this.scene);
+        });
     }
     
     createAnimations() {
@@ -103,6 +108,8 @@ export default class Player {
             
             else if(touchingLocation){
                 touchingLocation.interact(this, touchingLocation);
+                toggleShowHelpButton();
+                
             }
 
             else {
@@ -135,6 +142,7 @@ export default class Player {
 
         //NUEVO
         if (Phaser.Input.Keyboard.JustDown(this.cursors.showMap)) {
+            toggleShowHelpButton();
 
             const sceneManager = this.scene.scene;
             const currentKey = sceneManager.key;
@@ -172,6 +180,11 @@ export default class Player {
         if (Phaser.Input.Keyboard.JustDown(this.cursors.lookInventory)) {
             console.log("estás mirando tu inventario");
             renderInventory(this.scene, this.scene.game.config.inventory);
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.lookHelp)) {
+            console.log("estás mirando help");
+            renderHelp(this.scene);
         }
     }
 }

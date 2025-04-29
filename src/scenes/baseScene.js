@@ -1,6 +1,7 @@
 import NPC from "../objects/NPC.js";
 import { npcData } from "../utils/NPCData.js";
 import Player from "../objects/player.js";
+import { renderHelp } from "../utils/helpUI.js";
 
 export default class BaseScene extends Phaser.Scene{
     constructor(sceneKey) {
@@ -22,7 +23,8 @@ export default class BaseScene extends Phaser.Scene{
             'down': Phaser.Input.Keyboard.KeyCodes.S,
             'interact': Phaser.Input.Keyboard.KeyCodes.E,
             'showMap' : Phaser.Input.Keyboard.KeyCodes.M,
-            'lookInventory' : Phaser.Input.Keyboard.KeyCodes.I, 
+            'lookInventory' : Phaser.Input.Keyboard.KeyCodes.I,
+            'lookHelp' : Phaser.Input.Keyboard.KeyCodes.H,
         });
     }
 
