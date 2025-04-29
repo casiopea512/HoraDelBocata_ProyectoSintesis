@@ -12,7 +12,26 @@ if ($page < 1) {
 $rankingFile = __DIR__ . '/api/ranking.txt';
 $rankingData = [];
 if (file_exists($rankingFile)) {
-  $rankingData = file($rankingFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  $lines = file($rankingFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+  foreach ($lines as $line) {
+    $parts = explode(' - ', $line);
+    if (count($parts) === 2) {
+      $username = trim($parts[0]);
+      $time = trim($parts[1]);
+      $seconds = strtotime("1970-01-01 $time UTC"); // Convierte el tiempo en segundos
+      $rankingData[] = [
+        'username' => $username,
+        'time' => $time,
+        'seconds' => $seconds
+      ];
+    }
+  }
+
+  // Ordenar ascendentemente por tiempo (en segundos)
+  usort($rankingData, function ($a, $b) {
+    return $a['seconds'] - $b['seconds'];
+  });
 }
 
 // Calcular paginación
@@ -27,11 +46,21 @@ $rankingPage = array_slice($rankingData, $startIndex, $itemsPerPage);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ranking | Hora del Bocata</title>
+
+  <script src="ranking.js"></script>
+
+  <link href="styles.css" rel="stylesheet">
   <link href="ranking.css" rel="stylesheet">
+
+  <title>Ranking | Hora del Bocata</title>
 </head>
 
-<body>
+<?php
+$from = isset($_GET['from']) ? $_GET['from'] : '';
+?>
+
+<body data-page="<?php echo $page; ?>" data-from="<?php echo htmlspecialchars($from); ?>">
+
   <header>
     <a href="index.html">&#11013;</a>
     <h1>Ranking</h1>
@@ -48,9 +77,8 @@ $rankingPage = array_slice($rankingData, $startIndex, $itemsPerPage);
       </thead>
       <tbody>
         <?php foreach ($rankingPage as $index => $entry):
-          $parts = explode(' - ', $entry);
-          $username = isset($parts[0]) ? $parts[0] : 'Desconocido';
-          $time = isset($parts[1]) ? $parts[1] : '00:00:00';
+          $username = $entry['username'];
+          $time = $entry['time'];
         ?>
           <tr>
             <td><?php echo $startIndex + $index + 1; ?></td>
@@ -63,13 +91,13 @@ $rankingPage = array_slice($rankingData, $startIndex, $itemsPerPage);
 
     <div class="pagination">
       <?php if ($page > 1): ?>
-        <a href="?page=<?php echo $page - 1; ?>">Anterior</a>
+        <a href="?page=<?php echo $page - 1; ?>&from=prev">Anterior</a>
       <?php endif; ?>
 
-      Página <?php echo $page; ?> de <?php echo $totalPages; ?>
+      <p> Página <?php echo $page; ?> de <?php echo $totalPages; ?></p>
 
       <?php if ($page < $totalPages): ?>
-        <a href="?page=<?php echo $page + 1; ?>">Siguiente</a>
+        <a href="?page=<?php echo $page + 1; ?>&from=next">Siguiente</a>
       <?php endif; ?>
     </div>
   </main>

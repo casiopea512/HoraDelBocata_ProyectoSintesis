@@ -37,3 +37,10 @@ main{
     color: dimgray;
     cursor: not-allowed;
 }
+
+.selected {
+    outline: none;
+    border: 2px solid #ff9800;
+    box-shadow: 0 0 8px #ff9800;
+    border-radius: 5px;
+}
