@@ -11,8 +11,9 @@ export default class TravelingMap extends BaseScene{
     }
 
     preload(){
-        this.load.image('MainMap_Tiles', "/assets/images/tiles/MainMap_Tiles.png");
-        this.load.tilemapTiledJSON('Mapa_tm', 'assets/maps/mainMap.json');
+        this.load.image("MainMap_Tiles", "/assets/images/tiles/MainMap_Tiles.png");
+        this.load.image('Hills', "/assets/images/tiles/Hills.png");
+        this.load.tilemapTiledJSON('mainMapRework', 'assets/maps/mainMapRework.json');
 
         for (let location in positionsScenesTravelingMap) {
             const data = positionsScenesTravelingMap[location];
@@ -37,15 +38,24 @@ export default class TravelingMap extends BaseScene{
     }
 
     createMap(){
-        const map = this.make.tilemap({ key: "Mapa_tm" });
+        const map = this.make.tilemap({ key: "mainMapRework" });
 
-        const tilesetMainMap = map.addTilesetImage('MainMap_Tiles', 'MainMap_Tiles');
+        const tilesetMainMap = map.addTilesetImage("MainMap_Tiles", "MainMap_Tiles");
+        const tilesetHills = map.addTilesetImage('Hills', 'Hills');
 
         this.layers = {
-            suelo: map.createLayer("Suelo",tilesetMainMap, 0, 0).setScale(6)
+            suelo: map.createLayer("Suelo",tilesetMainMap, 0, 0).setScale(6),
+            boundries1: map.createLayer("Boundries1", tilesetHills, 0, 0).setScale(6),
+            boundries2: map.createLayer("Boundries2", tilesetHills, 0, 0).setScale(6),
         }
+   // Establecer los límites del mundo físico
+   const worldWidth = map.widthInPixels * 6;  // multiplicamos por 6 porque es el scale que usas
+   const worldHeight = map.heightInPixels * 6;
+   this.physics.world.setBounds(0, 0, worldWidth, worldHeight);
 
         this.layers.suelo.setDepth(0);
+        this.layers.boundries1.setDepth(-1);
+        this.layers.boundries2.setDepth(-1);
 
         this.layers.suelo.setCollisionByProperty({ colision: true });
     }
@@ -69,6 +79,8 @@ export default class TravelingMap extends BaseScene{
         }
 
         this.player = new Player(this, x, y, this.cursors);
+        this.player.sprite.setCollideWorldBounds(true); // Añade esta línea
+
     }
 
     createCollisions(){
