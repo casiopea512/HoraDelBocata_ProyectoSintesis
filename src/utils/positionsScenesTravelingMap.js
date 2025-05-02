@@ -61,7 +61,7 @@ export const positionsScenesTravelingMap = {
     imgPath: "/assets/images/maplocations/portalRight.png",
     targetPosition: { x: 1060, y: 610 },
   },
-  Portal_toOo: {
+  Portal_toOoo: {
     x: 960,
     y: 610,
     name: "Portal a Oo",
