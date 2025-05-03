@@ -7,7 +7,7 @@ import { toggleShowHelpButton } from "../utils/helpUI.js";
 let displayNotification = false;
 
 export default class NPC {
-    constructor(scene, x, y, textureKey, name, dialog, ingredient, size, imgToChange=false) {
+    constructor(scene, x, y, textureKey, name, dialog, ingredient, size, imgToChange=false, interlocutorName=false) {
         this.scene = scene;
 
         const sizeMap = { small: 3, medium: 4, big: 5, xbig: 6, xxbig: 7 };
@@ -21,6 +21,7 @@ export default class NPC {
         this.textureKey = textureKey;
         this.imgToChange = imgToChange;
         this.name = name;
+        this.interlocutorName = interlocutorName
         this.dialog = dialog;
         this.ingredient = ingredient;
     }
@@ -34,16 +35,21 @@ export default class NPC {
         //Interaccion DIALOGO
         //MARK: MOVER esto a su propia funcion dialogUI()
         else {
+            
             let dialogModalElement = document.getElementById("dialog-modal");
             let dialoginterlocutorNameElement = document.getElementById("dialog-interlocutorName");
             let dialogTextElement = document.getElementById("dialog-text");
             let dialogTextIndex = dialogTextElement.getAttribute("data-textIndex");
 
+            const interlocutorName = (
+                this.interlocutorName
+            ) ? this.interlocutorName : this.name;
+
             if (dialogModalElement.style.display== "none"){ //empezar diálogo
                 toggleShowHelpButton();
                 this.scene.resetControls("interact");
                 this.scene.disableControls("interact");
-                dialoginterlocutorNameElement.textContent = this.name;
+                dialoginterlocutorNameElement.textContent = interlocutorName;
                 dialogTextElement.textContent = this.dialog.greetings;
                 dialogTextElement.setAttribute("data-textIndex","0");
                 dialogModalElement.style.display= "block"
@@ -80,7 +86,7 @@ export default class NPC {
                     dialogTextElement.textContent = this.dialog.dialogues.object_given;
                 }
 
-                dialoginterlocutorNameElement.textContent = this.name;
+                dialoginterlocutorNameElement.textContent = interlocutorName;
                 dialogTextElement.setAttribute("data-textIndex","1");
                 dialogModalElement.style.display= "block"
             }

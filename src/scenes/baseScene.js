@@ -1,17 +1,21 @@
 import NPC from "../objects/NPC.js";
 import { npcData } from "../utils/NPCData.js";
 import Player from "../objects/player.js";
-import { renderHelp } from "../utils/helpUI.js";
+import { searchObjectInInventory } from "../utils/inventoryUI.js";
 
 export default class BaseScene extends Phaser.Scene{
     constructor(sceneKey) {
         super(sceneKey);
     }
 
-    // este método se ejecuta solo al inicializar una escena
+    // este método se ejecuta sólo al inicializar una escena
     init() { 
         if (!this.game.config.previousScene) {
             this.game.config.previousScene = null;
+        }
+
+        if (!this.game.config.inventory) {
+            this.game.config.inventory = {};
         }
     }
 
@@ -56,14 +60,47 @@ export default class BaseScene extends Phaser.Scene{
         this.dynamicAssets = [];
 
         for (let key in npcData){
-            if(npcData[key].scene === this.scene.key){
-                let data = npcData[key];
-                this.npcs.push(new NPC(this, data.x, data.y,data.textureKey,data.name,npcDialogs.npcs[key], data.ingredient, data.size, data.imgToChange ? data.imgToChange : undefined));
 
-                if(npcData[key].imgToChange){
-                    this.dynamicAssets.push(data.textureKey);
-                }
+            // comprobar si el npc es de la escena, si no lo es continua con la siguiente iteración
+            const data = npcData[key];
+            if (data.scene !== this.scene.key) continue;
+            
+            // comprueba si el ingrediente está en el inventario (renderizar el asset correcto)
+            const hasIngredient = searchObjectInInventory(
+                this.game.config.inventory,
+                data.ingredient
+            );
+
+            // inicializa la textura que se va a usar
+            const initialTextureKey = (
+                data.imgToChange && hasIngredient
+            ) ? data.imgToChange : data.textureKey;
+
+            // añade al array de assets dinamicos el npc
+            if (data.imgToChange) {
+                this.dynamicAssets.push(data.textureKey);
             }
+
+            if (data.interlocutorName) {
+                this.interlocutorName = data.interlocutorName;
+            }
+
+            // instancia el npc
+            const npc = new NPC(
+                this,
+                data.x,
+                data.y,
+                initialTextureKey,
+                data.name,
+                npcDialogs.npcs[key],
+                data.ingredient,
+                data.size,
+                data.imgToChange,
+                data.interlocutorName
+            );
+            
+            // añade el npc al array de npcs
+            this.npcs.push(npc);
         }
 
         console.log("NPC's creados: ",this.npcs, " y estos assets dinámicos ",this.dynamicAssets);

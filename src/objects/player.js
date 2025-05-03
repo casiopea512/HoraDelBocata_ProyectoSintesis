@@ -18,10 +18,6 @@ export default class Player {
     init(){
         this.createAnimations();
 
-        if (!this.scene.game.config.inventory) {
-            this.scene.game.config.inventory = {};
-        }
-
         document.getElementById('open-help').addEventListener('click', () => {
             renderHelp(this.scene);
         });
