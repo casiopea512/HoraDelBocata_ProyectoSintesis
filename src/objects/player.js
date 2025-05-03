@@ -108,7 +108,10 @@ export default class Player {
             
             else if(touchingLocation){
                 touchingLocation.interact(this, touchingLocation);
-                toggleShowHelpButton();
+                //hacer que el botón de ayuda se muestre solo al entrar en locations, no en portales
+                if (touchingLocation.key !== "Portal_toPrismo" && touchingLocation.key !== "Portal_toOoo") {
+                    toggleShowHelpButton();
+                }
                 
             }
 

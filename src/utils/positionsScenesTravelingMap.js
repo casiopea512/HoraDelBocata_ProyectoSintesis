@@ -20,53 +20,53 @@ export const positionsScenesTravelingMap = {
 
   BubblegumLab: {
     sceneKey: "BubblegumLabScene",
-    x: 200, 
-    y: 100,
-    spawnPosition :{x: 200, y: 200},
+    x: 230, 
+    y: 150,
+    spawnPosition :{x: 230, y: 250},
     name: "Chuchelandia",
     imgPath: "/assets/images/maplocations/candyKingdom.png",
   },
 
   TrompiHouse: {
     sceneKey: "TrompiHouseScene",
-    x: 120, 
-    y: 470,
-    spawnPosition :{x: 220, y: 490},
+    x: 150, 
+    y: 480,
+    spawnPosition :{x: 250, y: 500},
     name: "La casa de trompi y jamon",
     imgPath: "/assets/images/maplocations/trompiHouse.png",
   },
 
   MarcelineHouse: {
     sceneKey: "MarcelineHouseScene",
-    x: 550, 
-    y: 700,
-    spawnPosition :{x: 650, y: 710},
+    x: 480, 
+    y: 670,
+    spawnPosition :{x: 580, y: 680},
     name: "La casa de Marcy",
     imgPath: "/assets/images/maplocations/marcelineHouse.png",
   },
 
   Cube: {
     sceneKey: "PrismoCubeScene",
-    x: 1380,
-    y: 650,
+    x: 1350,
+    y: 610,
     name: "Cubo de prismo",
-    spawnPosition :{x: 1280, y: 660},
+    spawnPosition :{x: 1250, y: 615},
     imgPath: "/assets/images/maplocations/cube.png",
   },
 
   Portal_toPrismo: {
-    x: 1350,
-    y: 70,
+    x: 1310,
+    y: 100,
     name: "Portal a prismo",
     imgPath: "/assets/images/maplocations/portalRight.png",
-    targetPosition: { x: 1160, y: 660 },
+    targetPosition: { x: 1060, y: 610 },
   },
-  Portal_toOo: {
-    x: 1060,
-    y: 660,
+  Portal_toOoo: {
+    x: 960,
+    y: 610,
     name: "Portal a Oo",
     imgPath: "/assets/images/maplocations/portalLeft.png",
-    targetPosition: { x: 1250, y: 70 },
+    targetPosition: { x: 1210, y: 100 },
   },
 
 };
