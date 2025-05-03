@@ -81,6 +81,10 @@ export default class BaseScene extends Phaser.Scene{
                 this.dynamicAssets.push(data.textureKey);
             }
 
+            if (data.interlocutorName) {
+                this.interlocutorName = data.interlocutorName;
+            }
+
             // instancia el npc
             const npc = new NPC(
                 this,
@@ -91,7 +95,8 @@ export default class BaseScene extends Phaser.Scene{
                 npcDialogs.npcs[key],
                 data.ingredient,
                 data.size,
-                data.imgToChange
+                data.imgToChange,
+                data.interlocutorName
             );
             
             // añade el npc al array de npcs

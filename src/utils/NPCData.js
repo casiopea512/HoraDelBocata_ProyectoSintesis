@@ -39,6 +39,7 @@ export const npcData = {
         size : 'small',
         ingredient: "Egg",
         imgToChange: "NestWithoutEggs",
+        interlocutorName: "Jake",
     },
 
     Bird:{
@@ -50,6 +51,7 @@ export const npcData = {
         size : 'small',
         ingredient: "Bird",
         imgToChange: "BirdWithoutBird",
+        interlocutorName: "Jake",
     },
 
     Lobster:{
@@ -61,6 +63,7 @@ export const npcData = {
         size : 'big',
         ingredient: "LobsterSoul",
         imgToChange: "LobsterWithoutLobster",
+        interlocutorName: "Jake",
     },
 
     RosemaryThymePot:{
@@ -71,6 +74,7 @@ export const npcData = {
         y: 220,
         size : 'medium',
         ingredient: "RosemaryThyme",
+        interlocutorName: "Jake",
     },
 
     Marceline:{
@@ -91,6 +95,7 @@ export const npcData = {
         y: 150,
         size : 'big',
         ingredient: "Steak",
+        interlocutorName: "Jake",
     },
 
     Trompi:{
@@ -132,6 +137,7 @@ export const npcData = {
         size : 'big',
         ingredient: "Cucumber",
         imgToChange: "CucumberPotWithoutCucumber",
+        interlocutorName: "Jake",
     },
 
     Prismo:{
