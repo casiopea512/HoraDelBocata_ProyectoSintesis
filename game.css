@@ -27,27 +27,65 @@ body {
 /*MARK: DIALOGO */
 #dialog-modal{
     position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
 
-    width: 700px;
-    margin-top: 300px;
-    padding: 10px;
+    width: 800px;
+    height: 400px;
 
-    color:white;
-    background-color: #000000bc;
-    
-    font-family: var(--font-primary); 
+    background-image: url("/assets/images/dialog.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     font-size: 18px;
+
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 }
 
+#dialog-modal *{
+    color: var(--casi-negro);
+    font-family: var(--font-primary);
+}
+
+#dialog-interlocutorName {
+    position: absolute;
+    top: 60px;
+    left: 28%;
+    transform: translateX(-50%);
+
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    white-space: nowrap;
+}
+  
+
 #dialog-text{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 80%;
+    text-align: center;
     line-height: 1.5;
 }
 
-#dialog-E{
-    display: flex;
-    justify-content: end;
+#dialog-E {
+    position: absolute;
+    bottom: 64px;
+    right: 150px;
+    
+    display: block;
+    margin: 0;
+    
+    font-family: var(--font-primary);
+    font-size: 30px;
+    color: var(--casi-negro);
+    font-weight: bold;
 }
 
 
@@ -66,7 +104,6 @@ body {
     width: 880px;
     height: 410px; 
 
-    border-radius: 15px;
     background-image: url("/assets/images/inventory/inventory.png");
     background-size: cover;
     background-position: center;
