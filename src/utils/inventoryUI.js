@@ -115,20 +115,49 @@ function handleInventoryNavigation(event) {
     const cells = document.querySelectorAll(".inventory-cell");
     if (cells.length === 0) return;
 
+    const totalItems = cells.length;
+    const rows = Math.ceil(totalItems / columns);
+    const currentRow = Math.floor(selectedIndex / columns);
+    const currentCol = selectedIndex % columns;
+
     // Quitar clase actual
     cells[selectedIndex].classList.remove("selected");
 
-    if (event.key === "ArrowRight") {
-        if ((selectedIndex + 1) < cells.length) selectedIndex++;
-    }
-    if (event.key === "ArrowLeft") {
-        if ((selectedIndex - 1) >= 0) selectedIndex--;
-    }
-    if (event.key === "ArrowDown") {
-        if ((selectedIndex + columns) < cells.length) selectedIndex += columns;
-    }
-    if (event.key === "ArrowUp") {
-        if ((selectedIndex - columns) >= 0) selectedIndex -= columns;
+    switch (event.key) {
+        case "ArrowRight": {
+            let nextCol = (currentCol + 1) % columns;
+            let nextIndex = currentRow * columns + nextCol;
+            if (nextIndex >= totalItems) nextIndex = currentRow * columns;
+            selectedIndex = nextIndex;
+            break;
+        }
+
+        case "ArrowLeft": {
+            let nextCol = (currentCol - 1 + columns) % columns;
+            let nextIndex = currentRow * columns + nextCol;
+            if (nextIndex >= totalItems) {
+                // Si no hay celda en esa columna, ir a la última columna válida de esta fila
+                nextIndex = Math.min(totalItems - 1, currentRow * columns + columns - 1);
+            }
+            selectedIndex = nextIndex;
+            break;
+        }
+
+        case "ArrowDown": {
+            let nextRow = (currentRow + 1) % rows;
+            let nextIndex = nextRow * columns + currentCol;
+            if (nextIndex >= totalItems) nextIndex = currentCol;
+            selectedIndex = nextIndex;
+            break;
+        }
+
+        case "ArrowUp": {
+            let nextRow = (currentRow - 1 + rows) % rows;
+            let nextIndex = nextRow * columns + currentCol;
+            if (nextIndex >= totalItems) nextIndex = currentCol;
+            selectedIndex = nextIndex;
+            break;
+        }
     }
 
     cells[selectedIndex].classList.add("selected");
