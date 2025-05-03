@@ -59,6 +59,10 @@ function loadInventory(inventory) {
             }
         }
     }
+    let itemElement = document.createElement("div");
+    itemElement.classList.add("inventory-cell");
+    itemElement.innerHTML = `<img />`;
+    inventoryList.appendChild(itemElement);
 
     console.log(inventory)
 }
