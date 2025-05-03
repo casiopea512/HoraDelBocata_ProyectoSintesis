@@ -136,6 +136,33 @@ body {
     opacity: 0.5;
 }
 
+#inventory-selected-item {
+    position: absolute;
+    bottom: 40px;
+    left: 155px;
+
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    color: black;
+
+    padding: 6px 10px;
+    border-radius: 8px;
+
+    pointer-events: none;
+
+    max-width: 200px;
+    white-space: normal;
+    overflow-wrap: break-word;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    height: 20px; 
+    line-height: 1.2;
+}
+
 
 /*MARK: INV NOTIFICACION */
 

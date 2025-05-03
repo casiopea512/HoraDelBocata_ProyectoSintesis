@@ -66,6 +66,21 @@ function loadInventory(inventory) {
     itemElement.innerHTML = `<img />`;
     inventoryList.appendChild(itemElement);
 
+    // Hacer que el primer elemento del inventario esté seleccionado al abrirlo para renderizar el nombre del ingrediente
+    const allCells = document.querySelectorAll(".inventory-cell");
+    if (allCells.length > 0) {
+        selectedIndex = 0;
+        allCells[selectedIndex].classList.add("selected");
+
+        const selectedImg = allCells[selectedIndex].querySelector("img");
+        const selectedItemText = document.getElementById("inventory-selected-item");
+        if (selectedImg && selectedImg.id) {
+            selectedItemText.textContent = selectedImg.id;
+        } else {
+            selectedItemText.textContent = "";
+        }
+    }
+
     console.log(inventory)
 }
 
@@ -160,11 +175,23 @@ function handleInventoryNavigation(event) {
         }
     }
 
+    // Añadir clase seleccionada
     cells[selectedIndex].classList.add("selected");
+
+    // Mostrar el ID de la imagen seleccionada
+    const selectedImg = cells[selectedIndex].querySelector("img");
+    const selectedItemText = document.getElementById("inventory-selected-item");
+    if (selectedImg && selectedImg.id) {
+        selectedItemText.textContent = selectedImg.id;
+    } else {
+        selectedItemText.textContent = "";
+    }
 }
 
 function disableInventoryNavigation() {
     document.removeEventListener("keydown", handleInventoryNavigation);
+    const selectedItemText = document.getElementById("inventory-selected-item");
+    selectedItemText.textContent = "";
 }
 
 

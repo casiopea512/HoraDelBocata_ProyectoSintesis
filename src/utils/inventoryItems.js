@@ -11,7 +11,7 @@ export const inventoryItems = {
   },
 
   Onion: {
-    name: "Cebolla dulce y orgánica en rodajas",
+    name: "Cebolla dulce",
     imgPath: "/assets/images/objects/onion.png",
   },
 
@@ -51,7 +51,7 @@ export const inventoryItems = {
   },  
 
   Tears: {
-    name: "Lágrimas como condimento",
+    name: "Lágrimas",
     imgPath: "/assets/images/objects/tears.png",
   },
 
