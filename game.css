@@ -118,7 +118,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.inventory-cell.selected{
+.selected{
     background-image: url("/assets/images/celdaSeleccionada.png");
     background-size: cover;
     background-position: center;
@@ -252,10 +252,6 @@ body {
     height: 80px;
     height: auto;
     object-fit: contain; 
-}
-
-.selected {
-    outline: 3px solid #FFD700;
 }
 
 

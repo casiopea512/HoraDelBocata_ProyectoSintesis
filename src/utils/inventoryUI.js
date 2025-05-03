@@ -26,9 +26,11 @@ function toggleInventory(scene,inventoryContainer,inventory) {
         scene.resetControls("lookInventory");
         scene.disableControls("lookInventory");
         loadInventory(inventory);
+        enableInventoryNavigation();
     } else {
         scene.enableControls();
         inventoryContainer.style.display = "none";
+        disableInventoryNavigation();
         toggleShowHelpButton();
     }
 }
@@ -89,5 +91,52 @@ function displayInventoryNotification(ingredient){
         document.getElementById("inventory-notification").style.display = "none"
     }, 2000);
 }
+
+
+// Movimiento en el inventario con las flechas
+let selectedIndex = 0;
+const columns = 7;
+
+function enableInventoryNavigation() {
+    const cells = document.querySelectorAll(".inventory-cell");
+    if (cells.length === 0) return;
+
+    // Quitar cualquier clase 'selected' previa
+    cells.forEach(cell => cell.classList.remove("selected"));
+
+    // Asegurar que al abrir inventario, el primer elemento esté seleccionado
+    selectedIndex = 0;
+    cells[selectedIndex].classList.add("selected");
+
+    document.addEventListener("keydown", handleInventoryNavigation);
+}
+
+function handleInventoryNavigation(event) {
+    const cells = document.querySelectorAll(".inventory-cell");
+    if (cells.length === 0) return;
+
+    // Quitar clase actual
+    cells[selectedIndex].classList.remove("selected");
+
+    if (event.key === "ArrowRight") {
+        if ((selectedIndex + 1) < cells.length) selectedIndex++;
+    }
+    if (event.key === "ArrowLeft") {
+        if ((selectedIndex - 1) >= 0) selectedIndex--;
+    }
+    if (event.key === "ArrowDown") {
+        if ((selectedIndex + columns) < cells.length) selectedIndex += columns;
+    }
+    if (event.key === "ArrowUp") {
+        if ((selectedIndex - columns) >= 0) selectedIndex -= columns;
+    }
+
+    cells[selectedIndex].classList.add("selected");
+}
+
+function disableInventoryNavigation() {
+    document.removeEventListener("keydown", handleInventoryNavigation);
+}
+
 
 export {renderInventory, addObjectToInventory, searchObjectInInventory, displayInventoryNotification};
