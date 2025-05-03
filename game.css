@@ -35,7 +35,7 @@ body {
     color:white;
     background-color: #000000bc;
     
-    font-family: 'Press Start 2P', cursive; 
+    font-family: var(--font-primary); 
     font-size: 18px;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -66,14 +66,22 @@ body {
     width: 880px;
     height: 410px; 
 
-    border-radius: 15px; 
-    color: white;
+    border-radius: 15px;
     background-image: url("/assets/images/inventory/inventory.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
     image-rendering: pixelated;
+
+    
+}
+
+#inventory-modal h2{
+    margin-top: 24px;
+
+    color: var(--casi-blanco);
+    font-family: var(--font-primary);
 }
 
 #close-inventory {
@@ -100,10 +108,10 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 
-    font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
-    color: white;
+    font-family: var(--font-primary);
+    font-size: 15px;
     text-transform: uppercase;
+    color: var(--casi-negro);
 }
 
 
@@ -153,7 +161,7 @@ body {
     bottom: 40px;
     left: 155px;
 
-    font-family: 'Press Start 2P', cursive;
+    font-family: var(--font-primary);
     font-size: 20px;
     color: black;
 
@@ -188,7 +196,7 @@ body {
     color:white;
     background-color: #000000bc;
     
-    font-family: 'Press Start 2P', cursive; 
+    font-family: var(--font-primary);
     font-size: 18px;
     text-align: center;
     image-rendering: pixelated;
@@ -316,7 +324,7 @@ body {
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
     text-align: center;
     
-    font-family: 'Press Start 2P', cursive; 
+    font-family: var(--font-primary);
     font-size: 18px;
     image-rendering: pixelated;
     image-rendering: crisp-edges;

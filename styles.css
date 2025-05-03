@@ -7,4 +7,6 @@
 
 :root {
     --font-primary: 'Press Start 2P', cursive;
-  }
+    --casi-negro: #353738;
+    --casi-blanco: #f3e5c2;
+}
