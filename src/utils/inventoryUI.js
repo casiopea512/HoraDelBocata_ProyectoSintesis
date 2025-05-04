@@ -14,6 +14,8 @@ function renderInventory(scene,inventory) {
     const buttonCloseInventory = document.getElementById('close-inventory');
     if (buttonCloseInventory && buttonCloseInventory.dataset.eventAdded !== "true") {
         buttonCloseInventory.addEventListener("click", function () {
+            disableInventoryNavigation();
+            console.log("CERRANDO INVENTARIO");
             scene.enableControls();
             document.getElementById("inventory-modal").style.display = 'none';
         });
@@ -204,6 +206,16 @@ function handleInventoryNavigation(event) {
             let nextIndex = nextRow * columns + currentCol;
             if (nextIndex >= totalItems) nextIndex = currentCol;
             selectedIndex = nextIndex;
+            break;
+        }
+
+        case "Escape": {
+            const closeBtn = document.getElementById("close-inventory");
+            closeBtn.click();
+            return;
+        }
+    
+        default: {
             break;
         }
     }

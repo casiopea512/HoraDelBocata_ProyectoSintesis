@@ -52,14 +52,24 @@ body {
 
 #dialog-interlocutorName {
     position: absolute;
-    top: 60px;
+    top: 16px;
     left: 28%;
     transform: translateX(-50%);
 
-    margin: 0;
-    padding: 0;
-    font-size: 24px;
-    white-space: nowrap;
+    width: 200px;
+    min-height: 2.4em;
+    padding: 0.5em 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    line-height: 1.2em;
+
+    font-size: var(--font-size-medium);
+    pointer-events: none;
+    word-break: break-word;
 }
   
 
