@@ -102,7 +102,7 @@ body {
     transform: translate(-50%, -50%);
 
     width: 880px;
-    height: 410px; 
+    height: 485px; 
 
     background-image: url("/assets/images/inventory/inventory.png");
     background-size: cover;
@@ -175,12 +175,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.selected{
-    background-image: url("/assets/images/inventory/celdaSeleccionada.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+
 
 .inventory-cell img {
     width: 55%;
@@ -246,23 +241,22 @@ body {
 #cooking-modal{
     display: none; 
     position: fixed;
-    flex-direction: column;
     align-items: center;
-    padding: 20px; 
+    padding: 20px;
 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 60%; 
-    min-width: 400px;
+    width: 880px;
+    height: 468px; 
 
-    border-radius: 15px; 
-    color: white;
-    background: rgba(103, 103, 103, 0.85); 
-    border: 2px solid white;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
     text-align: center;
+
+    background-image: url("/assets/images/cookingModal.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     image-rendering: pixelated;
 }
@@ -293,6 +287,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    margin-top: 28px;
 }
 
 #cooking-list {
@@ -309,12 +304,20 @@ body {
     align-items: center;
     justify-content: center;
     
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     
-    border: 2px solid white;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-image: url("/assets/images/inventory/celdaObjeto.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.selected{
+    background-image: url("/assets/images/inventory/celdaSeleccionada.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .cooking-cell img {
@@ -327,8 +330,8 @@ body {
     width: 100px;
     height: 100px;
     background-color: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
+    border: none;
+
 }
 
 #cook-button img{
