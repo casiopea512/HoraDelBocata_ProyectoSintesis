@@ -208,44 +208,6 @@ body {
     image-rendering: pixelated;
 }
 
-
-.close-modal {
-    display: flex;         
-    align-items: center;
-    justify-content: center;
-
-    position: absolute;
-    bottom: 20px;
-    right: 140px;
-
-    width: 145px;
-    height: 88px;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-    
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    background-image: url("/assets/images/inventory/equis.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    font-family: var(--font-primary);
-    font-size: 15px;
-    text-transform: uppercase;
-    color: var(--casi-negro);
-    
-    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-.close-modal:hover {
-    transform: scale(1.1);
-}
-
-
 #cooking-container{
     display: flex;
     flex-direction: row;
@@ -335,6 +297,43 @@ body {
     
     pointer-events: none;
     word-break: break-word;
+}
+
+/*MARK: close modal button*/
+.close-modal {
+    display: flex;         
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 20px;
+    right: 140px;
+
+    width: 145px;
+    height: 88px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    background-image: url("/assets/images/inventory/equis.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-family: var(--font-primary);
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--casi-negro);
+    
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
 }
 
 /*MARK: HELP MODAL */
