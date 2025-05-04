@@ -27,27 +27,65 @@ body {
 /*MARK: DIALOGO */
 #dialog-modal{
     position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
 
-    width: 700px;
-    margin-top: 300px;
-    padding: 10px;
+    width: 800px;
+    height: 400px;
 
-    color:white;
-    background-color: #000000bc;
-    
-    font-family: var(--font-primary); 
+    background-image: url("/assets/images/dialog.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     font-size: 18px;
+
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 }
 
+#dialog-modal *{
+    color: var(--casi-negro);
+    font-family: var(--font-primary);
+}
+
+#dialog-interlocutorName {
+    position: absolute;
+    top: 60px;
+    left: 28%;
+    transform: translateX(-50%);
+
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    white-space: nowrap;
+}
+  
+
 #dialog-text{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 80%;
+    text-align: center;
     line-height: 1.5;
 }
 
-#dialog-E{
-    display: flex;
-    justify-content: end;
+#dialog-E {
+    position: absolute;
+    bottom: 64px;
+    right: 150px;
+    
+    display: block;
+    margin: 0;
+    
+    font-family: var(--font-primary);
+    font-size: 30px;
+    color: var(--casi-negro);
+    font-weight: bold;
 }
 
 
@@ -66,7 +104,6 @@ body {
     width: 880px;
     height: 410px; 
 
-    border-radius: 15px;
     background-image: url("/assets/images/inventory/inventory.png");
     background-size: cover;
     background-position: center;
@@ -76,44 +113,6 @@ body {
 
     
 }
-
-#inventory-modal h2{
-    margin-top: 24px;
-
-    color: var(--casi-blanco);
-    font-family: var(--font-primary);
-}
-
-#close-inventory {
-    display: flex;         
-    align-items: center;
-    justify-content: center;
-
-    position: absolute;
-    bottom: 20px;
-    right: 140px;
-
-    width: 145px;
-    height: 88px;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-    
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    background-image: url("/assets/images/inventory/equis.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    font-family: var(--font-primary);
-    font-size: 15px;
-    text-transform: uppercase;
-    color: var(--casi-negro);
-}
-
 
 #inventory-list {
     display: grid;
@@ -138,12 +137,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.selected{
-    background-image: url("/assets/images/inventory/celdaSeleccionada.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+
 
 .inventory-cell img {
     width: 55%;
@@ -157,30 +151,8 @@ body {
 }
 
 #inventory-selected-item {
-    position: absolute;
-    bottom: 40px;
-    left: 155px;
-
-    font-family: var(--font-primary);
-    font-size: 20px;
-    color: black;
-
-    padding: 6px 10px;
-    border-radius: 8px;
-
-    pointer-events: none;
-
-    max-width: 200px;
-    white-space: normal;
-    overflow-wrap: break-word;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    height: 20px; 
-    line-height: 1.2;
+    bottom: 28px;
+    left: 152px;
 }
 
 
@@ -209,53 +181,34 @@ body {
 #cooking-modal{
     display: none; 
     position: fixed;
-    flex-direction: column;
     align-items: center;
-    padding: 20px; 
+    padding: 20px;
 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 60%; 
-    min-width: 400px;
+    width: 880px;
+    height: 468px; 
 
-    border-radius: 15px; 
-    color: white;
-    background: rgba(103, 103, 103, 0.85); 
-    border: 2px solid white;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
     text-align: center;
+
+    background-image: url("/assets/images/cookingModal.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     image-rendering: pixelated;
 }
-
-
-#close-cooking {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    
-    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-#close-cooking:hover {
-    transform: scale(1.2);
-}
-
 
 #cooking-container{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    margin-top: 28px;
+
+    position: relative;
 }
 
 #cooking-list {
@@ -272,12 +225,20 @@ body {
     align-items: center;
     justify-content: center;
     
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     
-    border: 2px solid white;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-image: url("/assets/images/inventory/celdaObjeto.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.selected{
+    background-image: url("/assets/images/inventory/celdaSeleccionada.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .cooking-cell img {
@@ -290,8 +251,8 @@ body {
     width: 100px;
     height: 100px;
     background-color: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
+    border: none;
+
 }
 
 #cook-button img{
@@ -301,6 +262,79 @@ body {
     object-fit: contain; 
 }
 
+#cooking-selected-item {
+    bottom: -88px;
+    left: 98px;
+}
+
+/*MARK: título del modal*/
+.modal-title{
+    margin-top: 24px;
+
+    color: var(--casi-blanco);
+    font-family: var(--font-primary);
+}
+
+/* MARK: selected item render name */
+.selected-item-name{
+    position: absolute;
+
+    width: 200px;
+    height: 2.4em;
+    padding: 6px 10px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    text-align: center;
+    line-height: 1.2em;   
+  
+    font-family: var(--font-primary);
+    font-size: var(--font-size-primary);
+    color: black;
+    
+    pointer-events: none;
+    word-break: break-word;
+}
+
+/*MARK: close modal button*/
+.close-modal {
+    display: flex;         
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 20px;
+    right: 140px;
+
+    width: 145px;
+    height: 88px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    background-image: url("/assets/images/inventory/equis.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-family: var(--font-primary);
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--casi-negro);
+    
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
+}
 
 /*MARK: HELP MODAL */
 #help-modal{

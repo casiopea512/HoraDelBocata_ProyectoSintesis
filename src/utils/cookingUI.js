@@ -2,228 +2,223 @@ import { toggleShowHelpButton } from "./helpUI.js";
 import { inventoryItems } from "./inventoryItems.js";
 import { stopTimer } from "./gameTimer.js";
 
-const cookingInventoryModal = document.getElementById("cooking-modal")
+const cookingInventoryModal = document.getElementById("cooking-modal");
 
-// declaración de la variable handleKeyNavigation
-let handleKeyNavigation;
+let currentIndex = 0;
+let navElements = [];
+let cookingListItems = [];
 
-//PRINTAR COOKING MODAL
+// ----- navegación con las flechas y actualización del elemento seleccionado -----
+const columns = 5;
+const rows = 3;
+const totalCells = rows * columns;
+
+function enableCookingNavigation() {
+  const cookingList = document.getElementById("cooking-list");
+  cookingListItems = Array.from(cookingList.children);
+  const cookButton = document.getElementById("cook-button");
+  navElements = [...cookingListItems, cookButton];
+
+  // reset selección
+  currentIndex = 0;
+  updateCookingSelection();
+  updateSelectedItemText();
+
+  document.addEventListener("keydown", handleCookingNavigation);
+}
+
+function updateCookingSelection() {
+  navElements.forEach((el, idx) => {
+    el.classList.toggle("selected", idx === currentIndex);
+  });
+}
+
+function updateSelectedItemText() {
+  const span = document.getElementById("cooking-selected-item");
+  const selectedElement = navElements[currentIndex];
+  const img = selectedElement.querySelector("img");
+  if (img && img.id) {
+    span.textContent = img.id.replace(/_inventory$/, "");
+  } else {
+    span.textContent = "";
+  }
+}
+
+function handleCookingNavigation(event) {
+  // Prevenir el comportamiento por defecto para todas las flechas
+  if (
+    ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown", "Enter"].includes(
+      event.key
+    )
+  ) {
+    event.preventDefault();
+  }
+
+  const total = navElements.length;
+  document.removeEventListener("keydown", handleCookingNavigation);
+  let nextIndex = currentIndex;
+
+  switch (event.key) {
+    case "ArrowRight":
+      if (
+        currentIndex < cookingListItems.length &&
+        (currentIndex + 1) % columns === 0
+      ) {
+        nextIndex = cookingListItems.length;
+      } else {
+        nextIndex = Math.min(currentIndex + 1, total - 1);
+      }
+      break;
+
+    case "ArrowLeft":
+      nextIndex = Math.max(currentIndex - 1, 0);
+      break;
+
+    case "ArrowDown":
+      if (currentIndex < cookingListItems.length) {
+        const row = Math.floor(currentIndex / columns);
+        const col = currentIndex % columns;
+        const rows = Math.ceil(cookingListItems.length / columns);
+        let newRow = (row + 1) % rows;
+        let candidate = newRow * columns + col;
+        if (candidate >= cookingListItems.length) candidate = newRow * columns;
+        nextIndex = candidate;
+      }
+      break;
+
+    case "ArrowUp":
+      if (currentIndex < cookingListItems.length) {
+        const row = Math.floor(currentIndex / columns);
+        const col = currentIndex % columns;
+        const rows = Math.ceil(cookingListItems.length / columns);
+        let newRow = (row - 1 + rows) % rows;
+        let candidate = newRow * columns + col;
+        if (candidate >= cookingListItems.length) candidate = newRow * columns;
+        nextIndex = candidate;
+      }
+      break;
+
+    case "Enter":
+      navElements[currentIndex].click();
+      return;
+    default:
+      break;
+  }
+
+  currentIndex = nextIndex;
+  updateCookingSelection();
+  updateSelectedItemText();
+  document.addEventListener("keydown", handleCookingNavigation);
+}
+
+function disableCookingNavigation() {
+  document.removeEventListener("keydown", handleCookingNavigation);
+  navElements.forEach((el) => el.classList.remove("selected"));
+  const span = document.getElementById("cooking-selected-item");
+  span.textContent = "";
+}
+
+// ----- toggle del modal -----
 export function openCookingInventory(inventory, scene) {
-    const cookingInventoryList = document.getElementById("cooking-list");
-    cookingInventoryList.innerHTML = "";
-    let allIngredientsCompleted = false;
-    let ingredientsCount = 0;
+  const list = document.getElementById("cooking-list");
+  list.innerHTML = "";
+  let ingredientsCount = 0;
 
-    //recorremos todos los items y los vamos printando en su celda dentro del cooking modal
-    for (const keyInventoryItems in inventoryItems){
-        let item = inventoryItems[keyInventoryItems];
-        let itemElement = document.createElement("div");
-        itemElement.classList.add("cooking-cell");
-        itemElement.innerHTML = `<img class="lockedItem" src="${item.imgPath}" alt="${item.name}" id="${item.name}_inventory"/>`;
-        cookingInventoryList.appendChild(itemElement);
-        
-        for (const keyInventory in inventory){
-            if ( keyInventory === keyInventoryItems ){ //de los items que ya hemos conseguido
-                const lockedItem = document.getElementById(inventory[keyInventory].name+"_inventory");
-                ingredientsCount +=1; //sumamos a la cuenta
-                if (lockedItem.classList.contains("lockedItem")) {
-                    lockedItem.classList.remove("lockedItem"); //le quitamos el filtro gris
-                }
-            }
-        }
+  for (const key in inventoryItems) {
+    const item = inventoryItems[key];
+    const cell = document.createElement("div");
+    cell.className = "cooking-cell";
+    cell.innerHTML = `<img class="lockedItem" src="${item.imgPath}" alt="${item.name}" id="${item.name}_inventory"/>`;
+    list.appendChild(cell);
+    if (inventory[key]) {
+      ingredientsCount++;
+      cell.querySelector("img").classList.remove("lockedItem");
     }
+  }
 
-    //IMPORTANTE !!!!!!!!!!!!!
-    //MARK: CAMBIAR NUM
-    //Ahora la condición es 1 ingredientes para testear, más tarde hay que cambiarlo
-    if (ingredientsCount >= 1){
-        allIngredientsCompleted = true;
-    }
+  // celdas vacías para completar grid si es necesario
+  for (let i = list.children.length; i < totalCells; i++) {
+    const cell = document.createElement("div");
+    cell.className = "cooking-cell";
+    cell.innerHTML = `<img />`;
+    list.appendChild(cell);
+  }
 
-    // CONFIGURAR NAVEGACION CON FLECHAS DENTRO DEL CONTAINER DE COCINA
-    const cookingContainer = document.getElementById("cooking-container");
+  // habilitar navegación
+  enableCookingNavigation();
 
-    // Obtener los items internos de "cooking-list"
-    const cookingList = document.getElementById("cooking-list");
-    const cookingListItems = Array.from(cookingList.children);
+  // close button
+  const closeBtn = document.getElementById("close-cooking");
+  function handleClose() {
+    disableCookingNavigation();
+    cookingInventoryModal.style.display = "none";
+    scene.enableControls();
+    toggleShowHelpButton();
+    closeBtn.removeEventListener("click", handleClose);
+  }
+  closeBtn.addEventListener("click", handleClose);
 
-    // Obtener los demás elementos directos del contenedor que no sean "cooking-list"
-    const otherNavElements = Array.from(cookingContainer.children).filter(child => child.id == "cook-button");
-    console.log(otherNavElements);
-    // Crear una lista única en el orden deseado: primero los items de cooking-list, luego los demás
-    const navElements = [...cookingListItems, ...otherNavElements];
-    console.log(navElements);
+  // cook button
+  const cookBtn = document.getElementById("cook-button");
+  const cookImg = cookBtn.querySelector("img");
 
-    let currentIndex = 0;
-    
-    function updateSelection(){
-        navElements.forEach((element, index) => {
-            if (index === currentIndex) {
-                element.classList.add("selected");
-            } else {
-                element.classList.remove("selected");
-            }
+  //IMPORTANTE !!!!!!!!!!!!!
+  //MARK: CAMBIAR NUM
+  if (ingredientsCount < 1) {
+    cookImg.classList.add("lockedItem");
+    cookBtn.disabled = true;
+  } else {
+    cookImg.classList.remove("lockedItem");
+    cookBtn.disabled = false;
+
+    cookBtn.addEventListener("click", () => {
+      console.log("COCINANDO SANDWICH");
+      cookSandwich(inventory);
+      disableCookingNavigation();
+
+      scene.disableControls();
+      closeBtn.style.display = "none";
+
+      const finalTime = stopTimer();
+      console.log("Tiempo final:", finalTime);
+
+      fetch("/api/apis.php?action=saveTime", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ time: finalTime }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Respuesta del backend:", data);
+        })
+        .catch((error) => {
+          console.error("Error al enviar el tiempo:", error);
         });
-    }
-    updateSelection();
-    
-    handleKeyNavigation = function(event) {
-        // Prevenir el comportamiento por defecto para todas las flechas
-        if (["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown","Enter"].includes(event.key)) {
-            event.preventDefault();
-        }
-        const numColumns = 5; // Número de columnas en la grid de cooking-list
-        if (event.key === "ArrowRight") {
-            // Si estamos en la grid y en la última columna
-            if (currentIndex < cookingListItems.length && (currentIndex % numColumns) === numColumns - 1) {
-                if (navElements.length > cookingListItems.length) { // Solo si existen elementos extra
-                    currentIndex = cookingListItems.length; // salto al primer elemento extra (span)
-                }
-            } else if (currentIndex < navElements.length - 1) {
-                currentIndex++;
-            }
-            updateSelection();
 
-        } else if (event.key === "ArrowLeft") {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSelection();
-            }
-
-        } else if (event.key === "ArrowDown") {
-            // Solo para los elementos de la grid de cookingList
-            if (currentIndex < cookingListItems.length) {
-                let currentRow = Math.floor(currentIndex / numColumns);
-                let currentCol = currentIndex % numColumns;
-                let totalRows = Math.ceil(cookingListItems.length / numColumns);
-                let newRow = currentRow + 1;
-                if (newRow >= totalRows) { // wrap: de la última fila a la primera
-                    newRow = 0;
-                }
-                let candidateIndex = newRow * numColumns + currentCol;
-                // Si la fila destino no tiene ese número de columna, usa el primer elemento de esa fila
-                if (candidateIndex >= cookingListItems.length) {
-                    candidateIndex = newRow * numColumns;
-                }
-                currentIndex = candidateIndex;
-                updateSelection();
-            }
-
-        } else if (event.key === "ArrowUp") {
-            if (currentIndex < cookingListItems.length) {
-                let currentRow = Math.floor(currentIndex / numColumns);
-                let currentCol = currentIndex % numColumns;
-                let totalRows = Math.ceil(cookingListItems.length / numColumns);
-                let newRow = currentRow - 1;
-                if (newRow < 0) { // wrap: de la primera fila a la última
-                    newRow = totalRows - 1;
-                }
-                let candidateIndex = newRow * numColumns + currentCol;
-                if (candidateIndex >= cookingListItems.length) {
-                    candidateIndex = newRow * numColumns;
-                }
-                currentIndex = candidateIndex;
-                updateSelection();
-            }
-        } else if (event.key === "Enter") {
-            console.log("Enter key pressed");
-            const selectedElement = navElements[currentIndex];
-            if (selectedElement) {
-                selectedElement.click();
-            }
-        }
-    }
-    document.addEventListener("keydown", handleKeyNavigation);
-
-    //BOTON "X" CERRAR
-    let closeCookingButton = document.getElementById("close-cooking");
-
-    const handleCloseCooking = function () {
-        document.removeEventListener("keydown", handleKeyNavigation);
-        cookingInventoryModal.style.display = 'none';
-        scene.enableControls();
-        toggleShowHelpButton();
-
-        closeCookingButton.removeEventListener("click", handleCloseCooking);
-    };
-    closeCookingButton.addEventListener("click", handleCloseCooking);
-
-    //BOTON COCINAR
-    let cookButton = document.getElementById("cook-button");
-    let cookButtonImg = cookButton.querySelector("img");
-
-    if (allIngredientsCompleted == false){
-        cookButtonImg.classList.add("lockedItem");
-        cookButton.disabled = true;
-    }
-    else if (allIngredientsCompleted == true){
-        if (cookButtonImg.classList.contains("lockedItem")) {
-            cookButtonImg.classList.remove("lockedItem");
-            cookButton.disabled = false;
-        }
-        cookButton.addEventListener("click", function (){
-            cookSandwich(inventory) //cocinamos
-            cookButton.disabled = true; //hacemos disabled el boton de cocinar
-            cookButtonImg.classList.add("lockedItem"); //ponemos el boton en gris
-            document.querySelectorAll("#cooking-list .cooking-cell img").forEach(img => { //ponemos todo el inventario en gris
-                img.classList.add("lockedItem");
-            });
-            console.log("COCINANDO SANDWICH")
-            console.log(inventory)
-
-            scene.disableControls();
-            document.getElementById("close-cooking").style.display = "none";
-
-            const finalTime = stopTimer();
-            console.log("Tiempo final:", finalTime);
-
-            // Enviar el tiempo al backend
-            fetch('/api/apis.php?action=saveTime', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ time: finalTime })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Respuesta del backend:", data);
-            })
-            .catch(error => {
-                console.error("Error al enviar el tiempo:", error);
-            });
-
-            setTimeout(() => {
-                window.location.href = "/gameOver.php";
-            }, 3000);
-            
-        });
-    }
-}
-
-
-//ABIR-CERRAR COOKING MODAL
-export function toggleCookingInventory(inventory,scene) {
-    if (cookingInventoryModal.style.display === "none" || !cookingInventoryModal.style.display) {
-        cookingInventoryModal.style.display = "block";
-        scene.resetControls("interact");
-        scene.disableControls("interact");
-        openCookingInventory(inventory,scene);
-        toggleShowHelpButton();
-    } else {
-        let closeCookingButton = document.getElementById("close-cooking");
-        document.removeEventListener("keydown", handleKeyNavigation);
-        scene.enableControls();
-        cookingInventoryModal.style.display = "none";
-        toggleShowHelpButton();
-    }
-}
-
-
-
-//FUNCION DE COCINAR EL BOCATA
-export function cookSandwich(inventory){
-    Object.keys(inventory).forEach(key => { //vaciamos inventario
-        delete inventory[key];
+      setTimeout(() => (window.location.href = "/gameOver.php"), 3000);
     });
-    inventory["Sandwich"] = { name: "Bocata", imgPath: "/assets/images/objects/sandwich.png" };
+  }
 }
 
+export function toggleCookingInventory(inventory, scene) {
+  if (cookingInventoryModal.style.display !== "block") {
+    cookingInventoryModal.style.display = "block";
+    scene.resetControls("interact");
+    scene.disableControls("interact");
+    openCookingInventory(inventory, scene);
+    toggleShowHelpButton();
+  } else {
+    disableCookingNavigation();
+    scene.enableControls();
+    cookingInventoryModal.style.display = "none";
+    toggleShowHelpButton();
+  }
+}
+
+export function cookSandwich(inventory) {
+  Object.keys(inventory).forEach((k) => delete inventory[k]);
+  inventory["Sandwich"] = {
+    name: "Bocata",
+    imgPath: "/assets/images/objects/sandwich.png",
+  };
+}

@@ -1,34 +1,27 @@
 import { toggleShowHelpButton } from "./helpUI.js";
 import { inventoryItems } from "./inventoryItems.js";
- 
-function handleCloseInventory(scene) {
-    return function () {
-        scene.enableControls();
-        document.getElementById("inventory-modal").style.display = 'none';
-        if (scene.scene.key !== "TravelingMapScene") {
-            toggleShowHelpButton();
-        }
-    };
-}
 
-let currentCloseHandler = null;
+// ---- navegación con las flechas ----
+let selectedIndex = 0;
+const columns = 7;
+const rows = 2;
+const totalCells = rows * columns;
 
-function renderInventory(scene, inventory) {
+function renderInventory(scene,inventory) {
     const inventoryContainer = document.getElementById("inventory-modal");
-    const buttonCloseInventory = document.getElementById("close-inventory");
 
-    if (buttonCloseInventory) {
-        // Si ya había un handler, lo quitamos
-        if (currentCloseHandler) {
-            buttonCloseInventory.removeEventListener("click", currentCloseHandler);
-        }
+    // añadir el evento de cerrar el modal y de habilitar las teclas al botón 'cerrar inventario'
+    const buttonCloseInventory = document.getElementById('close-inventory');
+    if (buttonCloseInventory && buttonCloseInventory.dataset.eventAdded !== "true") {
+        buttonCloseInventory.addEventListener("click", function () {
+            scene.enableControls();
+            document.getElementById("inventory-modal").style.display = 'none';
+        });
 
-        // Creamos uno nuevo ligado a la escena actual
-        currentCloseHandler = handleCloseInventory(scene);
-        buttonCloseInventory.addEventListener("click", currentCloseHandler);
+        buttonCloseInventory.dataset.eventAdded = "true";
     }
-
-    toggleInventory(scene, inventoryContainer, inventory);
+    
+    toggleInventory(scene,inventoryContainer,inventory);
 }
 
 function toggleInventory(scene,inventoryContainer,inventory) {
@@ -74,10 +67,14 @@ function loadInventory(inventory) {
             }
         }
     }
-    let itemElement = document.createElement("div");
-    itemElement.classList.add("inventory-cell");
-    itemElement.innerHTML = `<img />`;
-    inventoryList.appendChild(itemElement);
+
+    // celdas vacías para completar grid si es necesario
+    for (let i = inventoryList.children.length; i < totalCells; i++) {
+        let itemElement = document.createElement("div");
+        itemElement.classList.add("inventory-cell");
+        itemElement.innerHTML = `<img />`;
+        inventoryList.appendChild(itemElement);
+    }
 
     // Hacer que el primer elemento del inventario esté seleccionado al abrirlo para renderizar el nombre del ingrediente
     const allCells = document.querySelectorAll(".inventory-cell");
@@ -122,8 +119,6 @@ function displayInventoryNotification(ingredient){
 
 
 // Movimiento en el inventario con las flechas
-let selectedIndex = 0;
-const columns = 7;
 
 function enableInventoryNavigation() {
     const cells = document.querySelectorAll(".inventory-cell");
