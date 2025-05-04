@@ -8,7 +8,9 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  background-image: url("./assets/images/rankingcomealong.png");
+  background-size: cover;
   color: #333;
   line-height: 1.6;
 }
@@ -16,19 +18,24 @@ body {
 /* Header styles */
 header {
   position: relative;
-  background-color: #ffffff;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 }
 
 header h1 {
-  font-size: 1.5rem;
+  font-size:  50px;
   font-weight: 600;
   font-family: var(--font-primary);
+  color: white;
+  text-shadow: 0 0 10px #666;
+  margin-top: 10px;
   
 }
 
@@ -40,7 +47,7 @@ header a {
   font-size: 2rem;
   cursor: pointer;
   color: #666;
-  border: 2px solid white;
+  /* border: 2px solid white; */
   text-decoration: none;
 }
 
@@ -54,7 +61,7 @@ main {
 /* Table styles */
 table {
   width: 100%;
-  background: white;
+  background: rgba(255, 255, 255, 0.506);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -62,12 +69,13 @@ table {
 }
 
 thead {
-  background-color: #f8f9fa;
+  background-color: #f8f9fa77;
 }
 
 th {
   text-align: left;
   padding: 1rem;
+  font-family: var(--font-primary);
   font-weight: 600;
   color: #666;
   border-bottom: 2px solid #eee;
@@ -83,7 +91,7 @@ tbody tr:last-child td {
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #f3f3f3d3;
+  background-color: #f3f3f393;
 }
 
 tbody tr:hover {
@@ -112,37 +120,40 @@ th:last-child {
   align-items: center;
   gap: 1rem;
   font-size: 0.95rem;
+  font-family: var(--font-primary);
 }
 
 .pagination p {
+  color: white;
   margin: auto 2rem;
+  text-shadow: 0 0 10px #666;
 }
 
-.pagination a {
+ a {
   padding: 0.5rem 1rem;
   background-color: white;
   border-width: 2px;
   border-radius: 6px;
   text-decoration: none;
-  color: #2563eb;
+  color: #84A15F;
   
   transition: all 0.2s ease;
 }
 
-.pagination a:hover {
-  background-color: #2563eb;
+ a:hover {
+  background-color: #84A15F;
   color: white;
 }
 
 
-.pagination a:not(.selected){
+ a:not(.selected){
   border: 2px solid white;  
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .selected {
-  border: 2px solid #2563eb;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  border: 2px solid #83A05E;
+  box-shadow: 0 0 10px white;
 }
 
 
