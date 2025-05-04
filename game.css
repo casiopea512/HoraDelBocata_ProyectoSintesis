@@ -39,7 +39,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 
-    font-size: 18px;
+    font-size: var(--font-size-primary);
 
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -157,24 +157,76 @@ body {
 
 
 /*MARK: INV NOTIFICACION */
+/* ----- Animaciones ----- */
+@keyframes slideIn {
+    0% {
+      transform: translate(-50%, -120%);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  }
+  
+@keyframes slideOut {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -120%);
+        opacity: 0;
+    }
+}
+  
 
 #inventory-notification {
     position: absolute;
 
-    width: 600px;
-    margin-top: 100px;
-    padding: 10px;
-
-    color:white;
-    background-color: #000000bc;
+    left: 17%;
+    top: -2%;
     
-    font-family: var(--font-primary);
-    font-size: 18px;
+    width: 655px;
+    height: 210px;
+
+    background-image: url("/assets/images/notificacion.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     text-align: center;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+
+    transform: translate(-50%, 0);
+    opacity: 0;
+    pointer-events: none;
 }
 
+/* Cuando queremos mostrarlo */
+#inventory-notification.show {
+    animation: slideIn 0.5s ease-out forwards;
+    pointer-events: none;
+}
+
+/* Cuando queremos esconderlo */
+#inventory-notification.hide {
+    animation: slideOut 0.5s ease-in forwards;
+}
+
+#inventory-notification-text {
+    width: 100%;
+
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-little);
+}
 
 
 /*MARK: COCINAR */

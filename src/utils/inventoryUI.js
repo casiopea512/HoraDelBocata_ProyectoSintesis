@@ -108,14 +108,39 @@ function searchObjectInInventory(inventory,object){
     }
 }
 
-function displayInventoryNotification(ingredient){
-    document.getElementById("inventory-notification-text").textContent = "Has conseguido "+ inventoryItems[ingredient].name;
-    document.getElementById("inventory-notification").style.display = "block";
+function displayInventoryNotification(ingredient) {
+    
+    const notif = document.getElementById("inventory-notification");
+    const text = document.getElementById("inventory-notification-text");
 
-    let timer = setTimeout(function (event) {
-        document.getElementById("inventory-notification").style.display = "none"
+    // 1) Actualiza el texto
+    text.textContent = "Has conseguido " + inventoryItems[ingredient].name;
+
+    // 2) Limpia cualquier clase previa y fuerza reflow para reiniciar animación
+    notif.classList.remove("hide");
+    void notif.offsetWidth;
+
+    // 3) Añade la clase que dispara el slideIn
+    console.log("notificación entrando");
+    notif.classList.add("show");
+
+    // 4) A los 2s, dispara el slideOut
+    setTimeout(() => {
+        console.log("notificación saliendo");
+        notif.classList.remove("show");
+        notif.classList.add("hide");
     }, 2000);
+
+    // 5) Al terminar slideOut, aseguramos que quede oculto
+    notif.addEventListener("animationend", (e) => {
+        if (e.animationName === "slideOut") {
+        notif.classList.remove("hide");
+        // opcional: si quieres que no ocupe espacio o capture clicks
+        // notif.style.opacity = "0";
+        }
+    }, { once: true });
 }
+  
 
 
 // Movimiento en el inventario con las flechas
