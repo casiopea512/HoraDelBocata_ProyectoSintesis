@@ -114,13 +114,6 @@ body {
     
 }
 
-#inventory-modal h2{
-    margin-top: 24px;
-
-    color: var(--casi-blanco);
-    font-family: var(--font-primary);
-}
-
 #inventory-list {
     display: grid;
     grid-template-columns: repeat(7, 80px);
@@ -274,6 +267,13 @@ body {
     left: 98px;
 }
 
+/*MARK: título del modal*/
+.modal-title{
+    margin-top: 24px;
+
+    color: var(--casi-blanco);
+    font-family: var(--font-primary);
+}
 
 /* MARK: selected item render name */
 .selected-item-name{
