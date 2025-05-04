@@ -8,11 +8,12 @@ let currentIndex = 0;
 let navElements = [];
 let cookingListItems = [];
 
-// -----navegación con las flechas -----
+// ----- navegación con las flechas y actualización del elemento seleccionado -----
 const columns = 5;
+const rows = 3;
+const totalCells = rows * columns;
 
 function enableCookingNavigation() {
-  const cookingContainer = document.getElementById("cooking-container");
   const cookingList = document.getElementById("cooking-list");
   cookingListItems = Array.from(cookingList.children);
   const cookButton = document.getElementById("cook-button");
@@ -21,6 +22,7 @@ function enableCookingNavigation() {
   // reset selección
   currentIndex = 0;
   updateCookingSelection();
+  updateSelectedItemText();
 
   document.addEventListener("keydown", handleCookingNavigation);
 }
@@ -29,6 +31,17 @@ function updateCookingSelection() {
   navElements.forEach((el, idx) => {
     el.classList.toggle("selected", idx === currentIndex);
   });
+}
+
+function updateSelectedItemText() {
+  const span = document.getElementById("cooking-selected-item");
+  const selectedElement = navElements[currentIndex];
+  const img = selectedElement.querySelector("img");
+  if (img && img.id) {
+    span.textContent = img.id.replace(/_inventory$/, "");
+  } else {
+    span.textContent = "";
+  }
 }
 
 function handleCookingNavigation(event) {
@@ -87,20 +100,22 @@ function handleCookingNavigation(event) {
 
     case "Enter":
       navElements[currentIndex].click();
-      break;
-
+      return;
     default:
       break;
   }
 
   currentIndex = nextIndex;
   updateCookingSelection();
+  updateSelectedItemText();
   document.addEventListener("keydown", handleCookingNavigation);
 }
 
 function disableCookingNavigation() {
   document.removeEventListener("keydown", handleCookingNavigation);
   navElements.forEach((el) => el.classList.remove("selected"));
+  const span = document.getElementById("cooking-selected-item");
+  span.textContent = "";
 }
 
 // ----- toggle del modal -----
@@ -121,7 +136,8 @@ export function openCookingInventory(inventory, scene) {
     }
   }
 
-  for (let i = 0; i < 2; i++) {
+  // celdas vacías para completar grid si es necesario
+  for (let i = list.children.length; i < totalCells; i++) {
     const cell = document.createElement("div");
     cell.className = "cooking-cell";
     cell.innerHTML = `<img />`;

@@ -1,6 +1,12 @@
 import { toggleShowHelpButton } from "./helpUI.js";
 import { inventoryItems } from "./inventoryItems.js";
- 
+
+// ---- navegación con las flechas ----
+let selectedIndex = 0;
+const columns = 7;
+const rows = 2;
+const totalCells = rows * columns;
+
 function renderInventory(scene,inventory) {
     const inventoryContainer = document.getElementById("inventory-modal");
 
@@ -61,10 +67,14 @@ function loadInventory(inventory) {
             }
         }
     }
-    let itemElement = document.createElement("div");
-    itemElement.classList.add("inventory-cell");
-    itemElement.innerHTML = `<img />`;
-    inventoryList.appendChild(itemElement);
+
+    // celdas vacías para completar grid si es necesario
+    for (let i = inventoryList.children.length; i < totalCells; i++) {
+        let itemElement = document.createElement("div");
+        itemElement.classList.add("inventory-cell");
+        itemElement.innerHTML = `<img />`;
+        inventoryList.appendChild(itemElement);
+    }
 
     // Hacer que el primer elemento del inventario esté seleccionado al abrirlo para renderizar el nombre del ingrediente
     const allCells = document.querySelectorAll(".inventory-cell");
@@ -109,8 +119,6 @@ function displayInventoryNotification(ingredient){
 
 
 // Movimiento en el inventario con las flechas
-let selectedIndex = 0;
-const columns = 7;
 
 function enableInventoryNavigation() {
     const cells = document.querySelectorAll(".inventory-cell");
