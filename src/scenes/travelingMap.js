@@ -31,6 +31,7 @@ export default class TravelingMap extends BaseScene{
         this.createPlayer();
         this.createCollisions();
         this.desiredSize = { width: 1440, height: 770 }; 
+        this.bindHelpButton();
     }
 
     update() {
@@ -79,7 +80,7 @@ export default class TravelingMap extends BaseScene{
         }
 
         this.player = new Player(this, x, y, this.cursors);
-        this.player.sprite.setCollideWorldBounds(true); // Añade esta línea
+        this.player.sprite.setCollideWorldBounds(true);
 
     }
 

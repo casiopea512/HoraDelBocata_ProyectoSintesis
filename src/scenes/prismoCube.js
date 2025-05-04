@@ -25,6 +25,7 @@ export default class PrismoCube extends BaseScene {
         this.createPlayer(900,300);
         this.createCollisions();
         this.desiredSize = { width: 1060, height: 770 }; 
+        this.bindHelpButton();
     }
 
     update() {

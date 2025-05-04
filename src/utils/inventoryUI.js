@@ -22,13 +22,11 @@ function renderInventory(scene,inventory) {
     }
     
     toggleInventory(scene,inventoryContainer,inventory);
-
 }
 
 function toggleInventory(scene,inventoryContainer,inventory) {
     if (inventoryContainer.style.display === "none" || !inventoryContainer.style.display) {
         inventoryContainer.style.display = "block";
-        toggleShowHelpButton();
         scene.resetControls("lookInventory");
         scene.disableControls("lookInventory");
         loadInventory(inventory);
@@ -37,6 +35,8 @@ function toggleInventory(scene,inventoryContainer,inventory) {
         scene.enableControls();
         inventoryContainer.style.display = "none";
         disableInventoryNavigation();
+    }
+    if (scene.scene.key != "TravelingMapScene") {
         toggleShowHelpButton();
     }
 }
