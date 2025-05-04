@@ -1,28 +1,39 @@
 import { toggleShowHelpButton } from "./helpUI.js";
 import { inventoryItems } from "./inventoryItems.js";
  
-function renderInventory(scene,inventory) {
+function handleCloseInventory(scene) {
+    return function () {
+        scene.enableControls();
+        document.getElementById("inventory-modal").style.display = 'none';
+        if (scene.scene.key !== "TravelingMapScene") {
+            toggleShowHelpButton();
+        }
+    };
+}
+
+let currentCloseHandler = null;
+
+function renderInventory(scene, inventory) {
     const inventoryContainer = document.getElementById("inventory-modal");
+    const buttonCloseInventory = document.getElementById("close-inventory");
 
-    // añadir el evento de cerrar el modal y de habilitar las teclas al botón 'cerrar inventario'
-    const buttonCloseInventory = document.getElementById('close-inventory');
-    if (buttonCloseInventory && buttonCloseInventory.dataset.eventAdded !== "true") {
-        buttonCloseInventory.addEventListener("click", function () {
-            scene.enableControls();
-            document.getElementById("inventory-modal").style.display = 'none';
-        });
+    if (buttonCloseInventory) {
+        // Si ya había un handler, lo quitamos
+        if (currentCloseHandler) {
+            buttonCloseInventory.removeEventListener("click", currentCloseHandler);
+        }
 
-        buttonCloseInventory.dataset.eventAdded = "true";
+        // Creamos uno nuevo ligado a la escena actual
+        currentCloseHandler = handleCloseInventory(scene);
+        buttonCloseInventory.addEventListener("click", currentCloseHandler);
     }
-    
-    toggleInventory(scene,inventoryContainer,inventory);
 
+    toggleInventory(scene, inventoryContainer, inventory);
 }
 
 function toggleInventory(scene,inventoryContainer,inventory) {
     if (inventoryContainer.style.display === "none" || !inventoryContainer.style.display) {
         inventoryContainer.style.display = "block";
-        toggleShowHelpButton();
         scene.resetControls("lookInventory");
         scene.disableControls("lookInventory");
         loadInventory(inventory);
@@ -31,6 +42,8 @@ function toggleInventory(scene,inventoryContainer,inventory) {
         scene.enableControls();
         inventoryContainer.style.display = "none";
         disableInventoryNavigation();
+    }
+    if (scene.scene.key != "TravelingMapScene") {
         toggleShowHelpButton();
     }
 }

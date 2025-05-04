@@ -31,6 +31,7 @@ export default class TravelingMap extends BaseScene{
         this.createPlayer();
         this.createCollisions();
         this.desiredSize = { width: 1440, height: 770 }; 
+        this.bindHelpButton();
     }
 
     update() {
