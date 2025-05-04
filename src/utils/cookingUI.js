@@ -59,22 +59,50 @@ function handleCookingNavigation(event) {
   let nextIndex = currentIndex;
 
   switch (event.key) {
-    case "ArrowRight":
-      if (
+    case "ArrowRight": {
+      // Si estamos en el botón (último elemento), volvemos a la celda [0]
+      if (currentIndex === navElements.length - 1) {
+        nextIndex = 0;
+      }
+      // Si estamos en la última columna de la tabla, saltamos al botón
+      else if (
         currentIndex < cookingListItems.length &&
         (currentIndex + 1) % columns === 0
       ) {
         nextIndex = cookingListItems.length;
-      } else {
-        nextIndex = Math.min(currentIndex + 1, total - 1);
+      } 
+      // En cualquier otro sitio, simplemente avanzamos
+      else {
+        nextIndex = Math.min(currentIndex + 1, navElements.length - 1);
       }
       break;
+    }
 
-    case "ArrowLeft":
-      nextIndex = Math.max(currentIndex - 1, 0);
+    case "ArrowLeft": {
+      // Si estamos en la primera celda (índice 0), saltamos al botón
+      if (currentIndex === 0) {
+        nextIndex = navElements.length - 1;
+      }
+      // Si estamos en el botón y pulsamos izquierda, vamos a la última columna de la última fila
+      else if (currentIndex === navElements.length - 1) {
+        // calcula el índice de la última celda de la tabla
+        nextIndex = cookingListItems.length - 1;
+      } 
+      // Si estamos en la primera columna de cualquier otra fila, saltamos al botón
+      else if (
+        currentIndex < cookingListItems.length &&
+        currentIndex % columns === 0
+      ) {
+        nextIndex = navElements.length - 1;
+      } 
+      // En cualquier otro sitio, simplemente retrocedemos
+      else {
+        nextIndex = Math.max(currentIndex - 1, 0);
+      }
       break;
+    }
 
-    case "ArrowDown":
+    case "ArrowDown": {
       if (currentIndex < cookingListItems.length) {
         const row = Math.floor(currentIndex / columns);
         const col = currentIndex % columns;
@@ -85,8 +113,9 @@ function handleCookingNavigation(event) {
         nextIndex = candidate;
       }
       break;
+    }
 
-    case "ArrowUp":
+    case "ArrowUp": {
       if (currentIndex < cookingListItems.length) {
         const row = Math.floor(currentIndex / columns);
         const col = currentIndex % columns;
@@ -97,12 +126,23 @@ function handleCookingNavigation(event) {
         nextIndex = candidate;
       }
       break;
-
-    case "Enter":
+      
+    }
+    
+    case "Enter": {
       navElements[currentIndex].click();
       return;
-    default:
+    }
+
+    case "Escape": {
+      const closeBtn = document.getElementById("close-cooking");
+      closeBtn.click();
+      return;
+    }
+
+    default: {
       break;
+    }
   }
 
   currentIndex = nextIndex;
@@ -150,6 +190,7 @@ export function openCookingInventory(inventory, scene) {
   // close button
   const closeBtn = document.getElementById("close-cooking");
   function handleClose() {
+    console.log("CERRANDO COCINA");
     disableCookingNavigation();
     cookingInventoryModal.style.display = "none";
     scene.enableControls();
