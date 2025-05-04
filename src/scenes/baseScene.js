@@ -2,6 +2,7 @@ import NPC from "../objects/NPC.js";
 import { npcData } from "../utils/NPCData.js";
 import Player from "../objects/player.js";
 import { searchObjectInInventory } from "../utils/inventoryUI.js";
+import { renderHelp } from "../utils/helpUI.js";
 
 export default class BaseScene extends Phaser.Scene{
     constructor(sceneKey) {
@@ -110,4 +111,10 @@ export default class BaseScene extends Phaser.Scene{
         this.player = new Player(this, x, y, this.cursors);
     }
     
+    bindHelpButton() {
+        const helpButton = document.getElementById('open-help');
+        helpButton.replaceWith(helpButton.cloneNode(true));
+        const newHelpButton = document.getElementById('open-help');
+        newHelpButton.addEventListener('click', () => renderHelp(this));
+    }
 }

@@ -26,6 +26,7 @@ export default class TrompiHouse extends BaseScene {
         this.createPlayer(800,300);
         this.createCollisions();
         this.desiredSize = { width: 960, height: 674 }; 
+        this.bindHelpButton();
     }
 
     update() {
