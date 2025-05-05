@@ -1,6 +1,6 @@
 <?php
-// if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localhost') === false) {
-if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https://horadelbocata.ieti.site') === false) {
+if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localhost') === false) {
+// if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https://horadelbocata.ieti.site') === false) {
     header('HTTP/1.1 403 Forbidden');
     exit();
 }
@@ -21,15 +21,16 @@ if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https:
 <body>
 
     <main>
-        <h1>Felicidades! Has hecho a Jake un perro muy feliz</h1>
+        <h1>¡Felicidades!</h1>
+        <h2>Has hecho a Jake un perro muy feliz</h2>
         <p>Has conseguido crear el bocata supremo en: </p>
         <span id="time"></span>
 
         <input type="text" id="username" placeholder="Introduce tu usuario" />
 
         <div id="links">
-            <a href="/index.html">Menú Principal</a>
-            <a href="/ranking.php" id="rankingLink" class="disabled">Añadir mi tiempo al Ranking</a>
+            <a href="/index.html">Menú<br>Principal</a>
+            <a href="/ranking.php" id="rankingLink" class="disabled">Añadir mi tiempo<br>al Ranking</a>
         </div>
     </main>
     
