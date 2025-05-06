@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  //MUSICA
+//MUSICA
 const music = document.getElementById("bg-music");
 const muteBtn = document.getElementById("mute-button");
 
@@ -10,15 +10,19 @@ window.addEventListener("load", () => {
   console.log("Autoplay bloqueado:", err);
   });
   music.muted = localStorage.getItem("soundMuted") === "true";
-
-  muteBtn.textContent = music.muted ? "Activar sonido" : "Silenciar";
 });
 
 // Botón de silenciar
 muteBtn.addEventListener("click", () => {
     music.muted = !music.muted;
     localStorage.setItem("soundMuted", music.muted);
-    muteBtn.textContent = music.muted ? "Activar sonido" : "Silenciar";
+    if (muteBtn.classList.contains("soundOn")) {
+        muteBtn.classList.remove("soundOn");
+        muteBtn.classList.add("soundOff");
+    } else {
+        muteBtn.classList.remove("soundOff");
+        muteBtn.classList.add("soundOn");
+    }
 });
 
 
