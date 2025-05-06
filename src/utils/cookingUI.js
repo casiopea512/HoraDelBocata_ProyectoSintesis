@@ -223,6 +223,12 @@ export function openCookingInventory(inventory, scene) {
       const finalTime = stopTimer();
       console.log("Tiempo final:", finalTime);
 
+      //SONIDO DE VICTORIA
+      const victorySound = document.getElementById("victory-sound");
+      victorySound.play().catch(err => {
+        console.log("Error al reproducir sonido de victoria:", err);
+      });
+
       fetch("/api/apis.php?action=saveTime", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -236,7 +242,7 @@ export function openCookingInventory(inventory, scene) {
           console.error("Error al enviar el tiempo:", error);
         });
 
-      setTimeout(() => (window.location.href = "/gameOver.php"), 3000);
+      setTimeout(() => (window.location.href = "/gameOver.php"), 2000);
     });
   }
 }
