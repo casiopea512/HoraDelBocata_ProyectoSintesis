@@ -27,4 +27,27 @@ const config = {
 
 startTimer();
 
+
 const game = new Phaser.Game(config);
+
+
+//MUSICA
+const music = document.getElementById("bg-music");
+const victorySound = document.getElementById("victory-sound");
+const muteBtn = document.getElementById("mute-button");
+localStorage.setItem("soundMuted", false); //POR DEFECTO NO MUTEADO
+
+// Intenta reproducir la música al cargar
+window.addEventListener("load", () => {
+    music.play().catch(err => {
+    console.log("Autoplay bloqueado:", err);
+    });
+});
+
+// Botón de silenciar
+muteBtn.addEventListener("click", () => {
+    music.muted = !music.muted;
+    victorySound.muted = !victorySound.muted;
+    muteBtn.textContent = music.muted ? "Activar sonido" : "Silenciar";
+    localStorage.setItem("soundMuted", music.muted);
+});
