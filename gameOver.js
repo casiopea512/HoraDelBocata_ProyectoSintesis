@@ -1,4 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  //MUSICA
+const music = document.getElementById("bg-music");
+const muteBtn = document.getElementById("mute-button");
+
+// Intenta reproducir la música al cargar
+window.addEventListener("load", () => {
+  music.play().catch(err => {
+  console.log("Autoplay bloqueado:", err);
+  });
+  music.muted = localStorage.getItem("soundMuted") === "true";
+
+  muteBtn.textContent = music.muted ? "Activar sonido" : "Silenciar";
+});
+
+// Botón de silenciar
+muteBtn.addEventListener("click", () => {
+    music.muted = !music.muted;
+    localStorage.setItem("soundMuted", music.muted);
+    muteBtn.textContent = music.muted ? "Activar sonido" : "Silenciar";
+});
+
+
   let timeValue = "";
   const usernameInput = document.getElementById("username");
   const rankingLink = document.getElementById("rankingLink");
@@ -122,3 +145,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   }
 });
+
