@@ -1,8 +1,13 @@
 const helpContainer = document.getElementById("help-modal");
 let currentHelpCloseHandler = null;
+let currentEscHandler = null; // Nuevo handler para Escape
 
 function handleCloseHelp(scene) {
     return function () {
+        if (currentEscHandler) {
+            document.removeEventListener("keydown", currentEscHandler);
+            currentEscHandler = null;
+        }
         scene.enableControls();
         helpContainer.style.display = 'none';
     };
@@ -16,7 +21,6 @@ function renderHelp(scene) {
         if (currentHelpCloseHandler) {
             buttonCloseHelp.removeEventListener("click", currentHelpCloseHandler);
         }
-
         // Crea nuevo handler ligado a esta escena
         currentHelpCloseHandler = handleCloseHelp(scene);
         buttonCloseHelp.addEventListener("click", currentHelpCloseHandler);
@@ -30,7 +34,23 @@ function toggleHelp(scene, helpContainer) {
         helpContainer.style.display = "block";
         scene.resetControls("lookHelp");
         scene.disableControls("lookHelp");
+        
+        const escHandler = function(event) {
+            if (event.key === "Escape") {
+                console.log("CERRANDO EL HELP CON EL ESCAPE");
+                document.removeEventListener("keydown", escHandler);
+                currentEscHandler = null;
+                scene.enableControls();
+                helpContainer.style.display = "none";
+            }
+        };
+        currentEscHandler = escHandler;
+        document.addEventListener("keydown", escHandler);
     } else {
+        if (currentEscHandler) {
+            document.removeEventListener("keydown", currentEscHandler);
+            currentEscHandler = null;
+        }
         scene.enableControls();
         helpContainer.style.display = "none";
     }
