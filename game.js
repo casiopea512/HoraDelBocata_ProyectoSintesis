@@ -48,6 +48,12 @@ window.addEventListener("load", () => {
 muteBtn.addEventListener("click", () => {
     music.muted = !music.muted;
     victorySound.muted = !victorySound.muted;
-    muteBtn.textContent = music.muted ? "Activar sonido" : "Silenciar";
+    if (muteBtn.classList.contains("soundOn")) {
+        muteBtn.classList.remove("soundOn");
+        muteBtn.classList.add("soundOff");
+    } else {
+        muteBtn.classList.remove("soundOff");
+        muteBtn.classList.add("soundOn");
+    }
     localStorage.setItem("soundMuted", music.muted);
 });

@@ -10,8 +10,6 @@
     <title>Hora del bocata</title>
 </head>
 <body>
-
-    <button id="open-help"></button>
     
     <div id="inventory-modal">
         <button id="close-inventory" class="close-modal">Cerrar</button>
@@ -72,14 +70,16 @@
     </div>
 
     
- <!-- Música de fondo -->
- <audio id="bg-music" src="./assets/sounds/background_song.mp3" loop></audio>
+    <!-- Música de fondo -->
+    <audio id="bg-music" src="./assets/sounds/background_song.mp3" loop></audio>
 
-<!-- Nuevo: sonido de victoria -->
-<audio id="victory-sound" src="./assets/sounds/win_sound.mp3"></audio>
+    <!-- Nuevo: sonido de victoria -->
+    <audio id="victory-sound" src="./assets/sounds/win_sound.mp3"></audio>
 
- <!-- Controles de audio -->
-<button id="mute-button">Silenciar</button>
+    <div id="buttons">
+        <button class="iconButton soundOn" id="mute-button"></button>
+        <button class="iconButton" id="open-help"></button>
+    </div>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
-// if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localhost') === false) {
-if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https://horadelbocata.ieti.site') === false) {
+if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localhost') === false) {
+// if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https://horadelbocata.ieti.site') === false) {
     header('HTTP/1.1 403 Forbidden');
     include 'errors/error403.html';
     exit();
@@ -39,8 +39,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https:
     <!-- Música de fondo -->
     <audio id="bg-music" src="./assets/sounds/ending_song.mp3" loop></audio>
     <!-- Controles de audio -->
-    <div id="audio-controls">
-    <button id="mute-button">Silenciar</button>
-    </div>
+    <button id="mute-button" class="soundOn"></button>
+    
 </body>
 </html>
