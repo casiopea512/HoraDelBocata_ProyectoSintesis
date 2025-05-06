@@ -457,32 +457,57 @@ body {
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-/*MARK: HELP BUTTON */
-#open-help {
-    display: block;
+/*MARK: div botones*/
+#buttons{
+    display: flex;
     position: fixed;
     top: 20px;
     right: 20px;
+    flex-direction: row;
+}
 
+.iconButton{
     width: 60px;
     height: 60px;
 
+    margin: 10px;
+
     border: none;
     background-color: transparent;
-    background-image: url("/assets/images/helpIconModal.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 
-    color: white;
-    font-size: 24px;
     cursor: pointer;
+
     transition: background-color 0.3s;
 }
 
-#open-help:hover {
+.iconButton:focus {
+    outline: none;
+}
+
+/*MARK: sound button*/
+#mute-button.soundOn{
+    background-image: url("/assets/images/icono_con_musica.png");
+}
+
+#mute-button.soundOff{
+    background-image: url("/assets/images/icono_sin_musica.png");
+}
+
+/*MARK: HELP BUTTON */
+#open-help {
+    background-image: url("/assets/images/helpIconModal.png");
+    
+    color: white;
+    font-size: 24px;
+}
+
+#open-help:hover,
+#mute-button:hover {
     transform: scale(1.2);
 }
 
