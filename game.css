@@ -399,6 +399,7 @@ body {
 
 #help-modal h2{
     margin: 12px auto;
+    color: var(--casi-blanco)
 }
 
 #help-modal div{
@@ -421,6 +422,10 @@ body {
 #help-modal #help-wasd img{
     height: 125px;
     width: auto;
+}
+
+#help-modal p {
+    color: #754C60;
 }
 
 
