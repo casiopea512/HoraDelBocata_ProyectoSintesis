@@ -106,7 +106,7 @@ muteBtn.addEventListener("click", () => {
   updateSelected();
 
   document.addEventListener("keydown", (event) => {
-    const keys = ["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", "Enter"];
+    const keys = ["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", "Enter", "p"];
     if (!keys.includes(event.key)) return;
 
     // Enter: ejecutar acción del elemento actual
@@ -122,6 +122,10 @@ muteBtn.addEventListener("click", () => {
         }
       }
       return;
+    }
+
+    else if (event.key === "p") {
+      document.getElementById("mute-button").click();
     }
 
     event.preventDefault();
