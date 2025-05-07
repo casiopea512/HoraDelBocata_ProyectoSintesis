@@ -10,6 +10,13 @@ window.addEventListener("load", () => {
   console.log("Autoplay bloqueado:", err);
   });
   music.muted = localStorage.getItem("soundMuted") === "true";
+
+  if (music.muted) {
+    muteBtn.classList.add("soundOff");
+  } else {
+    muteBtn.classList.add("soundOn");
+  }
+
 });
 
 // Botón de silenciar
