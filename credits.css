@@ -113,6 +113,6 @@ input{
 }
 
 .selected {
-    border: 2px solid black !important;
-    box-shadow: 0 0 10px white !important;
+    border: 2px solid white;
+    box-shadow: 0 0 10px white;
 }
