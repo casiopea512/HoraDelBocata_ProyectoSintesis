@@ -84,7 +84,7 @@ main section #links a{
     transition: all 0.2s ease;
 }
 
-main section a.selected{
+main section #links a.selected{
     background-color: white;
     color: #84a15f;
     border: 2px solid rgb(255, 255, 255);
