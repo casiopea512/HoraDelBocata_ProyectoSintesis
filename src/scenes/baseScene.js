@@ -30,6 +30,7 @@ export default class BaseScene extends Phaser.Scene{
             'showMap' : Phaser.Input.Keyboard.KeyCodes.M,
             'lookInventory' : Phaser.Input.Keyboard.KeyCodes.I,
             'lookHelp' : Phaser.Input.Keyboard.KeyCodes.H,
+            'muteSound' : Phaser.Input.Keyboard.KeyCodes.L,
         });
     }
 
@@ -117,4 +118,9 @@ export default class BaseScene extends Phaser.Scene{
         const newHelpButton = document.getElementById('open-help');
         newHelpButton.addEventListener('click', () => renderHelp(this));
     }
+
+    bindMuteButton() {
+        
+    }
+
 }
