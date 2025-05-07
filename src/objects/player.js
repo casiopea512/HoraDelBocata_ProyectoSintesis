@@ -181,5 +181,11 @@ export default class Player {
             console.log("estás mirando help");
             renderHelp(this.scene);
         }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.muteSound)) {
+            console.log("estás muteando/desmuteando sonido con el teclado");
+            const music = document.getElementById("mute-button");
+            music.click();
+        }
     }
 }

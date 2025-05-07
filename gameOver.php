@@ -39,7 +39,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localh
     <!-- Música de fondo -->
     <audio id="bg-music" src="./assets/sounds/ending_song.mp3" loop></audio>
     <!-- Controles de audio -->
-    <button id="mute-button" class="soundOn"></button>
+    <button id="mute-button"></button>
     
 </body>
 </html>
