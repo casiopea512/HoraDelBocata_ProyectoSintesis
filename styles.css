@@ -7,10 +7,15 @@
 
 :root {
     --font-primary: 'Press Start 2P', cursive;
+    --font-size-large: 30px;
     --font-size-medium: 22px;
     --font-size-primary: 20px;
     --font-size-little: 14px;
     --casi-negro: #353738;
     --blanco-roto: #f4f1ea;
     --casi-blanco: #f3e5c2;
+
+    --marron-borde: #B68962;
+    --marron-sombra: #C49A6C;
+    --marron-fondo: #d8b27f;
 }

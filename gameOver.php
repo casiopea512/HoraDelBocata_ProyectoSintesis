@@ -17,7 +17,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localh
     <link href="styles.css" rel="stylesheet">
     <link href="gameOver.css" rel="stylesheet">
     
-    <title>Game Over</title>
+    <title>Final del Juego | Hora del bocata</title>
 </head>
 <body>
 
