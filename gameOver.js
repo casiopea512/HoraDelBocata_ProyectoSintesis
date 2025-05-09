@@ -109,6 +109,10 @@ muteBtn.addEventListener("click", () => {
     const keys = ["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", "Enter", "p"];
     if (!keys.includes(event.key)) return;
 
+    if (document.activeElement === document.getElementById("username") && event.key === "p") {
+      return;
+    }
+
     // Enter: ejecutar acción del elemento actual
     if (event.key === "Enter") {
       const currentElement = focusables[currentFocus];
