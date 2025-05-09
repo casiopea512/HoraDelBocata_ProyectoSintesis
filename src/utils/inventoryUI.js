@@ -1,32 +1,42 @@
 import { toggleShowHelpButton } from "./helpUI.js";
 import { inventoryItems } from "./inventoryItems.js";
 
-// ---- navegación con las flechas ----
 let selectedIndex = 0;
 const columns = 7;
 const rows = 2;
 const totalCells = rows * columns;
 
-function renderInventory(scene,inventory) {
-    const inventoryContainer = document.getElementById("inventory-modal");
+let currentCloseHandler = null;
 
-    // añadir el evento de cerrar el modal y de habilitar las teclas al botón 'cerrar inventario'
-    const buttonCloseInventory = document.getElementById('close-inventory');
-    if (buttonCloseInventory && buttonCloseInventory.dataset.eventAdded !== "true") {
-        buttonCloseInventory.addEventListener("click", function () {
-            disableInventoryNavigation();
-            console.log("CERRANDO INVENTARIO");
-            scene.enableControls();
-            document.getElementById("inventory-modal").style.display = 'none';
-        });
-
-        buttonCloseInventory.dataset.eventAdded = "true";
-    }
-    
-    toggleInventory(scene,inventoryContainer,inventory);
+function handleCloseInventory(scene) {
+    return function () {
+        disableInventoryNavigation();
+        console.log("CERRANDO INVENTARIO");
+        scene.enableControls();
+        document.getElementById("inventory-modal").style.display = 'none';
+        if (scene.scene.key !== "TravelingMapScene") {
+            toggleShowHelpButton();
+        }
+    };
 }
 
-function toggleInventory(scene,inventoryContainer,inventory) {
+function renderInventory(scene, inventory) {
+    const inventoryContainer = document.getElementById("inventory-modal");
+    const buttonCloseInventory = document.getElementById("close-inventory");
+
+    if (buttonCloseInventory) {
+        if (currentCloseHandler) {
+            buttonCloseInventory.removeEventListener("click", currentCloseHandler);
+        }
+
+        currentCloseHandler = handleCloseInventory(scene);
+        buttonCloseInventory.addEventListener("click", currentCloseHandler);
+    }
+
+    toggleInventory(scene, inventoryContainer, inventory);
+}
+
+function toggleInventory(scene, inventoryContainer, inventory) {
     if (inventoryContainer.style.display === "none" || !inventoryContainer.style.display) {
         inventoryContainer.style.display = "block";
         scene.resetControls("lookInventory");
@@ -38,7 +48,7 @@ function toggleInventory(scene,inventoryContainer,inventory) {
         inventoryContainer.style.display = "none";
         disableInventoryNavigation();
     }
-    if (scene.scene.key != "TravelingMapScene") {
+    if (scene.scene.key !== "TravelingMapScene") {
         toggleShowHelpButton();
     }
 }
@@ -47,30 +57,24 @@ function loadInventory(inventory) {
     const inventoryList = document.getElementById("inventory-list");
     inventoryList.innerHTML = "";
 
-    for (const keyInventoryItems in inventoryItems){
-
+    for (const keyInventoryItems in inventoryItems) {
         let item = inventoryItems[keyInventoryItems];
-
         let itemElement = document.createElement("div");
         itemElement.classList.add("inventory-cell");
         itemElement.innerHTML = `<img class="lockedItem" src="${item.imgPath}" alt="${item.name}" id="${item.name}"/>`;
         inventoryList.appendChild(itemElement);
 
-        
-        for (const keyInventory in inventory){
-            if ( keyInventory === keyInventoryItems ){
-                console.log("Tengo este item: ",keyInventoryItems);
-
+        for (const keyInventory in inventory) {
+            if (keyInventory === keyInventoryItems) {
+                console.log("Tengo este item: ", keyInventoryItems);
                 const lockedItem = document.getElementById(inventory[keyInventory].name);
                 if (lockedItem.classList.contains("lockedItem")) {
                     lockedItem.classList.remove("lockedItem");
                 }
-
             }
         }
     }
 
-    // celdas vacías para completar grid si es necesario
     for (let i = inventoryList.children.length; i < totalCells; i++) {
         let itemElement = document.createElement("div");
         itemElement.classList.add("inventory-cell");
@@ -78,7 +82,6 @@ function loadInventory(inventory) {
         inventoryList.appendChild(itemElement);
     }
 
-    // Hacer que el primer elemento del inventario esté seleccionado al abrirlo para renderizar el nombre del ingrediente
     const allCells = document.querySelectorAll(".inventory-cell");
     if (allCells.length > 0) {
         selectedIndex = 0;
@@ -86,75 +89,48 @@ function loadInventory(inventory) {
 
         const selectedImg = allCells[selectedIndex].querySelector("img");
         const selectedItemText = document.getElementById("inventory-selected-item");
-        if (selectedImg && selectedImg.id) {
-            selectedItemText.textContent = selectedImg.id;
-        } else {
-            selectedItemText.textContent = "";
-        }
+        selectedItemText.textContent = selectedImg && selectedImg.id ? selectedImg.id : "";
     }
 
-    console.log(inventory)
+    console.log(inventory);
 }
 
-function addObjectToInventory(inventory,object){
+function addObjectToInventory(inventory, object) {
     if (!inventory[object]) {
         inventory[object] = inventoryItems[object];
     }
 }
 
-function searchObjectInInventory(inventory,object){
-    if (inventory[object]){
-        return true
-    } else {
-        return false
-    }
+function searchObjectInInventory(inventory, object) {
+    return !!inventory[object];
 }
 
 function displayInventoryNotification(ingredient) {
-    
     const notif = document.getElementById("inventory-notification");
     const text = document.getElementById("inventory-notification-text");
 
-    // 1) Actualiza el texto
     text.textContent = "Has conseguido " + inventoryItems[ingredient].name;
-
-    // 2) Limpia cualquier clase previa y fuerza reflow para reiniciar animación
     notif.classList.remove("hide");
     void notif.offsetWidth;
-
-    // 3) Añade la clase que dispara el slideIn
-    console.log("notificación entrando");
     notif.classList.add("show");
 
-    // 4) A los 2s, dispara el slideOut
     setTimeout(() => {
-        console.log("notificación saliendo");
         notif.classList.remove("show");
         notif.classList.add("hide");
     }, 2000);
 
-    // 5) Al terminar slideOut, aseguramos que quede oculto
     notif.addEventListener("animationend", (e) => {
         if (e.animationName === "slideOut") {
-        notif.classList.remove("hide");
-        // opcional: si quieres que no ocupe espacio o capture clicks
-        // notif.style.opacity = "0";
+            notif.classList.remove("hide");
         }
     }, { once: true });
 }
-  
-
-
-// Movimiento en el inventario con las flechas
 
 function enableInventoryNavigation() {
     const cells = document.querySelectorAll(".inventory-cell");
     if (cells.length === 0) return;
 
-    // Quitar cualquier clase 'selected' previa
     cells.forEach(cell => cell.classList.remove("selected"));
-
-    // Asegurar que al abrir inventario, el primer elemento esté seleccionado
     selectedIndex = 0;
     cells[selectedIndex].classList.add("selected");
 
@@ -170,67 +146,36 @@ function handleInventoryNavigation(event) {
     const currentRow = Math.floor(selectedIndex / columns);
     const currentCol = selectedIndex % columns;
 
-    // Quitar clase actual
     cells[selectedIndex].classList.remove("selected");
 
     switch (event.key) {
-        case "ArrowRight": {
-            let nextCol = (currentCol + 1) % columns;
-            let nextIndex = currentRow * columns + nextCol;
-            if (nextIndex >= totalItems) nextIndex = currentRow * columns;
-            selectedIndex = nextIndex;
+        case "ArrowRight":
+            selectedIndex = currentRow * columns + ((currentCol + 1) % columns);
+            if (selectedIndex >= totalItems) selectedIndex = currentRow * columns;
             break;
-        }
-
-        case "ArrowLeft": {
-            let nextCol = (currentCol - 1 + columns) % columns;
-            let nextIndex = currentRow * columns + nextCol;
-            if (nextIndex >= totalItems) {
-                // Si no hay celda en esa columna, ir a la última columna válida de esta fila
-                nextIndex = Math.min(totalItems - 1, currentRow * columns + columns - 1);
-            }
-            selectedIndex = nextIndex;
+        case "ArrowLeft":
+            selectedIndex = currentRow * columns + ((currentCol - 1 + columns) % columns);
+            if (selectedIndex >= totalItems)
+                selectedIndex = Math.min(totalItems - 1, currentRow * columns + columns - 1);
             break;
-        }
-
-        case "ArrowDown": {
-            let nextRow = (currentRow + 1) % rows;
-            let nextIndex = nextRow * columns + currentCol;
-            if (nextIndex >= totalItems) nextIndex = currentCol;
-            selectedIndex = nextIndex;
+        case "ArrowDown":
+            selectedIndex = ((currentRow + 1) % rows) * columns + currentCol;
+            if (selectedIndex >= totalItems) selectedIndex = currentCol;
             break;
-        }
-
-        case "ArrowUp": {
-            let nextRow = (currentRow - 1 + rows) % rows;
-            let nextIndex = nextRow * columns + currentCol;
-            if (nextIndex >= totalItems) nextIndex = currentCol;
-            selectedIndex = nextIndex;
+        case "ArrowUp":
+            selectedIndex = ((currentRow - 1 + rows) % rows) * columns + currentCol;
+            if (selectedIndex >= totalItems) selectedIndex = currentCol;
             break;
-        }
-
-        case "Escape": {
-            const closeBtn = document.getElementById("close-inventory");
-            closeBtn.click();
+        case "Escape":
+            document.getElementById("close-inventory").click();
             return;
-        }
-    
-        default: {
-            break;
-        }
     }
 
-    // Añadir clase seleccionada
     cells[selectedIndex].classList.add("selected");
 
-    // Mostrar el ID de la imagen seleccionada
     const selectedImg = cells[selectedIndex].querySelector("img");
     const selectedItemText = document.getElementById("inventory-selected-item");
-    if (selectedImg && selectedImg.id) {
-        selectedItemText.textContent = selectedImg.id;
-    } else {
-        selectedItemText.textContent = "";
-    }
+    selectedItemText.textContent = selectedImg && selectedImg.id ? selectedImg.id : "";
 }
 
 function disableInventoryNavigation() {
@@ -239,5 +184,9 @@ function disableInventoryNavigation() {
     selectedItemText.textContent = "";
 }
 
-
-export {renderInventory, addObjectToInventory, searchObjectInInventory, displayInventoryNotification};
+export {
+    renderInventory,
+    addObjectToInventory,
+    searchObjectInInventory,
+    displayInventoryNotification
+};
