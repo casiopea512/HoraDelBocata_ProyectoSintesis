@@ -44,6 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
     focusables.forEach((element) => element.classList.remove("selected"));
     focusables[currentFocus].classList.add("selected");
     updateCarousel();
+
+    // Asegura que el elemento seleccionado esté visible
+    focusables[currentFocus].scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
   }
 
   function updateCarousel() {
