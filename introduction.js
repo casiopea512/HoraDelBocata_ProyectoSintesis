@@ -47,16 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateCarousel() {
-
     const listItems = document.querySelectorAll("main section:nth-of-type(2) ul li");
-    const carouselVideo = document.querySelectorAll("#carousel .carousel-slide video");
+    const carouselVideos = document.querySelectorAll("#carousel .carousel-slide video");
+    const carouselImages = document.querySelectorAll("#carousel2 .carousel-slide img");
 
-    // Buscamos si algún li de los comandos tiene la clase 'selected'
+    // Buscamos el li seleccionado de los comandos
     const selectedLi = document.querySelector("main section:nth-of-type(2) ul li.selected");
     if (selectedLi) {
       const index = Array.from(listItems).indexOf(selectedLi);
 
-      carouselVideo.forEach((video, i) => {
+      // Actualizar el primer carrusel (videos)
+      carouselVideos.forEach((video, i) => {
         if (i === index) {
           video.style.display = "block";
           video.currentTime = 0;
@@ -67,7 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
           video.currentTime = 0;
         }
       });
-      console.log("Mostrando video:", carouselVideo[index].id);
+      
+      // Actualizar el segundo carrusel (imágenes)
+      carouselImages.forEach((img, i) => {
+        img.style.display = (i === index) ? "block" : "none";
+      });
+      
+      console.log("Mostrando video:", carouselVideos[index].id, " y la imagen:", carouselImages[index].id);
     }
-}
+  }
 });

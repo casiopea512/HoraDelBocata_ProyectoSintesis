@@ -1,17 +1,17 @@
-body{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    
     display: flex;
     flex-direction: row;
-
+    
     background-image: url("./assets/images/rankingcomealong.png");
     background-size: cover;
-
+    
     color: white;
     text-shadow: 0 0 10px #666;
-
+    
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
     line-height: 1.6;
@@ -19,16 +19,13 @@ body{
     min-height: 100vh;
 }
 
-main{
+main {
     display: flex;
-
-    width: 50%;
-    margin: auto 20px;
-    
     flex-direction: column;
     justify-content: center;
-
     gap: 20px;
+    width: 50%;
+    margin: auto 20px;
 }
 
 main section{
@@ -90,16 +87,27 @@ main section #links a.selected{
     box-shadow: 0 0 10px white;
 }
 
-#carousel{
+
+#carousels {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#carousel {
+    margin-top: -20px;
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 100%;
 }
+
 
 .carousel-container {
     display: flex;
     align-items: center;
-    
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -115,22 +123,29 @@ main section #links a.selected{
     flex-shrink: 0;
 }
 
-.carousel-dots {
-    position: absolute;
-    bottom: 10px;
+#carousel2 {
     width: 100%;
-    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-.carousel-dots .dot {
-    height: 10px;
-    width: 10px;
-    background-color: black;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 5px;
+.carousel-container2 {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
-.carousel-dots .active {
-    background-color: #717171;
+.carousel-container2 .carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-container2 .carousel-slide img {
+    width: 120%;
+    flex-shrink: 0;
+    display: block;
+    margin: 0 auto;
 }
