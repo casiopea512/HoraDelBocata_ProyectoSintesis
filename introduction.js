@@ -49,18 +49,25 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateCarousel() {
 
     const listItems = document.querySelectorAll("main section:nth-of-type(2) ul li");
-    const carouselImages = document.querySelectorAll("#carousel .carousel-slide img");
+    const carouselVideo = document.querySelectorAll("#carousel .carousel-slide video");
 
     // Buscamos si algún li de los comandos tiene la clase 'selected'
     const selectedLi = document.querySelector("main section:nth-of-type(2) ul li.selected");
     if (selectedLi) {
       const index = Array.from(listItems).indexOf(selectedLi);
 
-      carouselImages.forEach((img, i) => {
-        img.style.display = (i === index) ? "block" : "none";
+      carouselVideo.forEach((video, i) => {
+        if (i === index) {
+          video.style.display = "block";
+          video.currentTime = 0;
+          video.play();
+        } else {
+          video.style.display = "none";
+          video.pause();
+          video.currentTime = 0;
+        }
       });
-
-      console.log("Mostrando imagen:", carouselImages[index].id);
+      console.log("Mostrando video:", carouselVideo[index].id);
     }
-  }
+}
 });
