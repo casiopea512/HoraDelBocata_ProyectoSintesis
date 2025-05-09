@@ -411,6 +411,11 @@ body {
     gap: 10px;
 }
 
+#help-modal div#imagenesFlechasWasd{
+    display: flex;
+    flex-direction: row;
+}
+
 #help-modal div img{
     height: 60px;
     width: auto;
