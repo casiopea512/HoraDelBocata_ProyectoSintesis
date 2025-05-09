@@ -51,6 +51,7 @@ $rankingPage = array_slice($rankingData, $startIndex, $itemsPerPage);
 
   <link href="styles.css" rel="stylesheet">
   <link href="ranking.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/assets/images/objects/sandwich.png">
 
   <title>Ranking | Hora del Bocata</title>
 </head>
