@@ -205,7 +205,7 @@ export function openCookingInventory(inventory, scene) {
 
   //IMPORTANTE !!!!!!!!!!!!!
   //MARK: CAMBIAR NUM
-  if (ingredientsCount < 1) {
+  if (ingredientsCount < 13) {
     cookBtn.classList.add("lockedItem");
     cookBtn.disabled = true;
   } else {

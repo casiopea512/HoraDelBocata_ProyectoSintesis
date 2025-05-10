@@ -35,7 +35,7 @@ export const npcData = {
         textureKey: "Nest",
         scene: "TreeHouseScene",
         x: 810,
-        y: 75,
+        y: 72,
         size : 'small',
         ingredient: "Egg",
         imgToChange: "NestWithoutEggs",

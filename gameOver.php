@@ -1,11 +1,11 @@
 <?php
-if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localhost') === false) {
-// if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https://horadelbocata.ieti.site') === false) {
-    header('HTTP/1.1 403 Forbidden');
-    include 'errors/error403.html';
-    exit();
-}
-?>
+// if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localhost') === false) {
+// // if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https://horadelbocata.ieti.site') === false) {
+//     header('HTTP/1.1 403 Forbidden');
+//     include 'errors/error403.html';
+//     exit();
+// }
+// ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -16,6 +16,7 @@ if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localh
 
     <link href="styles.css" rel="stylesheet">
     <link href="gameOver.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/images/objects/sandwich.png">
     
     <title>Final del Juego | Hora del bocata</title>
 </head>
