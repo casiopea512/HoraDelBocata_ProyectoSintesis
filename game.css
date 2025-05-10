@@ -425,7 +425,8 @@ body {
 }
 
 #help-modal p {
-    color: #754C60;
+    /* color: #754C60; */
+    color: var(--casi-negro)
 }
 
 

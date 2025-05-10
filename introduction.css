@@ -6,7 +6,7 @@ body {
     display: flex;
     flex-direction: row;
     
-    background-image: url("./assets/images/rankingcomealong.png");
+    background-image: url("./assets/images/fondohierba.png");
     background-size: cover;
     
     color: white;
@@ -17,6 +17,8 @@ body {
     line-height: 1.6;
     
     min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 main {
@@ -26,11 +28,12 @@ main {
     gap: 20px;
     width: 50%;
     margin: auto 20px;
+    font-family: var(--font-secondary);
 }
 
 main section{
     background-color: rgba(255, 255, 255, 0.322);
-    padding: 30px;
+    padding: 15px;
     border-radius: 10px;
     font-size: var(--font-size-primary);
 }
@@ -38,6 +41,7 @@ main section{
 main section h1{
     font-family: var(--font-primary);
     font-size: var(--font-size-large);
+    margin: 15px 0;
 }
 
 main section ul {
@@ -49,8 +53,9 @@ main section ul {
     scrollbar-width: thin;
     scrollbar-color: #84A15F transparent;
     text-align: left;
+    box-shadow: 0 10px 10px -5px rgba(66, 66, 66, 0.455)
 }
-
+.caro
 main section ul::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -82,8 +87,10 @@ main section li.selected {
 main section #links{
     display: flex;
     flex-direction: row;
-    margin-top: 20px;;
+    margin-top: 30px;;
     gap: 20px;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-little);
 }
 
 main section #links a{
@@ -126,6 +133,7 @@ main section #links a.selected{
 .carousel-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -139,6 +147,12 @@ main section #links a.selected{
 .carousel-slide video {
     width: 100%;
     flex-shrink: 0;
+    padding: 15px;
+    border-radius: 10px;
+    height: 600px;
+    width: 800px;
+    /* background-color: rgba(255, 255, 255, 0.322); */
+
 }
 
 #carousel2 {
@@ -146,22 +160,28 @@ main section #links a.selected{
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 200px;
 }
 
 .carousel-container2 {
     display: flex;
     align-items: center;
     position: relative;
-    width: 100%;
+    width: 500px;
+    height: 200px;
     overflow: hidden;
-    align-items: center;
     justify-content: center;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+    background-color: rgba(255, 255, 255, 0.322);
+    border-radius: 10px;
 }
 
 .carousel-container2 .carousel-slide {
     display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.5s ease-in-out;
 }
 
