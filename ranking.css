@@ -46,7 +46,7 @@ header a {
   transform: translateY(-50%);
   font-size: 2rem;
   cursor: pointer;
-  color: #666;
+  color: white;
   /* border: 2px solid white; */
   text-decoration: none;
 }
@@ -131,29 +131,31 @@ th:last-child {
 
  a {
   padding: 0.5rem 1rem;
-  background-color: white;
+  background-color: #84A15F;
+  color: white;
   border-width: 2px;
   border-radius: 6px;
   text-decoration: none;
-  color: #84A15F;
   
   transition: all 0.2s ease;
 }
 
  a:hover {
-  background-color: #84A15F;
-  color: white;
+  box-shadow: 0 0 10px white !important;
+  background-color: white !important;
+  color: #84A15F !important;
 }
 
 
  a:not(.selected){
-  border: 2px solid white;  
+  border: 2px solid #84A15F;  
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .selected {
-  border: 2px solid #83A05E;
-  box-shadow: 0 0 10px white;
+  box-shadow: 0 0 10px white !important;
+  background-color: white !important;
+  color: #84A15F !important;
 }
 
 
