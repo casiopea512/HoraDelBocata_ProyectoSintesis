@@ -1,6 +1,6 @@
 import { renderHelp, toggleShowHelpButton } from "../utils/helpUI.js";
 import { renderInventory } from "../utils/inventoryUI.js";
-
+import {toggleBackIndexModal} from "../utils/modalBackIndex.js";
 export default class Player {
     constructor(scene, x, y, cursors) {
         this.scene = scene;
@@ -186,6 +186,11 @@ export default class Player {
             console.log("estás muteando/desmuteando sonido con el teclado");
             const music = document.getElementById("mute-button");
             music.click();
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.backIndex)) {
+            console.log("estás intentando volver al índice");
+            toggleBackIndexModal(this.scene)
         }
     }
 }

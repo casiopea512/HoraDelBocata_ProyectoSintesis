@@ -3,6 +3,7 @@ import { npcData } from "../utils/NPCData.js";
 import Player from "../objects/player.js";
 import { searchObjectInInventory } from "../utils/inventoryUI.js";
 import { renderHelp } from "../utils/helpUI.js";
+import { toggleBackIndexModal } from "../utils/modalBackIndex.js";
 
 export default class BaseScene extends Phaser.Scene{
     constructor(sceneKey) {
@@ -31,6 +32,7 @@ export default class BaseScene extends Phaser.Scene{
             'lookInventory' : Phaser.Input.Keyboard.KeyCodes.I,
             'lookHelp' : Phaser.Input.Keyboard.KeyCodes.H,
             'muteSound' : Phaser.Input.Keyboard.KeyCodes.P,
+            'backIndex' : Phaser.Input.Keyboard.KeyCodes.B,
         });
     }
 
@@ -119,8 +121,11 @@ export default class BaseScene extends Phaser.Scene{
         newHelpButton.addEventListener('click', () => renderHelp(this));
     }
 
-    bindMuteButton() {
-        
+    bindBackIndexButton() {
+        const backIndexButton = document.getElementById('back-button');
+        backIndexButton.replaceWith(backIndexButton.cloneNode(true));
+        const newBackIndexButton = document.getElementById('back-button');
+        newBackIndexButton.addEventListener('click', () => toggleBackIndexModal(this));
     }
 
 }

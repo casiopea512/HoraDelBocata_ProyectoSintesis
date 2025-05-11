@@ -27,6 +27,7 @@ export default class MarcelineHouse extends BaseScene {
         this.createCollisions();
         this.desiredSize = { width: 960, height: 578 }; 
         this.bindHelpButton();
+        this.bindBackIndexButton();
     }
 
     update() {

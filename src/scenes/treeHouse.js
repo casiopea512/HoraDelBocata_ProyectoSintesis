@@ -32,6 +32,7 @@ export default class TreeHouse extends BaseScene {
         this.createCollisions();
         this.desiredSize = { width: 1150, height: 866 }; 
         this.bindHelpButton();
+        this.bindBackIndexButton();
 
     }
 

@@ -27,6 +27,7 @@ export default class BubblegumLab extends BaseScene {
         this.createCollisions();
         this.desiredSize = { width: 960, height: 772 }; 
         this.bindHelpButton();
+        this.bindBackIndexButton();
     }
 
     update() {

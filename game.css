@@ -241,6 +241,81 @@ body {
     font-size: var(--font-size-little);
 }
 
+/*MARK: modal volver al índice*/
+#back-index-modal{
+    display: none; 
+    position: fixed;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 880px;
+    height: 410px; 
+
+    background-image: url("/assets/images/modal.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    image-rendering: pixelated;
+
+    justify-items: center;
+}
+
+#back-index-modal p{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 65%;
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-large);
+    color: var(--casi-negro)
+}
+
+#back-index-modal #buttons-modal{
+    position:absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+}
+
+#back-index-modal #buttons-modal .button-modal{
+    background-color: transparent;
+    color: var(--casi-negro);
+    border:none;
+
+    padding: 10px 20px;
+    margin: 0 10px;
+
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-large);
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-modal.selected {
+    background-image: url("/assets/images/selected.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 10px 20px;
+    margin: 0 10px;
+
+    width: 180px;
+    height: 120px;
+
+    image-rendering: pixelated;
+}
+
 
 /*MARK: COCINAR */
 #cooking-modal{
@@ -515,7 +590,12 @@ body {
     outline: none;
 }
 
-/*MARK: sound button*/
+/* botón para inicio */
+#back-button{
+    background-image: url("/assets/images/icono_atras.png");
+}
+
+/* sound button*/
 #mute-button.soundOn{
     background-image: url("/assets/images/icono_con_musica.png");
 }
@@ -524,7 +604,7 @@ body {
     background-image: url("/assets/images/icono_sin_musica.png");
 }
 
-/*MARK: HELP BUTTON */
+/* HELP BUTTON */
 #open-help {
     background-image: url("/assets/images/helpIconModal.png");
     
@@ -532,6 +612,7 @@ body {
     font-size: 24px;
 }
 
+#back-button:hover,
 #open-help:hover,
 #mute-button:hover {
     transform: scale(1.2);
