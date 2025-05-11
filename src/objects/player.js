@@ -1,0 +1,196 @@
+import { renderHelp, toggleShowHelpButton } from "../utils/helpUI.js";
+import { renderInventory } from "../utils/inventoryUI.js";
+import {toggleBackIndexModal} from "../utils/modalBackIndex.js";
+export default class Player {
+    constructor(scene, x, y, cursors) {
+        this.scene = scene;
+        this.cursors = cursors;
+        this.sprite = scene.physics.add.sprite(x, y, 'AssetMovimiento', 12)
+            .setOrigin(0.5, 0.5)
+            .setScale(4)
+            .refreshBody();
+        this.sprite.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
+        this.sprite.setCollideWorldBounds(true);
+
+        this.init();
+    }
+
+    init(){
+        this.createAnimations();
+    }
+    
+    createAnimations() {
+        const animations = [
+            { key: 'up', frames: [7, 2], frameRate: 4, repeat: -1 },
+            { key: 'left', frames: [11, 10], frameRate: 4, repeat: -1 },
+            { key: 'motionless', frames: [12], frameRate: 20, repeat: 0 },
+            { key: 'right', frames: [13, 14], frameRate: 4, repeat: -1 },
+            { key: 'down', frames: [17, 22], frameRate: 4, repeat: -1 }
+        ];
+    
+        animations.forEach(({ key, frames, frameRate, repeat }) => {
+            if (!this.scene.anims.exists(key)) {
+                this.scene.anims.create({
+                    key,
+                    frames: frames.map(frame => ({ key: 'AssetMovimiento', frame })),
+                    frameRate,
+                    repeat
+                });
+            }
+        });
+
+        // this.scene.anims.create({
+        //     key: 'up',
+        //     frames: [{ key: 'AssetMovimiento', frame: 7 }, { key: 'AssetMovimiento', frame: 2 }],
+        //     frameRate: 4,
+        //     repeat: -1
+        // });
+    }
+
+    update() {
+        let touchingObject = null;
+        let touchingLocation = null;
+
+        const velocityPlayerNegative = -140;
+        const velocityPlayerPositive = 140;
+        const plusVelocity = 1.5
+        const checkIfIsTravelingMapScene = () => this.scene.scene.key === "TravelingMapScene";
+
+        this.sprite.setVelocity(0);
+
+        if (this.cursors.left.isDown) {
+            this.sprite.setVelocityX(checkIfIsTravelingMapScene() ? velocityPlayerNegative* plusVelocity : velocityPlayerNegative);
+            this.sprite.anims.play('left', true);
+        } else if (this.cursors.right.isDown) {
+            this.sprite.setVelocityX(checkIfIsTravelingMapScene() ? velocityPlayerPositive* plusVelocity : velocityPlayerPositive);
+            this.sprite.anims.play('right', true);
+        } else if (this.cursors.up.isDown) {
+            this.sprite.setVelocityY(checkIfIsTravelingMapScene() ? velocityPlayerNegative* plusVelocity : velocityPlayerNegative);
+            this.sprite.anims.play('up', true);
+        } else if (this.cursors.down.isDown) {
+            this.sprite.setVelocityY(checkIfIsTravelingMapScene() ? velocityPlayerPositive* plusVelocity : velocityPlayerPositive);
+            this.sprite.anims.play('down', true);
+        } else {
+            this.sprite.anims.play('motionless', true);
+        }
+
+        // Detectar interacción con NPCs, solo si hay npc en el mapa
+        if (this.scene.npcs && Array.isArray(this.scene.npcs)) {
+            this.scene.npcs.forEach(npc => {
+                if (Phaser.Geom.Intersects.RectangleToRectangle(this.sprite.getBounds(), npc.sprite.getBounds())) {
+                    touchingObject = npc;
+                }
+            });
+        }
+
+        // Detectar interacción con Localizaciones, solo si hay localizaciones en el mapa
+        if (this.scene.locations && Array.isArray(this.scene.locations)){
+            this.scene.locations.forEach(location => {
+                if (Phaser.Geom.Intersects.RectangleToRectangle(this.sprite.getBounds(), location.sprite.getBounds())) {
+                    touchingLocation = location;
+                }
+            });
+        }
+
+        // pulsar tecla 'e'
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.interact)) {
+            if (touchingObject) {
+                touchingObject.interact();
+            } 
+            
+            else if(touchingLocation){
+                touchingLocation.interact(this, touchingLocation);
+                //hacer que el botón de ayuda se muestre solo al entrar en locations, no en portales
+                if (touchingLocation.key !== "Portal_toPrismo" && touchingLocation.key !== "Portal_toOoo") {
+                    toggleShowHelpButton();
+                }
+                
+            }
+
+            else {
+                console.log("No hay objeto para interactuar.");
+            }
+        }
+
+        // Detectar el uso del mapa
+
+        //ANTIGUO
+        // if (Phaser.Input.Keyboard.JustDown(this.cursors.showMap)) {
+
+        //     if(this.scene.scene.key != "TravelingMapScene"){
+        //         // Guardar la escena anterior globalmente en game.config
+        //         this.scene.game.config.previousScene = this.scene.scene.key;
+        //         console.log("Esta es la escena anterior",this.scene.game.config.previousScene)
+        //         this.scene.scene.switch("TravelingMapScene");
+        //         console.log("cambiando mapa");
+        //     }
+
+        //     else{
+        //         if(this.scene.game.config.previousScene){
+        //             console.log("Dentro")
+        //             this.scene.scene.switch(this.scene.game.config.previousScene);
+        //             console.log("volviendo al mapa anterior");
+        //         }
+        //     }
+           
+        // }
+
+        //NUEVO
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.showMap)) {
+            toggleShowHelpButton();
+
+            const sceneManager = this.scene.scene;
+            const currentKey = sceneManager.key;
+        
+            if (currentKey !== "TravelingMapScene") {
+                this.scene.game.config.previousScene = currentKey;
+                console.log("Esta es la escena anterior", this.scene.game.config.previousScene);
+                sceneManager.switch("TravelingMapScene");
+                console.log("cambiando mapa");
+            } else {
+                const previousKey = this.scene.game.config.previousScene;
+        
+                if (previousKey) {
+                    console.log("Dentro");
+                    sceneManager.switch(previousKey);
+                    console.log("volviendo al mapa anterior");
+                }
+            }
+        
+            //siempre hacer resize de la escena de destino si tiene desiredSize
+            const nextKey = currentKey !== "TravelingMapScene"
+                ? "TravelingMapScene"
+                : this.scene.game.config.previousScene;
+        
+            const nextScene = sceneManager.get(nextKey);
+            if (nextScene?.desiredSize) {
+                this.scene.scale.resize(
+                    nextScene.desiredSize.width,
+                    nextScene.desiredSize.height
+                );
+            }
+        }      
+
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.lookInventory)) {
+            console.log("estás mirando tu inventario");
+            renderInventory(this.scene, this.scene.game.config.inventory);
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.lookHelp)) {
+            console.log("estás mirando help");
+            renderHelp(this.scene);
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.muteSound)) {
+            console.log("estás muteando/desmuteando sonido con el teclado");
+            const music = document.getElementById("mute-button");
+            music.click();
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.backIndex)) {
+            console.log("estás intentando volver al índice");
+            toggleBackIndexModal(this.scene)
+        }
+    }
+}

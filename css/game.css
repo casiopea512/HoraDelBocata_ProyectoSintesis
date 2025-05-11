@@ -1,0 +1,629 @@
+body {
+    display: flex;
+   
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    height: 100vh;
+
+    /* background-color: #93b45c; */
+    background-image: url("../assets/images/fondohierba.png");
+    background-size: cover;
+    backdrop-filter: blur(1.5px);
+}
+
+#game{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    height: 700px;
+    width: 1300px;
+
+    z-index: -1;
+}
+
+
+
+/*MARK: DIALOGO */
+#dialog-modal{
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+
+    width: 800px;
+    height: 400px;
+
+    background-image: url("../assets/images/dialog.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-size: var(--font-size-primary);
+
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#dialog-modal *{
+    color: var(--casi-negro);
+    font-family: var(--font-primary);
+}
+
+#dialog-interlocutorName {
+    position: absolute;
+    top: 16px;
+    left: 28%;
+    transform: translateX(-50%);
+
+    width: 200px;
+    min-height: 2.4em;
+    padding: 0.5em 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    line-height: 1.2em;
+
+    font-size: var(--font-size-medium);
+    pointer-events: none;
+    word-break: break-word;
+}
+  
+
+#dialog-text{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 80%;
+    text-align: center;
+    line-height: 1.5;
+}
+
+#dialog-E {
+    position: absolute;
+    bottom: 64px;
+    right: 150px;
+    
+    display: block;
+    margin: 0;
+    
+    font-family: var(--font-primary);
+    font-size: 30px;
+    color: var(--casi-negro);
+    font-weight: bold;
+}
+
+
+/*MARK: INVENTARIO */
+#inventory-modal {
+    display: none; 
+    position: fixed;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 880px;
+    height: 410px; 
+
+    background-image: url("../assets/images/inventory/inventory.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    image-rendering: pixelated;
+
+    
+}
+
+#inventory-list {
+    display: grid;
+    grid-template-columns: repeat(7, 80px);
+    grid-template-rows: repeat(2, 80px);
+    gap: 20px 22px;
+    justify-content: center;
+    padding: 15px;
+}
+
+.inventory-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100px;
+    height: 100px;
+    
+    background-image: url("../assets/images/inventory/celdaObjeto.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+.inventory-cell img {
+    width: 55%;
+    height: auto;
+    object-fit: contain;
+}
+
+.lockedItem {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+#inventory-selected-item {
+    bottom: 28px;
+    left: 152px;
+}
+
+
+/*MARK: INV NOTIFICACION */
+/* ----- Animaciones ----- */
+@keyframes slideIn {
+    0% {
+      transform: translate(-50%, -120%);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  }
+  
+@keyframes slideOut {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -120%);
+        opacity: 0;
+    }
+}
+  
+
+#inventory-notification {
+    position: absolute;
+
+    left: 17%;
+    top: -2%;
+    
+    width: 655px;
+    height: 210px;
+
+    background-image: url("../assets/images/notificacion.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    text-align: center;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    transform: translate(-50%, 0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Cuando queremos mostrarlo */
+#inventory-notification.show {
+    animation: slideIn 0.5s ease-out forwards;
+    pointer-events: none;
+}
+
+/* Cuando queremos esconderlo */
+#inventory-notification.hide {
+    animation: slideOut 0.5s ease-in forwards;
+}
+
+#inventory-notification-text {
+    width: 100%;
+
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-little);
+}
+
+/*MARK: modal volver al índice*/
+#back-index-modal{
+    display: none; 
+    position: fixed;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 880px;
+    height: 410px; 
+
+    background-image: url("../assets/images/modal.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    image-rendering: pixelated;
+
+    justify-items: center;
+}
+
+#back-index-modal p{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 65%;
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-large);
+    color: var(--casi-negro)
+}
+
+#back-index-modal #buttons-modal{
+    position:absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+}
+
+#back-index-modal #buttons-modal .button-modal{
+    background-color: transparent;
+    color: var(--casi-negro);
+    border:none;
+
+    padding: 10px 20px;
+    margin: 0 10px;
+
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-large);
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-modal.selected {
+    background-image: url("../assets/images/selected.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 10px 20px;
+    margin: 0 10px;
+
+    width: 180px;
+    height: 120px;
+
+    image-rendering: pixelated;
+}
+
+
+/*MARK: COCINAR */
+#cooking-modal{
+    display: none; 
+    position: fixed;
+    align-items: center;
+    padding: 20px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 880px;
+    height: 468px; 
+
+    text-align: center;
+
+    background-image: url("../assets/images/cookingModal.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    image-rendering: pixelated;
+}
+
+#cooking-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 28px;
+
+    position: relative;
+}
+
+#cooking-list {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 10px;
+    justify-content: center;
+    padding: 15px;
+}
+
+.cooking-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100px;
+    height: 100px;
+    
+    background-image: url("../assets/images/inventory/celdaObjeto.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.selected{
+    background-image: url("../assets/images/inventory/celdaSeleccionada.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cooking-cell img {
+    width: 55%;
+    height: auto;
+    object-fit: contain;
+}
+
+#cook-button{
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: none;
+
+}
+
+#cook-button img{
+    width: 80px;
+    height: 80px;
+    height: auto;
+    object-fit: contain; 
+}
+
+#cooking-selected-item {
+    bottom: -88px;
+    left: 98px;
+}
+
+/*MARK: título del modal*/
+.modal-title{
+    margin-top: 24px;
+
+    color: var(--casi-blanco);
+    font-family: var(--font-primary);
+}
+
+/* MARK: selected item render name */
+.selected-item-name{
+    position: absolute;
+
+    width: 200px;
+    height: 2.4em;
+    padding: 6px 10px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    text-align: center;
+    line-height: 1.2em;   
+  
+    font-family: var(--font-primary);
+    font-size: var(--font-size-primary);
+    color: black;
+    
+    pointer-events: none;
+    word-break: break-word;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
+}
+
+/*MARK: HELP MODAL */
+#help-modal{
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 642px;
+    height: 822px;
+
+    background-image: url("../assets/images/modalAyuda.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 15px; 
+    color: white;
+    text-align: center;
+    
+    font-family: var(--font-primary);
+    font-size: 18px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#help-modal h2{
+    margin: 12px auto;
+    color: var(--casi-blanco)
+}
+
+#help-modal div{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    margin: 15px 48px;
+    padding: 10px;
+    gap: 10px;
+}
+
+#help-modal div#imagenesFlechasWasd{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#help-modal div#imagenesFlechasWasd .vertical{
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+    align-items: center;
+    margin-bottom: 0px;
+    margin-top: 0;
+}
+
+#help-modal div#help-e{
+    margin-top: -20px;
+}
+
+#help-modal div img{
+    height: 60px;
+    width: auto;
+    margin: 0 10px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#help-modal #help-wasd img,
+#help-modal #help-flechas img{
+    height: 125px;
+    width: auto;
+}
+
+#help-modal p {
+    color: var(--morado);
+    /* color: var(--casi-negro) */
+}
+
+
+/*MARK: close modal button*/
+.close-modal {
+    display: flex;         
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 20px;
+    right: 140px;
+
+    width: 145px;
+    height: 88px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    background-image: url("../assets/images/equis.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-family: var(--font-primary);
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--casi-negro);
+    
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/*MARK: div botones*/
+#buttons{
+    display: flex;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    flex-direction: row;
+}
+
+.iconButton{
+    width: 60px;
+    height: 60px;
+
+    margin: 10px;
+
+    border: none;
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s;
+}
+
+.iconButton:focus {
+    outline: none;
+}
+
+/* botón para inicio */
+#back-button{
+    background-image: url("../assets/images/icono_atras.png");
+}
+
+/* sound button*/
+#mute-button.soundOn{
+    background-image: url("../assets/images/icono_con_musica.png");
+}
+
+#mute-button.soundOff{
+    background-image: url("../assets/images/icono_sin_musica.png");
+}
+
+/* HELP BUTTON */
+#open-help {
+    background-image: url("../assets/images/helpIconModal.png");
+    
+    color: white;
+    font-size: 24px;
+}
+
+#back-button:hover,
+#open-help:hover,
+#mute-button:hover {
+    transform: scale(1.2);
+}
+
+#close-help {
+    transform: translateX(40%);
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#close-help:hover {
+    transform: translateX(40%) scale(1.1);
+    transform-origin: center;
+}

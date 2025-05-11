@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('../assets/fonts/PressStart2P-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MinecraftRegular-Bmg3';
+    src: url('../assets/fonts/MinecraftRegular-Bmg3.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --font-primary: 'Press Start 2P', cursive;
+    --font-secondary: 'MinecraftRegular-Bmg3', cursive;
+    --font-size-large: 30px;
+    --font-size-medium: 22px;
+    --font-size-primary: 20px;
+    --font-size-little: 14px;
+    --casi-negro: #353738;
+    --blanco-roto: #f4f1ea;
+    --casi-blanco: #f3e5c2;
+    --morado: #754C60;
+
+    --marron-borde: #B68962;
+    --marron-sombra: #C49A6C;
+    --marron-fondo: #d8b27f;
+}
