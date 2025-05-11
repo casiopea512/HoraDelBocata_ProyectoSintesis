@@ -1,0 +1,182 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  /* background-color: #f5f5f5; */
+  background-image: url("../assets/images/rankingcomealong.png");
+  background-size: cover;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header styles */
+header {
+  position: relative;
+  padding: 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+header h1 {
+  font-size:  50px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  color: white;
+  text-shadow: 0 0 10px #666;
+  margin-top: 10px;
+  
+}
+
+header a {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  /* border: 2px solid white; */
+  text-decoration: none;
+}
+
+/* Main content */
+main {
+  max-width: 800px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.506);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f8f9fa77;
+}
+
+th {
+  text-align: left;
+  padding: 1rem;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  color: #666;
+  border-bottom: 2px solid #eee;
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f3f3f393;
+}
+
+tbody tr:hover {
+  background-color: #d4d4d4;
+}
+
+
+/* Column specific styles */
+td:first-child,
+th:first-child {
+  width: 80px;
+  text-align: center;
+}
+
+td:last-child,
+th:last-child {
+  width: 120px;
+  text-align: right;
+}
+
+/* Pagination styles */
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+  font-family: var(--font-primary);
+}
+
+.pagination p {
+  color: white;
+  margin: auto 2rem;
+  text-shadow: 0 0 10px #666;
+}
+
+ a {
+  padding: 0.5rem 1rem;
+  background-color: #84A15F;
+  color: white;
+  border-width: 2px;
+  border-radius: 6px;
+  text-decoration: none;
+  
+  transition: all 0.2s ease;
+}
+
+ a:hover {
+  box-shadow: 0 0 10px white !important;
+  background-color: white !important;
+  color: #84A15F !important;
+}
+
+
+ a:not(.selected){
+  border: 2px solid #84A15F;  
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.selected {
+  box-shadow: 0 0 10px white !important;
+  background-color: white !important;
+  color: #84A15F !important;
+}
+
+
+/* Responsive design */
+@media (max-width: 600px) {
+  header {
+    padding: 0.75rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .pagination a {
+    display: block;
+  }
+}

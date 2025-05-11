@@ -1,0 +1,88 @@
+{ "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"marcelineHouse.json"
+        }
+    },
+ "height":6,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 35, 35, 35, 35, 35, 35, 35, 35, 0,
+            0, 35, 35, 35, 35, 35, 35, 35, 35, 0,
+            0, 35, 35, 35, 35, 35, 35, 35, 35, 0,
+            0, 35, 35, 35, 35, 35, 35, 35, 35, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "height":6,
+         "id":2,
+         "name":"Suelo",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[5, 6, 6, 6, 26, 27, 6, 22, 6, 7,
+            14, 0, 0, 0, 0, 0, 0, 0, 0, 16,
+            14, 0, 0, 0, 0, 0, 0, 0, 0, 16,
+            14, 0, 0, 0, 0, 0, 0, 0, 0, 16,
+            14, 0, 0, 0, 0, 0, 0, 0, 0, 16,
+            23, 24, 24, 24, 24, 24, 24, 24, 24, 25],
+         "height":6,
+         "id":3,
+         "name":"Paredes",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 3, 4, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 12, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 21, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "height":6,
+         "id":4,
+         "name":"Objetos",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":5,
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.11.1-99-gec89c545",
+ "tileheight":16,
+ "tilesets":[
+        {
+         "columns":9,
+         "firstgid":1,
+         "image":"..\/images\/tiles\/MarcelineHouse_Tiles.png",
+         "imageheight":96,
+         "imagewidth":144,
+         "margin":0,
+         "name":"MarcelineHouse_Tiles",
+         "spacing":0,
+         "tilecount":54,
+         "tileheight":16,
+         "tilewidth":16
+        }],
+ "tilewidth":16,
+ "type":"map",
+ "version":"1.10",
+ "width":10
+}

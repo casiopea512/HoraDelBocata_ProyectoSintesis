@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/game.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/images/objects/sandwich.png">
+
+    <title>Juego | Hora del bocata</title>
+</head>
+<body>
+
+    <div id="back-index-modal" style="display: none;">
+        <h2 class="modal-title">¡Cuidado!</h2>
+        <p>¡Aviso! Si sales del juego, no se guardará el progreso. ¿Estás seguro de que quieres salir?</p>
+        <div id="buttons-modal">
+            <button id="accept-back-modal" class="button-modal" >Aceptar</button>
+            <button id="cancel-back-modal" class="button-modal" >Cancelar</button>
+        </div>
+    </div>
+    
+    <div id="inventory-modal">
+        <button id="close-inventory" class="close-modal">Cerrar</button>
+        <h2 class="modal-title">Inventario</h2>
+        <div id="inventory-list"></div>
+        <span id="inventory-selected-item" class="selected-item-name"></span>
+    </div>
+
+    <div id="dialog-modal" style="display: none;">
+        <h1 id="dialog-interlocutorName"></h1>
+        <p id="dialog-text" data-textIndex=""></p>
+        <p id="dialog-E">E</p>
+    </div>
+
+    <div id="help-modal" style="display: none;">
+        <button class="close-modal" id="close-help">Cerrar</button>
+        <h2>Ayuda</h2>
+        <div id="imagenesFlechasWasd">
+            <div id="help-wasd" class="vertical">
+                <img src="/assets/images/helpKeys/help_wasd_dark.png" alt="WASD Controls">
+                <p>Caminar</p>
+            </div>
+            <div id="help-flechas" class="vertical">
+                <img src="/assets/images/helpKeys/help_flechas_dark.png" alt="Flechas Controls">
+                <p>Movimiento interfaz </p>
+            </div>
+        </div>
+        <div id="help-e">
+            <img src="/assets/images/helpKeys/help_e_dark.png" alt="E Controls">
+            <p>Interactuar</p>
+        </div>
+        <div id="help-m">
+            <img src="/assets/images/helpKeys/help_m_dark.png" alt="M Controls">
+            <p>Abrir/Cerrar Mapa</p>
+        </div>
+        <div id="help-i">
+            <img src="/assets/images/helpKeys/help_i_dark.png" alt="I Controls">
+            <p>Abrir/Cerrar Inventario</p>
+        </div>
+        <div id="help-h">
+            <img src="/assets/images/helpKeys/help_h_dark.png" alt="H Controls">
+            <p>Abrir/Cerrar Ayuda</p>
+        </div>
+        <div id="help-p">
+            <img src="/assets/images/helpKeys/help_p_dark.png" alt="P Controls">
+            <p>Pausar/Despausar Música</p>
+        </div>
+
+    </div>
+
+    <div id="inventory-notification">
+        <p id="inventory-notification-text"></p>
+    </div>
+
+    <div id="cooking-modal">
+        <button id="close-cooking" class="close-modal">Cerrar</button>
+        <h2 class="modal-title">Cocinar</h2>
+        <div id="cooking-container">
+            <div id="cooking-list"></div>
+            <button id="cook-button" class="cooking-cell lockedItem"><img src="/assets/images/objects/sandwich.png" id="Bocata supremo"></button>
+            <span id="cooking-selected-item" class="selected-item-name"></span>
+        </div>
+    </div>
+
+    <div id="game">
+        <script src="phaser.min.js"></script>
+        <script type="module" src="/js/game.js"></script> 
+    </div>
+
+    
+    <!-- Música de fondo -->
+    <audio id="bg-music" src="./assets/sounds/background_music_edit.mp3" loop></audio>
+
+    <!-- Nuevo: sonido de victoria -->
+    <audio id="victory-sound" src="./assets/sounds/win_sound.mp3"></audio>
+
+    <div id="buttons">
+        <button href="/" class="iconButton" id="back-button"></button>
+        <button class="iconButton soundOn" id="mute-button"></button>
+        <button class="iconButton" id="open-help"></button>
+    </div>
+
+</body>
+</html>
