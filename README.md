@@ -18,7 +18,7 @@ La idea surge de nuestra pasión por los videojuegos, *Hora de Aventuras* y las 
 
 ## 🧩 Características Principales
 
-* **Estilo Visual**: Pixel art de 16 bits dibujado a mano.
+* **Estilo Visual**: Pixel art de 16 bits dibujado por nosotras.
 * **Perspectiva**: Vista top-down.
 * **Jugabilidad**: Exploración, interacción con NPCs y recolección de ingredientes.
 * **Plataforma**: Juego web accesible desde navegadores modernos.
@@ -30,29 +30,7 @@ La idea surge de nuestra pasión por los videojuegos, *Hora de Aventuras* y las 
 
 * **Lenguajes**: HTML5, CSS3, JavaScript.
 * **Frameworks/Librerías**: [Phaser](https://phaser.io/), [Tiled](https://www.mapeditor.org/).
-* **Herramientas de Diseño**: [PixelArt](https://www.pixilart.com/) para la creación de los personajes y [Photopea](https://www.photopea.com/) para el resto de diseños.
-
-## 🗺️ Estructura del Proyecto
-
-```
-
-hora-del-bocata/
-├── api/
-├── assets/
-│   ├── fonts/
-│   ├── images/
-│   ├── maps/
-│   └── sounds/
-├── src/
-│   ├── objects/
-│   ├── scenes/
-│   └── utils/
-├── index.html
-├── game.html
-├── style.css
-├── ...
-└── README.md
-```
+* **Herramientas de Diseño**: [PixilArt](https://www.pixilart.com/) para la creación de los personajes y [Photopea](https://www.photopea.com/) para el resto de diseños.
 
 
 ## 🚀 Cómo Jugar
