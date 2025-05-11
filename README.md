@@ -94,9 +94,14 @@ Si prefieres ejecutar el juego en tu propio equipo, sigue estos pasos:
 * [Mar Mèlich](https://github.com/marmelich/)
 * [Marta Arévalo](https://github.com/casiopea512/)
 
-## ⏳ Tiempo Estimado de Desarrollo
+## ⏳ Tiempo de Desarrollo
 
 * **Total Disponible**: 132 horas.
+
+## 📦 Estado del Proyecto
+
+✅ **Estado actual**: Finalizado  
+El desarrollo principal del juego está finalizado. El proyecto está listo para jugar tanto en su versión web como local.
 
 ## 📄 Licencia
 
