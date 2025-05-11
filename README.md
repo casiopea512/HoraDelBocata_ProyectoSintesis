@@ -1,4 +1,4 @@
-# 🥪 La Hora del Bocata – Aventura Gráfica en Pixel Art
+# 🥪 Hora del Bocata – Aventura Gráfica en Pixel Art
 
 ## 🎮 Descripción del Proyecto
 
