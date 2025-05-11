@@ -73,7 +73,7 @@ Si prefieres ejecutar el juego en tu propio equipo, sigue estos pasos:
 
 2. **Clona el repositorio**:
    ```bash
-   git clone [https://github.com/usuario/horadelbocata.git](https://github.com/casiopea512/HoraDelBocata_ProyectoSintesis.git)
+   git clone https://github.com/casiopea512/HoraDelBocata_ProyectoSintesis.git
    cd HoraDelBocata_ProyectoSintesis
    ```
 3. **Levanta un servidor**:
