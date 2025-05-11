@@ -1,14 +1,14 @@
 {
   "npcs": {
     "Finn": {
-      "greetings": "Ey, ¿qué pasa tron?",
+      "greetings": "Ey, ¿qué pasa, tron?",
       "dialogues": {
-        "give_object": "¿Cómo? ¿Que necesitas lágrimas para tu bocata? Vale tío, piensa en papi, recuerda los casettes.",
+        "give_object": "¿Cómo? ¿Que necesitas lágrimas para tu bocata? Vale, tío, piensa en papi, recuerda los casetes.",
         "object_given": "Jake, no quiero hacerte llorar otra vez."
       }
     },
     "BMO": {
-      "greetings": "¿Qué pasa colega?",
+      "greetings": "¿Qué pasa, colega?",
       "dialogues": {
         "give_object": "¿Mayonesa? Sí, aquí tienes.",
         "object_given": "Jake, ya te he dado mayonesa antes."
@@ -17,12 +17,12 @@
     "Nest": {
       "greetings": "¿Y si estos huevos son en realidad pequeños planetas? Nah, me los llevo igual.",
       "dialogues": {
-        "give_object": "¡Estoy de suerte! Estos huevos pa mi",
+        "give_object": "¡Estoy de suerte! Estos huevos pa' mí.",
         "object_given": "Listo, ya son míos. Este bocata va a estar de locos."
       }
     },
     "Bird": {
-      "greetings": "Ven pajarito... Pío pío",
+      "greetings": "Ven, pajarito... Pío pío",
       "dialogues": {
         "give_object": "Lo siento, colega. Hoy te toca ser parte del bocata de Jake.",
         "object_given": "¡No te preocupes, prometo que vas a estar crujientito!"
@@ -39,55 +39,55 @@
       "greetings": "Langostita, ha llegado tu hora.",
       "dialogues": {
         "give_object": "Un toque de alma de langosta para elevar el sabor a nivel dios.",
-        "object_given": "Te recordaré en cada mordisco al bocata langostita."
+        "object_given": "Te recordaré en cada mordisco al bocata, langostita."
       }
     },
     "Marceline": {
-      "greetings": "¿Qué dices colegui?",
+      "greetings": "¿Qué dices, colegui?",
       "dialogues": {
-        "give_object": "¿Tomates? Estás de suerte, estaba a punto de comerme el rojo de este, te lo puedes quedar.",
+        "give_object": "¿Tomates? Estás de suerte, estaba a punto de comerme el rojo de este. Te lo puedes quedar.",
         "object_given": "Jake, no voy a darte más tomates."
       }
     },
     "Fridge": {
       "greetings": "¡Ah, la nevera! El mejor lugar para conseguir algo sabroso para mi bocata.",
       "dialogues": {
-        "give_object": "Tiene un filete en la nevera... Mejor no hacer preguntas que paso de palmarla tio.",
-        "object_given": "Ya le he mangado el filete, ¡Me voy antes de que me chupe al sangre!"
+        "give_object": "Tiene un filete en la nevera... Mejor no hacer preguntas, que paso de palmarla, tío.",
+        "object_given": "Ya le he mangado el filete. ¡Me voy antes de que me chupe la sangre!"
       }
     },
     "Trompi": {
-      "greetings": "Oh, hola Jake!",
+      "greetings": "Oh, ¡hola Jake!",
       "dialogues": {
         "give_object": "¿Que estás buscando pan? Puedes llevarte este, ¡recién horneado!",
         "object_given": "Me temo que no tengo más panecillos que darte."
       }
     },
     "Jamon": {
-      "greetings": "Hola Jake.",
+      "greetings": "Hola, Jake.",
       "dialogues": {
         "give_object": "¿Bacon? Vaya, esto es incómodo. Sí tengo, pero no se lo digas a nadie. Cógelo y vete, ¿vale?",
-        "object_given": "Recuerda. Shhhhh. Nuestro secreto."
+        "object_given": "Recuerda... Shhhhh. Nuestro secreto."
       }
     },
     "Chicle": {
-      "greetings": "Hola Jake!",
+      "greetings": "Ey, Jake",
       "dialogues": {
-        "give_object": "¿Cebolla dulce y orgánica? Estás de suerte, estamos cultivando ahora en el laboratorio, puedes llevarte esta.",
+        "give_object": "¿Cebolla dulce y orgánica? Estás de suerte, estamos cultivando ahora en el laboratorio. Puedes llevarte ésta.",
         "object_given": "No puedo atenderte ahora, debo seguir con mis investigaciones."
       }
     },
     "CucumberPot": {
-      "greetings": "Chicle déjame llevarme unos cuantos pepinos frescos anda",
+      "greetings": "Chicle, déjame llevarme unos cuantos pepinos frescos, anda.",
       "dialogues": {
-        "give_object": "Mmm, sí que sí pepinos frescos. Esto le va a dar un toque especial al bocata, sin duda.",
-        "object_given": "¿Que debo esperar a que crezcan más? Pues vaya rollo"
+        "give_object": "Mmm, sí que sí, pepinos frescos. Esto le va a dar un toque especial al bocata, sin duda.",
+        "object_given": "¿Que debo esperar a que crezcan más? Pues vaya rollo."
       }
     },
     "Prismo": {
-      "greetings": "¿Qué pasa tío?",
+      "greetings": "¿Qué pasa, tío?",
       "dialogues": {
-        "give_object": "Pepinillos? Los mejores encurtidos de todo el espacio astral, para ti.",
+        "give_object": "¿Pepinillos? Los mejores encurtidos de todo el espacio astral, para ti.",
         "object_given": "Jake, ya te he dado pepinillos."
       }
     }
