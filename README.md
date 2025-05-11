@@ -85,7 +85,16 @@ Si prefieres ejecutar el juego en tu propio equipo, sigue estos pasos:
         ```bash
         python3 -m http.server 8080
         ```
-4. Abre el juego en tu navegador:
+4. Modifica el archivo gameOver.php para permitir que funcione correctamente en local:
+   - Comenta la línea 3, que controla el acceso:
+        ```php
+        if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https://horadelbocata.ieti.site') === false) {
+        ```
+   - Descomenta la línea 2, que habilita el acceso local:
+        ```php
+        if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'localhost') === false) {
+        ```
+5. Abre el juego en tu navegador:
     ```bash
     http://localhost:8080/
     ```
