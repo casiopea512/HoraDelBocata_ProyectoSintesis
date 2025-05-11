@@ -8,7 +8,7 @@ body {
     height: 100vh;
 
     /* background-color: #93b45c; */
-    background-image: url("./assets/images/fondohierba.png");
+    background-image: url("../assets/images/fondohierba.png");
     background-size: cover;
     backdrop-filter: blur(1.5px);
 }
@@ -37,7 +37,7 @@ body {
     width: 800px;
     height: 400px;
 
-    background-image: url("/assets/images/dialog.png");
+    background-image: url("../assets/images/dialog.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -117,7 +117,7 @@ body {
     width: 880px;
     height: 410px; 
 
-    background-image: url("/assets/images/inventory/inventory.png");
+    background-image: url("../assets/images/inventory/inventory.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -144,7 +144,7 @@ body {
     width: 100px;
     height: 100px;
     
-    background-image: url("/assets/images/inventory/celdaObjeto.png");
+    background-image: url("../assets/images/inventory/celdaObjeto.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -203,7 +203,7 @@ body {
     width: 655px;
     height: 210px;
 
-    background-image: url("/assets/images/notificacion.png");
+    background-image: url("../assets/images/notificacion.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -256,7 +256,7 @@ body {
     width: 880px;
     height: 410px; 
 
-    background-image: url("/assets/images/modal.png");
+    background-image: url("../assets/images/modal.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -302,7 +302,7 @@ body {
 }
 
 .button-modal.selected {
-    background-image: url("/assets/images/selected.png");
+    background-image: url("../assets/images/selected.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -333,7 +333,7 @@ body {
 
     text-align: center;
 
-    background-image: url("/assets/images/cookingModal.png");
+    background-image: url("../assets/images/cookingModal.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -368,14 +368,14 @@ body {
     width: 100px;
     height: 100px;
     
-    background-image: url("/assets/images/inventory/celdaObjeto.png");
+    background-image: url("../assets/images/inventory/celdaObjeto.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .selected{
-    background-image: url("/assets/images/inventory/celdaSeleccionada.png");
+    background-image: url("../assets/images/inventory/celdaSeleccionada.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -457,7 +457,7 @@ body {
     width: 642px;
     height: 822px;
 
-    background-image: url("/assets/images/modalAyuda.png");
+    background-image: url("../assets/images/modalAyuda.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -545,7 +545,7 @@ body {
     border: none;
     cursor: pointer;
 
-    background-image: url("/assets/images/equis.png");
+    background-image: url("../assets/images/equis.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -592,21 +592,21 @@ body {
 
 /* botón para inicio */
 #back-button{
-    background-image: url("/assets/images/icono_atras.png");
+    background-image: url("../assets/images/icono_atras.png");
 }
 
 /* sound button*/
 #mute-button.soundOn{
-    background-image: url("/assets/images/icono_con_musica.png");
+    background-image: url("../assets/images/icono_con_musica.png");
 }
 
 #mute-button.soundOff{
-    background-image: url("/assets/images/icono_sin_musica.png");
+    background-image: url("../assets/images/icono_sin_musica.png");
 }
 
 /* HELP BUTTON */
 #open-help {
-    background-image: url("/assets/images/helpIconModal.png");
+    background-image: url("../assets/images/helpIconModal.png");
     
     color: white;
     font-size: 24px;

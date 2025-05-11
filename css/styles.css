@@ -1,12 +1,12 @@
 @font-face {
     font-family: 'Press Start 2P';
-    src: url('/assets/fonts/PressStart2P-Regular.ttf') format('truetype');
+    src: url('../assets/fonts/PressStart2P-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'MinecraftRegular-Bmg3';
-    src: url('/assets/fonts/MinecraftRegular-Bmg3.otf') format('truetype');
+    src: url('../assets/fonts/MinecraftRegular-Bmg3.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

@@ -12,10 +12,10 @@ if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'https:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="gameOver.js"></script>
+    <script src="/js/gameOver.js"></script>
 
-    <link href="styles.css" rel="stylesheet">
-    <link href="gameOver.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/gameOver.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/assets/images/objects/sandwich.png">
     
     <title>Final del Juego | Hora del bocata</title>

@@ -47,10 +47,10 @@ $rankingPage = array_slice($rankingData, $startIndex, $itemsPerPage);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <script src="ranking.js"></script>
+  <script src="/js/ranking.js"></script>
 
-  <link href="styles.css" rel="stylesheet">
-  <link href="ranking.css" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
+  <link href="/css/ranking.css" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="/assets/images/objects/sandwich.png">
 
   <title>Ranking | Hora del Bocata</title>
