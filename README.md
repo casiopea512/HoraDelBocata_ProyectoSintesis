@@ -109,3 +109,7 @@ El desarrollo principal del juego está finalizado. El proyecto está listo para
 Los assets gráficos creados por en este proyecto están licenciados bajo la [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/deed.es).
 
 **Restricciones adicionales**: El uso de estos assets en proyectos relacionados con **NFTs** o para el **entrenamiento de modelos de inteligencia artificial** está **estrictamente prohibido**, independientemente de su naturaleza comercial o no comercial.
+
+---
+
+ℹ️ Para más información sobre el desarrollo, diseño y decisiones del proyecto, consulta la [📚 Wiki del repositorio](../../wiki).
