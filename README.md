@@ -72,21 +72,21 @@ Si prefieres ejecutar el juego en tu propio equipo, sigue estos pasos:
 
 2. **Clona el repositorio**:
    ```bash
-   git clone https://github.com/usuario/horadelbocata.git
-   cd horadelbocata
+   git clone [https://github.com/usuario/horadelbocata.git](https://github.com/casiopea512/HoraDelBocata_ProyectoSintesis.git)
+   cd HoraDelBocata_ProyectoSintesis
    ```
 3. **Levanta un servidor**:
    - Usando PHP:
         ```bash
-        php -S localhost:8000
+        php -S localhost:8080
         ```
     - Usando Python 3::
         ```bash
-        python3 -m http.server 8000
+        python3 -m http.server 8080
         ```
 4. Abre el juego en tu navegador:
     ```bash
-    python3 -m http.server 8000
+    http://localhost:8080/
     ```
 
 ## 🧑‍🤝‍🧑 Contribuyentes
