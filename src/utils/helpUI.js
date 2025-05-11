@@ -57,6 +57,7 @@ function toggleHelp(scene, helpContainer) {
 }
 
 function toggleShowHelpButton() {
+    console.log("Toggleando el botón de ayuda");
     let buttonOpenHelp = document.getElementById("open-help");
     let currentDisplay = window.getComputedStyle(buttonOpenHelp).display;
     buttonOpenHelp.style.display = (currentDisplay === "none") ? "block" : "none";
