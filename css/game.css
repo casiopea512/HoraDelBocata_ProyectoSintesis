@@ -264,6 +264,8 @@ body {
     image-rendering: pixelated;
 
     justify-items: center;
+
+    z-index: 10;
 }
 
 #back-index-modal p{
