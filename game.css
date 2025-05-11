@@ -380,7 +380,7 @@ body {
     transform: translate(-50%, -50%);
 
     width: 642px;
-    height: 645px;
+    height: 822px;
 
     background-image: url("/assets/images/modalAyuda.png");
     background-size: cover;
@@ -414,6 +414,20 @@ body {
 #help-modal div#imagenesFlechasWasd{
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
+}
+
+#help-modal div#imagenesFlechasWasd .vertical{
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+    align-items: center;
+    margin-bottom: 0px;
+    margin-top: 0;
+}
+
+#help-modal div#help-e{
+    margin-top: -20px;
 }
 
 #help-modal div img{
@@ -424,7 +438,8 @@ body {
     image-rendering: crisp-edges;
 }
 
-#help-modal #help-wasd img{
+#help-modal #help-wasd img,
+#help-modal #help-flechas img{
     height: 125px;
     width: auto;
 }
