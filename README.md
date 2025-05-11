@@ -2,7 +2,7 @@
 
 ## 🎮 Descripción del Proyecto
 
-*Hora del Bocata* es una aventura gráfica web con estética pixel art de 16 bits y vista top-down. Inspirado en el episodio "La Hora del Bocata" de la serie *Hora de Aventuras*, el juego ofrece una experiencia cozy donde el jugador explora un mundo encantador, interactúa con personajes no jugables (NPCs) y recolecta ingredientes para preparar el bocadillo perfecto.
+*Hora del Bocata* es una aventura gráfica web con estética pixel art de 16 bits y vista top-down. Inspirado en el episodio "La Hora del Bocata" de la serie *Hora de Aventuras*, el juego ofrece una experiencia cozy donde el jugador explora un mundo acogedor, interactúa con personajes no jugables (NPCs) y recolecta ingredientes para preparar el bocadillo perfecto.
 
 ## 🧠 Contexto y Motivación
 
@@ -10,10 +10,11 @@ La idea surge de nuestra pasión por los videojuegos, *Hora de Aventuras* y las 
 
 ## 🎯 Objetivos
 
-* Desarrollar una aventura gráfica web con estética cozy.
-* Implementar gráficos pixel art de 16 bits dibujados a mano.
 * Explorar y aprender nuevos frameworks y herramientas de desarrollo de videojuegos.
-* Crear un videojuego al que sí jugaríamos nosotras, trabajando por ende en un proyecto en el que sí creemos.
+* Desarrollar una aventura gráfica web con estética cozy.
+* Implementar gráficos pixel art de 16 bits dibujados por nosotras.
+* Aplicar metodologías ágiles, específicamente **Scrum**, para gestionar el proyecto de forma estructurada y eficiente.
+* Fomentar el trabajo en equipo, distribuyendo tareas y responsabilidades para lograr una colaboración fluida y organizada.
 
 ## 🧩 Características Principales
 
