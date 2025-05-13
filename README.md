@@ -47,7 +47,7 @@ Juega directamente desde tu navegador:
 
 Si prefieres ejecutar el juego en tu propio equipo, sigue estos pasos:
 
-1. **Requisitos**: Asegúrate de tener instalado PHP u otra herramienta para levantar un servidor local (como Python o Node.js).
+1. **Requisitos**: Asegúrate de tener instalado PHP para poder levantar un servidor en local.
 
 2. **Clona el repositorio**:
    ```bash
@@ -58,10 +58,6 @@ Si prefieres ejecutar el juego en tu propio equipo, sigue estos pasos:
    - Usando PHP:
         ```bash
         php -S localhost:8080
-        ```
-    - Usando Python 3::
-        ```bash
-        python3 -m http.server 8080
         ```
 4. Modifica el archivo gameOver.php para permitir que funcione correctamente en local:
    - Comenta la línea 3, que controla el acceso:
