@@ -67,5 +67,30 @@ export default class TreeHouse extends BaseScene {
                 layer.setCollisionByExclusion([-1]);
             }
         });
+
+        // Callback para el tile de la puerta (id 25)
+        this.layers.paredes.setTileIndexCallback(25, () => {
+            const sceneManager = this.scene.scene;
+            const currentKey = this.scene.key;
+            
+            this.player.sprite.setPosition(720,700);
+
+            sceneManager.game.config.previousScene = currentKey;
+            console.log("Esta es la escena anterior", sceneManager.game.config.previousScene);
+
+            this.scene.switch("TravelingMapScene");
+            console.log("cambiando mapa");
+            const nextKey = currentKey !== "TravelingMapScene"
+            ? "TravelingMapScene"
+            : sceneManager.game.config.previousScene;
+        
+            const nextScene = this.scene.get(nextKey);
+            if (nextScene?.desiredSize) {
+                sceneManager.scale.resize(
+                    nextScene.desiredSize.width,
+                    nextScene.desiredSize.height
+                );
+            }
+        }, this);
     }
 }
