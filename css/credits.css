@@ -3,19 +3,18 @@
 }
 
 body{
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-
-    background-image: url("./assets/images/rankingcomealong.png");
+    background-image: url("../assets/images/rankingcomealong.png");
     background-size: cover;
     font-family: var(--font-primary);
     color: white;
     text-shadow: 0 0 10px #666;
+
+    height: 100vh;
 }
 main{
     display: flex;
@@ -25,10 +24,12 @@ main{
     background-color: rgba(255, 255, 255, 0.322);
     padding: 30px;
     border-radius: 10px;
+    max-width: 800px;
+    line-height: 1.5;
+    text-align: start;
 }
 
 h1{
-
   font-size:  50px;
   font-weight: 600;
 }
@@ -37,6 +38,28 @@ h1{
     margin: 30px;
 }
 
+#contenidos{
+    line-height: 1.5;
+}
+
+#contenidos p{
+    padding: 10px;
+}
+
+
+a{
+    border-width: 2px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #84A15F;
+    line-height: 1.5;     
+    transition: all 0.2s ease;
+    text-shadow: 0 0 10px white;
+}
+
+a:hover{
+    color: #5f7543;
+}
 
 input{
     padding: 10px;
@@ -73,6 +96,7 @@ input{
     text-align: center;
     line-height: 1.5;     
     transition: all 0.2s ease;
+    text-shadow: none;
 }
 
 #links a:hover {
@@ -89,54 +113,6 @@ input{
 }
 
 .selected {
-    box-shadow: 0 0 10px white !important;
-    background-color: white !important;
-    color: #84A15F !important;
-}
-
-input:focus {
     border: 2px solid white;
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
-    outline: none;
-}
-
-#mute-button{
-    display: block;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-
-    width: 60px;
-    height: 60px;
-
-    margin: 0;
-
-    border: none;
-    background-color: transparent;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-
-    cursor: pointer;
-
-    transition: background-color 0.3s;
-}
-
-.iconButton:focus {
-    outline: none;
-}
-
-
-#mute-button.soundOn{
-    background-image: url("/assets/images/icono_con_musica.png");
-}
-
-#mute-button.soundOff{
-    background-image: url("/assets/images/icono_sin_musica.png");
-}
-
-#mute-button:hover {
-    transform: scale(1.2);
+    box-shadow: 0 0 10px white;
 }

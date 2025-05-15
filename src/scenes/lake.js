@@ -31,6 +31,7 @@ export default class Lake extends BaseScene {
         this.createCollisions();
         this.desiredSize = { width: 1346, height: 866 }; 
         this.bindHelpButton();
+        this.bindBackIndexButton();
     }
 
     update() {

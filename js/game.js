@@ -1,5 +1,5 @@
-import scenes from './src/scenes/scenes.js';
-import { startTimer } from "./src/utils/gameTimer.js";
+import scenes from '../src/scenes/scenes.js';
+import { startTimer } from "../src/utils/gameTimer.js";
 
 const config = {
     type: Phaser.CANVAS,

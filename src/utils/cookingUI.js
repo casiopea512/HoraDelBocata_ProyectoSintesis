@@ -131,7 +131,7 @@ function handleCookingNavigation(event) {
     
     case "Enter": {
       navElements[currentIndex].click();
-      return;
+      break;
     }
 
     case "Escape": {
@@ -201,7 +201,6 @@ export function openCookingInventory(inventory, scene) {
 
   // cook button
   const cookBtn = document.getElementById("cook-button");
-  const cookImg = cookBtn.querySelector("img");
 
   //IMPORTANTE !!!!!!!!!!!!!
   //MARK: CAMBIAR NUM
