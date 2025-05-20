@@ -1,4 +1,5 @@
 import BaseScene from "./baseScene.js";
+import {switchSceneByCollision} from "../utils/switchScenes.js";
 import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
 
 export default class BubblegumLab extends BaseScene {
@@ -65,5 +66,10 @@ export default class BubblegumLab extends BaseScene {
                 layer.setCollisionByExclusion([-1]);
             }
         });
+
+        // Callback para el tile de la puerta (id 22 y 23)
+        this.layers.paredes.setTileIndexCallback([22,23], () => {
+            switchSceneByCollision(this);
+        }, this);
     }
 }

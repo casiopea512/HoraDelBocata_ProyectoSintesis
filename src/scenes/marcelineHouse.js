@@ -1,4 +1,5 @@
 import BaseScene from "./baseScene.js";
+import {switchSceneByCollision} from "../utils/switchScenes.js";
 import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
 
 export default class MarcelineHouse extends BaseScene {
@@ -66,5 +67,10 @@ export default class MarcelineHouse extends BaseScene {
                 layer.setCollisionByExclusion([-1]);
             }
         });
+
+        // Callback para el tile de la puerta (id 22)
+        this.layers.paredes.setTileIndexCallback(22, () => {
+            switchSceneByCollision(this);
+        }, this);
     }
 }
