@@ -1,4 +1,5 @@
 import BaseScene from "./baseScene.js";
+import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
 
 export default class PrismoCube extends BaseScene {
     constructor() {
@@ -22,7 +23,10 @@ export default class PrismoCube extends BaseScene {
         this.scale.resize(1060, 770);
         this.createControls();
         this.createNPCs();
-        this.createPlayer(900,300);
+
+        const spawnPosition = positionsScenesTravelingMap.Cube.positionSpawnInScene;
+        this.createPlayer(spawnPosition.x, spawnPosition.y);
+
         this.createCollisions();
         this.desiredSize = { width: 1060, height: 770 }; 
         this.bindHelpButton();

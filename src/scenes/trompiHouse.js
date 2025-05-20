@@ -1,4 +1,5 @@
 import BaseScene from "./baseScene.js";
+import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
 
 export default class TrompiHouse extends BaseScene {
     constructor() {
@@ -23,7 +24,10 @@ export default class TrompiHouse extends BaseScene {
         this.scale.resize(960, 674);
         this.createControls();
         this.createNPCs();
-        this.createPlayer(800,300);
+
+        const spawnPosition = positionsScenesTravelingMap.TrompiHouse.positionSpawnInScene;
+        this.createPlayer(spawnPosition.x, spawnPosition.y);
+
         this.createCollisions();
         this.desiredSize = { width: 960, height: 674 }; 
         this.bindHelpButton();

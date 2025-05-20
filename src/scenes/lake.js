@@ -1,4 +1,5 @@
 import BaseScene from "./baseScene.js";
+import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
 
 export default class Lake extends BaseScene {
     constructor() {
@@ -27,7 +28,10 @@ export default class Lake extends BaseScene {
         this.scale.resize(1346, 866);
         this.createControls();
         this.createNPCs();
-        this.createPlayer(100,100);
+
+        const spawnPosition = positionsScenesTravelingMap.Lake.positionSpawnInScene;
+        this.createPlayer(spawnPosition.x, spawnPosition.y);
+
         this.createCollisions();
         this.desiredSize = { width: 1346, height: 866 }; 
         this.bindHelpButton();

@@ -1,5 +1,6 @@
 import BaseScene from "./baseScene.js";
 import {switchSceneByCollision} from "../utils/switchScenes.js";
+import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
 
 export default class TreeHouse extends BaseScene {
     constructor() {
@@ -29,7 +30,10 @@ export default class TreeHouse extends BaseScene {
         this.scale.resize(1150, 866);
         this.createControls();
         this.createNPCs();
-        this.createPlayer(720,700);
+
+        const spawnPosition = positionsScenesTravelingMap.TreeHouse.positionSpawnInScene;
+        this.createPlayer(spawnPosition.x, spawnPosition.y);
+
         this.createCollisions();
         this.desiredSize = { width: 1150, height: 866 }; 
         this.bindHelpButton();

@@ -4,19 +4,19 @@ function switchSceneByCollision(self) {
   const sceneManager = self.scene.scene;
   const currentKey = self.scene.key;
 
-  let positionSwpawnInScene;
+  let positionSpawnInScene;
   const sceneEntry = Object.values(positionsScenesTravelingMap).find(
     (entry) => entry.sceneKey === currentKey
   );
   if (sceneEntry) {
-    positionSwpawnInScene = sceneEntry.positionSwpawnInScene;
+    positionSpawnInScene = sceneEntry.positionSpawnInScene;
   } else {
     console.error("Objeto no encontrado para la escena:", currentKey);
   }
 
   self.player.sprite.setPosition(
-    positionSwpawnInScene.x,
-    positionSwpawnInScene.y
+    positionSpawnInScene.x,
+    positionSpawnInScene.y
   );
 
   sceneManager.game.config.previousScene = currentKey;

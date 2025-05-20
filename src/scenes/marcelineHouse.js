@@ -1,4 +1,5 @@
 import BaseScene from "./baseScene.js";
+import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
 
 export default class MarcelineHouse extends BaseScene {
     constructor() {
@@ -23,7 +24,10 @@ export default class MarcelineHouse extends BaseScene {
         this.scale.resize(960, 578);
         this.createControls();
         this.createNPCs();
-        this.createPlayer(700,150);
+
+        const spawnPosition = positionsScenesTravelingMap.MarcelineHouse.positionSpawnInScene;
+        this.createPlayer(spawnPosition.x, spawnPosition.y);
+
         this.createCollisions();
         this.desiredSize = { width: 960, height: 578 }; 
         this.bindHelpButton();
