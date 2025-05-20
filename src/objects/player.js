@@ -1,6 +1,8 @@
 import { renderHelp, toggleShowHelpButton } from "../utils/helpUI.js";
 import { renderInventory } from "../utils/inventoryUI.js";
 import {toggleBackIndexModal} from "../utils/modalBackIndex.js";
+import {switchSceneByKeyboard} from "../utils/switchScenes.js";
+
 export default class Player {
     constructor(scene, x, y, cursors) {
         this.scene = scene;
@@ -138,37 +140,7 @@ export default class Player {
         //NUEVO
         if (Phaser.Input.Keyboard.JustDown(this.cursors.showMap)) {
             toggleShowHelpButton();
-
-            const sceneManager = this.scene.scene;
-            const currentKey = sceneManager.key;
-        
-            if (currentKey !== "TravelingMapScene") {
-                this.scene.game.config.previousScene = currentKey;
-                console.log("Esta es la escena anterior", this.scene.game.config.previousScene);
-                sceneManager.switch("TravelingMapScene");
-                console.log("cambiando mapa");
-            } else {
-                const previousKey = this.scene.game.config.previousScene;
-        
-                if (previousKey) {
-                    console.log("Dentro");
-                    sceneManager.switch(previousKey);
-                    console.log("volviendo al mapa anterior");
-                }
-            }
-        
-            //siempre hacer resize de la escena de destino si tiene desiredSize
-            const nextKey = currentKey !== "TravelingMapScene"
-                ? "TravelingMapScene"
-                : this.scene.game.config.previousScene;
-        
-            const nextScene = sceneManager.get(nextKey);
-            if (nextScene?.desiredSize) {
-                this.scene.scale.resize(
-                    nextScene.desiredSize.width,
-                    nextScene.desiredSize.height
-                );
-            }
+            switchSceneByKeyboard(this);  
         }      
 
 

@@ -5,6 +5,7 @@ export const positionsScenesTravelingMap = {
     x: 650,
     y: 250,
     spawnPosition :{x: 650, y: 355},
+    positionSwpawnInScene :{x: 720, y:700},
     name: "Casa del árbol",
     imgPath: "/assets/images/maplocations/treeHouse.png",
   },

@@ -1,5 +1,5 @@
 import { positionsScenesTravelingMap } from "../utils/positionsScenesTravelingMap.js";
-
+import {switchSceneByLocationInteraction} from "../utils/switchScenes.js"
 export default class Location{
     constructor (scene,x, y, textureKey, name){
         this.scene = scene;
@@ -21,13 +21,7 @@ export default class Location{
         }
 
         else if (locationData && locationData.sceneKey) {
-
-            // resetear varibale data del botón 'cerrar inventario', para poder añadirle el evento más tarte
-            document.getElementById('close-inventory').dataset.eventAdded = "false";
-
-            this.scene.scene.stop();
-            this.scene.cache.tilemap.remove('mapa');
-            this.scene.scene.start(locationData.sceneKey);
+            switchSceneByLocationInteraction(this, locationData);
         }
     }
 }
